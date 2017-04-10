@@ -1,0 +1,98 @@
+/* AGENT_SHEET */
+@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+
+/**
+  * Some color changes made by unix121 so that it matches the rest of the
+  * color schemes. Great thanks to the original authors of the theme.
+  */
+
+/**
+ * This is an adaptation for Thunderbird of my style 'Numix Tabs for Firefox 29+'
+ * (https://userstyles.org/styles/117361/numix-tabs-for-firefox-29)
+ *
+ * based on 'Numix for Firefox' by @manicfold
+ * (https://userstyles.org/styles/95159/numix-for-firefox)
+ * @Author: Laron
+ */
+
+/**
+ * This is an adaptation of Laron's 'Numix Tabs for Thunderbird 15+'
+ * (https://userstyles.org/styles/117550/numix-tabs-for-thunderbird-15)
+ *
+ * A lightweight theme is required to make the toolbar icons white.
+ * Any should work, but I used Just black in my testing.
+ * (https://addons.mozilla.org/en-US/thunderbird/addon/just-black/)
+ *
+ * Firefox's Dev Edition theme was used as inspiration
+ * @Author: Rayquaza01
+ */
+
+/*Remove curved tabs and default style*/
+#tabs-toolbar .tab-background{
+  margin: 0 !important;
+  background: transparent !important;
+}
+#tabs-toolbar .tab-background-start,
+#tabs-toolbar .tab-background-end{
+  display: none !important;
+}
+#tabs-toolbar .tab-background-middle{
+  margin: -4px -2px !important;
+  background: transparent !important;
+}
+
+/*Fix tabs overlapping main part*/
+#tabs-toolbar .tabmail-arrowscrollbox {
+  margin: 0px !important;
+}
+#mail-toolbox{
+  box-shadow: 0px -1px 0px threedshadow inset !important;
+}
+#tabs-toolbar > * {
+  background-color: #162025 !important;
+}
+#tabs-toolbar .tabmail-tab {
+  padding: 7.5px !important;
+  background-color: #162025 !important;
+}
+#tabs-toolbar .tabmail-tab:not([first-tab]) {
+  padding: 5px !important;
+}
+#tabs-toolbar .tab-text {
+  color: #bfbfbf !important;
+  text-shadow: none !important;
+}
+#tabs-toolbar .tab-text:-moz-window-inactive {
+  color: rgba(255,255,255,0.5) !important;
+}
+#tabs-toolbar .tabmail-tab:hover:not([selected]) {
+  background: #0b4753 !important;
+}
+#tabs-toolbar .tabmail-tab[selected] {
+  background: #162025 !important;
+  border-style: none !important;
+}
+#mail-toolbox, sidebarheader {
+  background-image: none !important;
+  background-color: #162025 !important;
+}
+
+/* Edit "margin:" if you want to show the status bar */
+#messengerWindow[sizemode="normal"] #navigation-toolbox {
+  background-color: #272B35 !important;
+  margin: -21px 0px 0px !important;
+}
+#messengerWindow[sizemode="maximized"] #navigation-toolbox {
+  background-color: #162025 !important;
+}
+#calendar-status-todaypane-button {
+  background-color: #162025 !important;
+}
+#status-bar {
+  background-image: none !important;
+  background-color: #162025 !important;
+  text-shadow: none !important;
+}
+#today-pane-header {
+  text-shadow: none !important;
+}
