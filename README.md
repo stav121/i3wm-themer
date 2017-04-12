@@ -6,6 +6,8 @@ My collection of themes for i3.
 
 - i3-wm in any Linux distro you prefer
 - Polybar (for most of the themes)
+- You might need to copy the files located in "scripts" folder into "~/.config/polybar/"
+  to make the Polybar configuration work properly on most themes.
 
 # How to install 
 
@@ -13,7 +15,7 @@ My collection of themes for i3.
 (Feature) I will probably upload my own script to apply the themes instantly
 
 # Themes
-- #Colors
+- <h2>Colors</h2>
   
   Screenshot:
 
