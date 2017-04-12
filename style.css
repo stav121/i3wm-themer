@@ -1,0 +1,65 @@
+html,
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
+pre, code { font-family: Hack, monospace; }
+
+body {
+ background: #1e272b;
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  display: block;
+  font-family: Hack;
+  font-size: 14px;
+  left: 50%;
+  position: absolute;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+h1 {
+  color: #9d6a47;
+  display: block;
+  margin: 0 auto;
+  text-align: left;
+  width: 500px;
+}
+
+hr {
+  border: 0;;
+  border-top: 0.5px solid #d99f57;
+  opacity: .4;
+  width: 500px;
+}
+
+ul {
+  color: #d99f57;
+  display: block;
+  margin: 0 auto;
+  width: 500px;
+}
+
+li {
+  color: #78824b;
+  display: inline-block;
+  font-size: 1.2em;
+  line-height: 1.5;
+  list-style: none;
+  margin: 5px;
+}
+
+a {
+  color: #ead49b;
+  text-decoration: none;
+  transition: .2s;
+}
+
+a:hover {
+  color: #d99f57;
+}
