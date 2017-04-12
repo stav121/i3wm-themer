@@ -35,12 +35,12 @@ My collection of themes for i3.
     sudo ./apply_theme.sh Minimal
   - NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.
 
-<h1>Themes<h1>
+<h1>Themes</h1>
 
 <ul>
-  <h1>Colors</h1>
+  <li><h2>Colors</h2>
     <img src="http://i.imgur.com/ZUEzkiT.png">
-    <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a>
+    <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a></li>
   <li><h2>Minimal</h2>
     <img src="http://i.imgur.com/aaosiZ2.png">
     <a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a></li>
