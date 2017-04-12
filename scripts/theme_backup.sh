@@ -22,42 +22,42 @@ else
   exit
 fi
 
-mkdir $HOME/Documents/Themes/$FILE/resources/
+mkdir $HOME/Documents/Themes/$FILE/.resources/
 
-if cp ~/.Xresources $HOME/Documents/Themes/$FILE/resources/Xresources
+if cp ~/.Xresources $HOME/Documents/Themes/$FILE/.resources/.Xresources
   then
   echo '  [+] Saved ~/.Xresources successfully'
 else
   echo '  [-] Failed to save ~/.Xresources'
 fi
 
-if cp ~/.extend.Xresources $HOME/Documents/Themes/$FILE/resources/extendXresources
+if cp ~/.extend.Xresources $HOME/Documents/Themes/$FILE/.resources/.extend.Xresources
   then
   echo '  [+] Saved ~/.extend.Xresources successfully'
 else
   echo '  [-] Failed to save ~/.extend.Xresources'
 fi
 
-mkdir $HOME/Documents/Themes/$FILE/config/
-mkdir $HOME/Documents/Themes/$FILE/config/polybar/
+mkdir $HOME/Documents/Themes/$FILE/.config/
+mkdir $HOME/Documents/Themes/$FILE/.config/polybar/
 
-if cp ~/.config/polybar/config $HOME/Documents/Themes/$FILE/config/polybar/config
+if cp ~/.config/polybar/config $HOME/Documents/Themes/$FILE/.config/polybar/config
   then
   echo '  [+] Saved ~/.config/polybar/config successfully'
 else
   echo '  [-] Failed to save ~/.config/polybar/config'
 fi
 
-if cp ~/.config/compton.conf $HOME/Documents/Themes/$FILE/config/compton.conf
+if cp ~/.config/compton.conf $HOME/Documents/Themes/$FILE/.config/compton.conf
   then
   echo '  [+] Saved ~/.config/compton.conf successfully'
 else
   echo '  [-] Failed to save ~/.config/compton.conf'
 fi
 
-mkdir $HOME/Documents/Themes/$FILE/i3/
+mkdir $HOME/Documents/Themes/$FILE/.i3/
 
-if cp ~/.i3/config $HOME/Documents/Themes/$FILE/i3/config
+if cp ~/.i3/config $HOME/Documents/Themes/$FILE/.i3/config
   then
   echo '  [+] Saved ~/.i3/config successfully'
 else
@@ -66,14 +66,14 @@ fi
 
 mkdir $HOME/Documents/Themes/$FILE/Other/
 
-if cp ~/.dmenurc $HOME/Documents/Themes/$FILE/Other/dmenurc
+if cp ~/.dmenurc $HOME/Documents/Themes/$FILE/Other/.dmenurc
   then
   echo '  [+] Saved ~/.dmenurc successfully'
 else
   echo '  [-] Failed to save ~/.dmenurc'
 fi
 
-if cp ~/.vimrc $HOME/Documents/Themes/$FILE/Other/vimrc
+if cp ~/.vimrc $HOME/Documents/Themes/$FILE/Other/.vimrc
   then
   echo '  [+] Saved ~/.vimrc successfully'
 else
