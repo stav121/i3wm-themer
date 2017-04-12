@@ -19,7 +19,7 @@
 <h1>Installation</h1> 
 <ul>
  <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
-
+  <ul>
   <li> git clone https://github.com/unix121/Themes </li>
   <li> cd {THEME_YOU_WANT_TO_APPLY}</li>
   <li> cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)</li>
@@ -27,7 +27,7 @@
   <li> cp .config/polybar/confing ~/.config/polybar/config</li>
   <li> cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh</li>
   <li> cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh</li>
-
+  </ul>
   <h3>Automated way</h3> (In testing please use with caution)
 
   <li> git clone https://github.com/unix121/Themes</li>
