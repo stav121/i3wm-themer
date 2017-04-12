@@ -24,7 +24,7 @@ fi
 
 mkdir $HOME/Documents/Themes/$FILE/.resources
 
-if cp ~/.Xresources $HOME/Documents/Themes/$FILE/.resouces/.Xresources
+if cp ~/.Xresources $HOME/Documents/Themes/$FILE/.resources/.Xresources
   then
   echo '  [+] Saved ~/.Xresources successfully'
 else
@@ -64,7 +64,7 @@ else
   echo '  [-] Failed to save ~/.i3/config'
 fi
 
-mkdir $HOME/Documents/Other/
+mkdir $HOME/Documents/Themes/$FILE/Other/
 
 if cp ~/.dmenurc $HOME/Documents/Themes/$FILE/Other/.dmenurc
   then
