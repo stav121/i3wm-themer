@@ -8,7 +8,7 @@ My collection of themes for i3.
 - Polybar (for most of the themes)
 - You might need to copy the files located in "scripts" folder into "~/.config/polybar/"
   to make the Polybar configuration work properly on most themes.
-- To recreate some of the GTK themes (for now) you can download "oomox-gui" and use the 
+- To recreate some of the GTK themes (for now) you can download <a href="https://github.com/actionless/oomox">oomox</a> and use the 
   colors located in "/{Theme_name}/.resources/.extend.Xresources" and recreate them.
 - A couple of fonts might be required. <a href="https://github.com/chrissimpkins/Hack">Hack Font</a> and <a href="http://fontawesome.io/">Font Awesome</a>.
 
