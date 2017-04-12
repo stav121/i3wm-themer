@@ -4,8 +4,8 @@ My collection of themes for i3.
 
 # What you might need
 
-> i3-wm in any Linux distro you prefer
-> Polybar (for most of the themes)
+- i3-wm in any Linux distro you prefer
+- Polybar (for most of the themes)
 
 # How to install 
 
