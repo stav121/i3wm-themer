@@ -16,7 +16,7 @@ My collection of themes for i3.
 
 <h1>Installation</h1> 
 <ul>
-  <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
+ <li> <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
 
   <li> git clone https://github.com/unix121/Themes </li>
   <li> cd {THEME_YOU_WANT_TO_APPLY}</li>
@@ -24,7 +24,7 @@ My collection of themes for i3.
   <li> cp .config/compton.conf ~/.config/compton.conf</li>
   <li> cp .config/polybar/confing ~/.config/polybar/config</li>
   <li> cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh</li>
-  <li> cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh</li>
+  <li> cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh</li></li>
   
   <h3>Automated way</h3> (In testing please use with caution)
   
