@@ -1,4 +1,4 @@
-<h3> Themes </h3>
+# Themes
 
 My collection of themes for i3. 
 
@@ -15,7 +15,7 @@ My collection of themes for i3.
 (Feature) I will probably upload my own script to apply the themes instantly
 
 # Themes
-- <h2>Colors</h2>
+- <h3>Colors</h3>
   
   Screenshot:
 
