@@ -38,7 +38,7 @@ My collection of themes for i3.
 # Themes
 <li><h2>Colors</h2>
 <img src="http://i.imgur.com/ZUEzkiT.png">
-<a href="http://imgur.com/a/ub0Jl">(More can be found here)</a>/li>
+<a href="http://imgur.com/a/ub0Jl">(More can be found here)</a></li>
 <li><h2>Minimal</h2>
 <img src="http://i.imgur.com/aaosiZ2.png">
 <a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a></li>
