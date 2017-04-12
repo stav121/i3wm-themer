@@ -14,9 +14,17 @@ My collection of themes for i3.
 
 # How to install 
 
-(For now) Just copy every file to the right place. (I will add more instructions later) 
-
-(Feature) I will probably upload my own script to apply the themes in an automated way.
+- <h3>Manual Way</h3> 
+  
+  To copy the basic configuration of a theme follow those steps:
+  - git clone https://github.com/unix121/Themes
+  - cd {THEME_YOU_WANT_TO_APPLY}
+  - cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)
+  - cp .config/compton.conf ~/.config/compton.conf
+  - cp .config/polybar/confing ~/.config/polybar/config
+  - cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh
+  - cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh
+- (Feature) I will probably upload my own script to apply the themes in an automated way.
 
 # Themes
 - <h3>Colors</h3>
