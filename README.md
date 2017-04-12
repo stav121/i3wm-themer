@@ -13,9 +13,9 @@ My collection of themes for i3.
 
 # How to install 
 
-(For now) Just copy every file to the right file. 
+(For now) Just copy every file to the right place. (I will add more instructions later) 
 
-(Feature) I will probably upload my own script to apply the themes instantly
+(Feature) I will probably upload my own script to apply the themes in an automated way.
 
 # Themes
 - <h3>Colors</h3>
