@@ -14,7 +14,15 @@ My collection of themes for i3.
 
 # Themes
 - #Colors
+  
   Screenshot:
 
   <img src="http://i.imgur.com/ZUEzkiT.png">
-  (More can be found here)
+  <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a>
+
+- #Miminal
+
+  Screenshot:
+  
+  <img src="http://i.imgur.com/aaosiZ2.png">
+  <a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a>
