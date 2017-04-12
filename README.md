@@ -39,3 +39,9 @@ My collection of themes for i3.
   <img src="http://i.imgur.com/K0uT5ua.png">
   <a href="http://imgur.com/gallery/1TYFd">(More can be found here)</a>
   
+- <h3>Sea</h3>
+  
+  Screenshot:
+
+  <img src="http://i.imgur.com/yapFCCe.png">
+  <a href="http://imgur.com/a/3BsTW">(More can be found here)</a>
