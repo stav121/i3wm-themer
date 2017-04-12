@@ -30,7 +30,9 @@ My collection of themes for i3.
   - git clone https://github.com/unix121/Themes
   - cd scripts/
   - sudo ./apply_theme.sh {THEME} ({THEME} should be the name of the theme you want to apply)
+  
     (example on how to apply the "Minimal" theme)
+    
     sudo ./apply_theme.sh Minimal
   - NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.
 
