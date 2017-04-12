@@ -1,8 +1,8 @@
-# Themes
+<h1>Themes</h1>
 
 My collection of themes for i3. 
 
-# What you might need
+<h1>What you might need</h1>
 
 - i3-wm in any Linux distro you prefer
 - Polybar (for most of the themes)
@@ -13,7 +13,7 @@ My collection of themes for i3.
 - A couple of fonts might be required. <a href="https://github.com/chrissimpkins/Hack">Hack Font</a> and <a href="http://fontawesome.io/">Font Awesome</a>.
 - Firefox Themes can be installed using the "Stylish" extension
 
-# How to install 
+<h1>Installation</h1> 
 
 - <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
 
@@ -35,7 +35,7 @@ My collection of themes for i3.
     sudo ./apply_theme.sh Minimal
   - NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.
 
-# Themes
+<h1>Themes<h1>
 <li><h2>Colors</h2>
 <img src="http://i.imgur.com/ZUEzkiT.png">
 <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a></li>
