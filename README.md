@@ -37,16 +37,16 @@ My collection of themes for i3.
 
 <h1>Themes<h1>
 <ul>
-<li><h1>Colors</h1>
-<img src="http://i.imgur.com/ZUEzkiT.png">
-<a href="http://imgur.com/a/ub0Jl">(More can be found here)</a></li>
-<li><h2>Minimal</h2>
-<img src="http://i.imgur.com/aaosiZ2.png">
-<a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a></li>
-<li><h2>Grayscale</h2>
-<img src="http://i.imgur.com/K0uT5ua.png">
-<a href="http://imgur.com/gallery/1TYFd">(More can be found here)</a></li>
-<li><h2>Sea</h2>
-<img src="http://i.imgur.com/yapFCCe.png">
-<a href="http://imgur.com/a/3BsTW">(More can be found here)</a></li>
+  <li><h1>Colors</h1>
+    <img src="http://i.imgur.com/ZUEzkiT.png">
+    <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a></li>
+  <li><h2>Minimal</h2>
+    <img src="http://i.imgur.com/aaosiZ2.png">
+    <a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a></li>
+  <li><h2>Grayscale</h2>
+    <img src="http://i.imgur.com/K0uT5ua.png">
+    <a href="http://imgur.com/gallery/1TYFd">(More can be found here)</a></li>
+  <li><h2>Sea</h2>
+    <img src="http://i.imgur.com/yapFCCe.png">
+    <a href="http://imgur.com/a/3BsTW">(More can be found here)</a></li>
 </ul>
