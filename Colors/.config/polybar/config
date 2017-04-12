@@ -64,7 +64,7 @@ font-2 = FontAwesome:fontformat=truetype:size=9;1
 
 modules-left = i3 xwindow
 modules-center = date 
-modules-right = spotify battery
+modules-right = musicinfo battery
 
 tray-position = right
 tray-padding = 9
@@ -227,7 +227,7 @@ label-urgent-padding = 2
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-[module/spotify]
+[module/musicinfo]
 type = custom/script
 
 exec = ~/.config/polybar/music.sh
