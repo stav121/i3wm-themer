@@ -15,9 +15,7 @@ My collection of themes for i3.
 
 # How to install 
 
-- <h3>Manual Way</h3> 
-  
-  To copy the basic configuration of a theme follow those steps:
+- <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
   - git clone https://github.com/unix121/Themes
   - cd {THEME_YOU_WANT_TO_APPLY}
   - cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)
