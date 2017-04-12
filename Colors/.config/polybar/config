@@ -230,7 +230,7 @@ label-urgent-padding = 2
 [module/spotify]
 type = custom/script
 
-exec = ~/.config/polybar/spotify.sh
+exec = ~/.config/polybar/music.sh
 interval = 5
 format = <label>
 label = %output:0:30:...%
