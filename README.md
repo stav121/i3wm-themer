@@ -12,8 +12,9 @@ My collection of themes for i3.
 (For now) Just copy every file to the right file. 
 (Feature) I will probably upload my own script to apply the themes instantly
 
-# Colors
+# Themes
+- #Colors
+  Screenshot:
 
-Screenshot:
-
-<img src="http://i.imgur.com/ZUEzkiT.png">
+  <img src="http://i.imgur.com/ZUEzkiT.png">
+  (More can be found here)
