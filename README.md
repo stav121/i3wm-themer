@@ -16,43 +16,43 @@
     <li> Firefox Themes can be installed using the "Stylish" extension</li>
   </ul>
   
-  <h1>Installation</h1> 
-  <ul>
-   <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
+<h1>Installation</h1> 
+<ul>
+ <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
 
-    <li> git clone https://github.com/unix121/Themes </li>
-    <li> cd {THEME_YOU_WANT_TO_APPLY}</li>
-    <li> cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)</li>
-    <li> cp .config/compton.conf ~/.config/compton.conf</li>
-    <li> cp .config/polybar/confing ~/.config/polybar/config</li>
-    <li> cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh</li>
-    <li> cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh</li>
+  <li> git clone https://github.com/unix121/Themes </li>
+  <li> cd {THEME_YOU_WANT_TO_APPLY}</li>
+  <li> cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)</li>
+  <li> cp .config/compton.conf ~/.config/compton.conf</li>
+  <li> cp .config/polybar/confing ~/.config/polybar/config</li>
+  <li> cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh</li>
+  <li> cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh</li>
 
-    <h3>Automated way</h3> (In testing please use with caution)
+  <h3>Automated way</h3> (In testing please use with caution)
 
-    <li> git clone https://github.com/unix121/Themes</li>
-    <li> cd scripts/</li>
-    <li> sudo ./apply_theme.sh {THEME} ({THEME} should be the name of the theme you want to apply)
+  <li> git clone https://github.com/unix121/Themes</li>
+  <li> cd scripts/</li>
+  <li> sudo ./apply_theme.sh {THEME} ({THEME} should be the name of the theme you want to apply)
 
-      (example on how to apply the "Minimal" theme)
+    (example on how to apply the "Minimal" theme)
 
-      sudo ./apply_theme.sh Minimal</li>
-    <li> NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.</li>
-  </ul>
+    sudo ./apply_theme.sh Minimal</li>
+  <li> NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.</li>
+</ul>
   
-  <h1>Themes</h1>
+<h1>Themes</h1>
 
-  <ul>
-    <li><h2>Colors</h2>
-      <img src="http://i.imgur.com/ZUEzkiT.png">
-      <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a></li>
-    <li><h2>Minimal</h2>
-      <img src="http://i.imgur.com/aaosiZ2.png">
-      <a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a></li>
-    <li><h2>Grayscale</h2>
-      <img src="http://i.imgur.com/K0uT5ua.png">
-      <a href="http://imgur.com/gallery/1TYFd">(More can be found here)</a></li>
-    <li><h2>Sea</h2>
-      <img src="http://i.imgur.com/yapFCCe.png">
-      <a href="http://imgur.com/a/3BsTW">(More can be found here)</a></li>
+<ul>
+  <li><h2>Colors</h2>
+    <img src="http://i.imgur.com/ZUEzkiT.png">
+    <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a></li>
+  <li><h2>Minimal</h2>
+    <img src="http://i.imgur.com/aaosiZ2.png">
+    <a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a></li>
+  <li><h2>Grayscale</h2>
+    <img src="http://i.imgur.com/K0uT5ua.png">
+    <a href="http://imgur.com/gallery/1TYFd">(More can be found here)</a></li>
+  <li><h2>Sea</h2>
+    <img src="http://i.imgur.com/yapFCCe.png">
+    <a href="http://imgur.com/a/3BsTW">(More can be found here)</a></li>
   </ul>
