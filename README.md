@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <h1>Themes</h1>
 <ul>
 My collection of themes for i3. 
