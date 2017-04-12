@@ -22,49 +22,58 @@ else
   exit
 fi
 
-if cp ~/.Xresources $HOME/Documents/Themes/$FILE/Xresources
+mkdir $HOME/Documents/Themes/$FILE/.resources
+
+if cp ~/.Xresources $HOME/Documents/Themes/$FILE/.resouces/.Xresources
   then
   echo '  [+] Saved ~/.Xresources successfully'
 else
   echo '  [-] Failed to save ~/.Xresources'
 fi
 
-if cp ~/.extend.Xresources $HOME/Documents/Themes/$FILE/extendXresources
+if cp ~/.extend.Xresources $HOME/Documents/Themes/$FILE/.resources/.extend.Xresources
   then
   echo '  [+] Saved ~/.extend.Xresources successfully'
 else
   echo '  [-] Failed to save ~/.extend.Xresources'
 fi
 
-if cp ~/.config/polybar/config $HOME/Documents/Themes/$FILE/polybar
+mkdir $HOME/Documents/Themes/$FILE/.config/
+mkdir $HOME/Documents/Themes/$FILE/.config/polybar/
+
+if cp ~/.config/polybar/config $HOME/Documents/Themes/$FILE/.config/polybar/config
   then
   echo '  [+] Saved ~/.config/polybar/config successfully'
 else
   echo '  [-] Failed to save ~/.config/polybar/config'
 fi
 
-if cp ~/.config/compton.conf $HOME/Documents/Themes/$FILE/compton
+if cp ~/.config/compton.conf $HOME/Documents/Themes/$FILE/.config/compton.conf
   then
   echo '  [+] Saved ~/.config/compton.conf successfully'
 else
   echo '  [-] Failed to save ~/.config/compton.conf'
 fi
 
-if cp ~/.i3/config $HOME/Documents/Themes/$FILE/i3config
+mkdir $HOME/Documents/Themes/$FILE/.i3/
+
+if cp ~/.i3/config $HOME/Documents/Themes/$FILE/.i3/config
   then
   echo '  [+] Saved ~/.i3/config successfully'
 else
   echo '  [-] Failed to save ~/.i3/config'
 fi
 
-if cp ~/.dmenurc $HOME/Documents/Themes/$FILE/dmenurc
+mkdir $HOME/Documents/Other/
+
+if cp ~/.dmenurc $HOME/Documents/Themes/$FILE/Other/.dmenurc
   then
   echo '  [+] Saved ~/.dmenurc successfully'
 else
   echo '  [-] Failed to save ~/.dmenurc'
 fi
 
-if cp ~/.vimrc $HOME/Documents/Themes/$FILE/vimrc
+if cp ~/.vimrc $HOME/Documents/Themes/$FILE/Other/.vimrc
   then
   echo '  [+] Saved ~/.vimrc successfully'
 else
