@@ -24,7 +24,12 @@ My collection of themes for i3.
   - cp .config/polybar/confing ~/.config/polybar/config
   - cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh
   - cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh
-- (Feature) I will probably upload my own script to apply the themes in an automated way.
+- <h3>Automated way</h3> (In testing please use with caution)
+  
+  - git clone https://github.com/unix121/Themes
+  - cd scripts/
+  - sudo ./apply_theme.sh {THEME} ({THEME} should be the name of the theme you want to apply)
+  - NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.
 
 # Themes
 - <h3>Colors</h3>
