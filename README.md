@@ -36,30 +36,16 @@ My collection of themes for i3.
   - NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.
 
 # Themes
-- <h3>Colors</h3>
-  
-  Screenshot:
+<li><h2>Colors</h2>
+<img src="http://i.imgur.com/ZUEzkiT.png">
+<a href="http://imgur.com/a/ub0Jl">(More can be found here)</a>/li>
+<li><h2>Minimal</h2>
+<img src="http://i.imgur.com/aaosiZ2.png">
+<a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a></li>
+<li><h2>Grayscale</h2>
+<img src="http://i.imgur.com/K0uT5ua.png">
+<a href="http://imgur.com/gallery/1TYFd">(More can be found here)</a></li>
+<li><h2>Sea</h2>
+<img src="http://i.imgur.com/yapFCCe.png">
+<a href="http://imgur.com/a/3BsTW">(More can be found here)</a></li>
 
-  <img src="http://i.imgur.com/ZUEzkiT.png">
-  <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a>
-
-- <h3>Miminal</h3>
-
-  Screenshot:
-  
-  <img src="http://i.imgur.com/aaosiZ2.png">
-  <a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a>
-  
-- <h3>Grayscale</h3>
-  
-  Screenshot:
-  
-  <img src="http://i.imgur.com/K0uT5ua.png">
-  <a href="http://imgur.com/gallery/1TYFd">(More can be found here)</a>
-  
-- <h3>Sea</h3>
-  
-  Screenshot:
-
-  <img src="http://i.imgur.com/yapFCCe.png">
-  <a href="http://imgur.com/a/3BsTW">(More can be found here)</a>
