@@ -11,6 +11,7 @@ My collection of themes for i3.
 - To recreate some of the GTK themes (for now) you can download <a href="https://github.com/actionless/oomox">oomox</a> and use the 
   colors located in "/{Theme_name}/.resources/.extend.Xresources" and recreate them.
 - A couple of fonts might be required. <a href="https://github.com/chrissimpkins/Hack">Hack Font</a> and <a href="http://fontawesome.io/">Font Awesome</a>.
+- Firefox Themes can be installed using the "Stylish" extension
 
 # How to install 
 
