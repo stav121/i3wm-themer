@@ -29,7 +29,7 @@
   <li> cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh</li>
   </ul>
   <h3>Automated way</h3> (In testing please use with caution)
-
+  <ul>
   <li> git clone https://github.com/unix121/Themes</li>
   <li> cd scripts/</li>
   <li> sudo ./apply_theme.sh {THEME} ({THEME} should be the name of the theme you want to apply)
@@ -38,6 +38,7 @@
 
     sudo ./apply_theme.sh Minimal</li>
   <li> NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.</li>
+  </ul>
 </ul>
   
 <h1>Themes</h1>
