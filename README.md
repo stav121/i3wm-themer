@@ -5,7 +5,6 @@
   </ul>
   
   <h1>What you might need</h1>
-  <hr>
   <ul>
     <li> i3-wm in any Linux distro you prefer</li>
     <li> Polybar (for most of the themes)</li>
@@ -16,7 +15,6 @@
     <li> A couple of fonts might be required. <a href="https://github.com/chrissimpkins/Hack">Hack Font</a> and <a href="http://fontawesome.io/">Font Awesome</a>.</li>
     <li> Firefox Themes can be installed using the "Stylish" extension</li>
   <ul>
-  <hr>
   
   <h1>Installation</h1> 
   <ul>
@@ -42,7 +40,6 @@
     <li> NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.</li>
   </ul>
   
-<hr>
   <h1>Themes</h1>
 
   <ul>
