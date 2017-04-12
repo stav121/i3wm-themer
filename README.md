@@ -8,7 +8,7 @@
   <ul>
     <li> i3-wm in any Linux distro you prefer</li>
     <li> <a href="https://github.com/jaagr/polybar">Polybar</a> (for most of the themes)</li>
-    <li> <a href="https://davedavenport.github.io/rofi/">Rofi</a>(for most of the themes)</li>
+    <li> <a href="https://davedavenport.github.io/rofi/">Rofi</a> (for most of the themes)</li>
     <li> You might need to copy the files located in "scripts" folder into "~/.config/polybar/"
       to make the Polybar configuration work properly on most themes.</li>
     <li> To recreate some of the GTK themes (for now) you can download <a href="https://github.com/actionless/oomox">oomox</a> and use the 
