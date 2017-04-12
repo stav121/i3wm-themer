@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://github.com/unix121/Themes/blob/master/style.css">
 <h1>Themes</h1>
 <ul>
 My collection of themes for i3. 
