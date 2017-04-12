@@ -1,4 +1,4 @@
-# Themes
+<h3> Themes </h3>
 
 My collection of themes for i3. 
 
