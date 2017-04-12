@@ -36,10 +36,11 @@ My collection of themes for i3.
   - NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.
 
 <h1>Themes<h1>
+
 <ul>
-  <li><h1>Colors</h1>
+  <h1>Colors</h1>
     <img src="http://i.imgur.com/ZUEzkiT.png">
-    <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a></li>
+    <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a>
   <li><h2>Minimal</h2>
     <img src="http://i.imgur.com/aaosiZ2.png">
     <a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a></li>
