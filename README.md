@@ -26,3 +26,10 @@ My collection of themes for i3.
   
   <img src="http://i.imgur.com/aaosiZ2.png">
   <a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a>
+  
+- #Grayscale
+  
+  Screenshot:
+  
+  <img src="http://i.imgur.com/K0uT5ua.png">
+  <a href="http://imgur.com/gallery/1TYFd">(More can be found here)</a>
