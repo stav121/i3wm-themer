@@ -33,7 +33,7 @@
   <ul>
   <li> git clone https://github.com/unix121/Themes</li>
   <li> cd scripts/</li>
-  <li> sudo ./apply_theme.sh {THEME} ({THEME} should be the name of the theme you want to apply)
+  <li> ./apply_theme.sh {THEME} ({THEME} should be the name of the theme you want to apply)
 
     (example on how to apply the "Minimal" theme)
 
