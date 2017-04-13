@@ -37,7 +37,7 @@
 
     (example on how to apply the "Minimal" theme)
 
-    sudo ./apply_theme.sh Minimal
+    ./apply_theme.sh Minimal
  </li>
   <li> NOTE: This script might not be working perfectly (yet), I will fix it when I have the time to do so.</li>
   </ul>
