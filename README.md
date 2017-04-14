@@ -13,7 +13,7 @@
       to make the Polybar configuration work properly on most themes.</li>
     <li> To recreate some of the GTK themes (for now) you can download <a href="https://github.com/actionless/oomox">oomox</a> and use the 
       colors located in "/{Theme_name}/.resources/.extend.Xresources" and recreate them.</li>
-    <li> A couple of fonts might be required. <a href="https://github.com/chrissimpkins/Hack">Hack Font</a> and <a href="http://fontawesome.io/">Font Awesome</a>.</li>
+    <li> A few fonts might be required. <a href="https://github.com/chrissimpkins/Hack">Hack Font</a>, <a href="http://fontawesome.io/">Font Awesome</a> and <a href="http://www.dafont.com/monofur.font">monofur</a>.</li>
     <li> Firefox Themes can be installed using the "Stylish" extension</li>
   </ul>
   
