@@ -80,4 +80,14 @@ else
   echo '  [-] Failed to save ~/.vimrc'
 fi
 
+mkdir $HOME/Documents/Themes/$FILE/.config/dunst/
+
+if cp ~/.config/dunst/dunstrc $HOME/Documents/Themes/$FILE/.config/dunst/dunstrc
+then
+  echo '  [+] Saved ~/.config/dunst/dunstrc successfully'
+else
+  echo '  [-] Failes to save ~/.config/dunst/dunstrc'
+fi
+
+
 echo '[*] i3 backup script will now exit...'
