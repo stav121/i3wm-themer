@@ -1,5 +1,5 @@
 # April 05, 2017
-# Written by Stavros Grigoriou
+# Written by : unix121
 # Simple script to apply a theme from my collection
 
 THEME=$1
