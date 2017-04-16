@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Written by Stauros Grigoriou. April 05, 2017.
+# Written by : unix121
+# Date : April 05, 2017.
 # A simple backup script to save my current i3 configuration
 
 # First we hide all the error messages
