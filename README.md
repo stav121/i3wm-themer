@@ -46,6 +46,9 @@
 <h1>Themes</h1>
 
 <ul>
+  <li><h2>Nature</h2>
+  <img src="http://i.imgur.com/1B7IA96.png">
+  <a href="http://imgur.com/a/PuXie">(More can be found here)</a></li>
   <li><h2>Subway</h2>
     <img src="http://i.imgur.com/M5ZH9Dh.png">
     <a href="http://imgur.com/a/1aO8E">(More can be found here)</a></li>
