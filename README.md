@@ -46,6 +46,9 @@
 <h1>Themes</h1>
 
 <ul>
+  <li><h2>Space</h2>
+  <img src="https://i.imgur.com/eLkyvc0.png">
+  <a href="http://imgur.com/a/0hmbl">(More can be found here)</a></li>
   <li><h2>Nature</h2>
   <img src="http://i.imgur.com/1B7IA96.png">
   <a href="http://imgur.com/a/PuXie">(More can be found here)</a></li>
