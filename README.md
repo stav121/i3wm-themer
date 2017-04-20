@@ -25,7 +25,7 @@
   <li> cd {THEME_YOU_WANT_TO_APPLY}</li>
   <li> cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)</li>
   <li> cp .config/compton.conf ~/.config/compton.conf</li>
-  <li> cp .config/polybar/confing ~/.config/polybar/config</li>
+  <li> cp .config/polybar/config ~/.config/polybar/config</li>
   <li> cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh</li>
   <li> cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh</li>
   </ul>
