@@ -16,7 +16,7 @@
 <ul>
 <h3>Automated way</h3>
   <ul>
-  <li> git clone https://github.com/unix121/Themes</li>
+  <li> git clone https://github.com/unix121/i3wm-themes</li>
   <li> cd scripts/</li>
   <li> ./apply_theme.sh {THEME} ({THEME} should be the name of the theme you want to apply)
 
@@ -31,7 +31,7 @@ appearance manager to apply the Icons and the GTK Themes.</li>
   </ul>
  <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
   <ul>
-  <li> git clone https://github.com/unix121/Themes </li>
+  <li> git clone https://github.com/unix121/i3wm-themes </li>
   <li> cd Themes/{THEME_YOU_WANT_TO_APPLY}</li>
   <li> cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)</li>
   <li> cp .config/compton.conf ~/.config/compton.conf</li>
