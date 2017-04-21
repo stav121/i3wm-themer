@@ -1,14 +1,50 @@
-# April 05, 2017
+# April 2017
 # Written by : unix121
+# GitHub : https://github.com/unix121
+# Website : unix121.github.io
+# E-mail : unix121@protonmail.com
 # Simple script to apply a theme from my collection
 
 THEME=$1
 
+exec 2> /dev/null
+
 echo '[*] Applying the theme..'
 
+# First we try to locate the theme
 if [ -d "../$THEME" ]
 then
   echo '  [+] Located the theme directory...'
+
+  # First copy all the fonts into the right directory
+  if [ -d "../.fonts" ]
+  then
+    if [ -d "/$HOME/.fonts/" ]
+    then
+      if cp -R ../.fonts/. ~/.fonts/
+      then
+        echo '  [+] Fonts are set up successfully'
+      else
+        echo '  [-] Failed to copy Fonts into ~/.fonts/ directory'
+      fi
+    else
+      echo '  [*] Could not locate ~/.fonts/ directory, attemptint to create it...'
+      if mkdir ~/.fonts/
+      then
+        echo ' [+] ~/.fonts/ directory created successfully'
+        if cp -R ../.fonts/. ~/.fonts/
+        then
+          echo '  [+] Fonts migration completed successfully'
+        else
+          echo '  [-] Failed to create ~/.fonts/ directory'
+        fi
+      fi
+    fi
+  else
+    echo '  [-] ../.fonts/ directory not found'
+  fi
+  
+  # Now that the file is located we copy everything into the right place
 
   if cp ../$THEME/.i3/config ~/.i3/config
   then
@@ -61,12 +97,13 @@ then
 
   if cp ../$THEME/.config/polybar/config ~/.config/polybar/config
   then 
-    echo ' [+] .config/polybar/config configuration file set up successfully'
+    echo '  [+] .config/polybar/config configuration file set up successfully'
   else
-    echo ' [-] Failed to apply ./config/polybar/config configuration file'
+    echo '  [-] Failed to apply ./config/polybar/config configuration file'
   fi
 
-  if cp ../scripts/launch.sh ~/.config/polybar/launch.sh
+
+  if cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh
   then
     chmod u+x ~/.config/polybar/launch.sh
     echo '  [+] .config/polybar/launch.sh script set up successfully'
@@ -74,15 +111,84 @@ then
     echo '  [-] Failed to apply .config/polybar/launch.sh script'
   fi
 
-  if cp ../scripts/music.sh ~/.config/polybar/music.sh
+  if [ -x "~/.config/polybar/music.sh" ]
   then
-    chmod u+x ~/.config/polybar/music.sh
-    echo '  [+] .config/polybar/music.sh script set up successfully'
+    echo '    [*] music.sh is already in the right folder'
   else
-    echo '  [-] Failed to apply .config/polybar/music.sh script'
+    if cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh
+    then
+       chmod u+x ~/.config/polybar/music.sh
+       echo '  [+] .config/polybar/music.sh script set up successfully'
+    else
+       echo '  [-] Failed to apply .config/polybar/music.sh script'
+    fi
   fi
 
+  # Copying the GTK Theme into the right folder
+
+  if [ -d "../$THEME/.themes" ]
+  then
+    if [ -d "/$HOME/.themes/" ]
+    then
+      if cp -R  ../$THEME/.themes/. ~/.themes/
+      then
+        echo  '  [+] GTK Theme migration completed successfully'
+      else
+        echo '   [-] Failed to copy GTK Theme into ~/.themes/'
+      fi
+    else
+      echo '  [*] Could not locate ~/.themes/ directory, attempting to create it...'
+       if mkdir ~/.themes/
+       then
+         echo '  [+] ~/.themes/ directory created successfully'
+         if cp -R ../$THEME/.themes/. ~/.themes/
+         then
+           echo '  [+] GTK Theme migration completed successfully'
+         else
+           echo '  [-] Failed to copy GTK Theme into ~/.themes/ directory'
+         fi
+       else
+         echo '  [-] Failed to create ~/.themes/ directory'
+       fi
+    fi
+  else 
+    echo '  [-] This theme does not have a GTK Theme included'
+  fi
+
+  # Copying the Icons into the right folder
+  if [ -d "../$THEME/.icons" ]
+  then
+    if [ -d "/$HOME/.icons/" ]
+    then
+      if cp -R ../$THEME/.icons/. ~/.icons/
+      then
+        echo '  [+] Icon migration completed successfully'
+      else
+        echo '  [-] Failed to copy Icons into ~/.icons/ directory'
+      fi
+    else
+      echo '  [*] Could not locate ~/.icons/ directory, attempting to create it...'
+      if mkdir ~/.icons/
+      then
+        echo '  [+] ~/.icons/ directory created successfully'
+        if cp -R  ../$THEME/.icons/. ~/.icons/
+        then
+          echo '  [+] Icon migration completed successfully'
+        else
+          echo '  [-] Failed to create ~/.icons/ directory'
+        fi
+      fi
+    fi
+  else
+    echo '  [-] This theme does not have Icon pack included'
+  fi
+
+  # Finally we restart i3wm
+  i3-msg restart
+
+
 else
+
   echo '[-] ERROR: Could not locate the theme directory...'
 fi
 
