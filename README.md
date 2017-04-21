@@ -9,8 +9,6 @@
     <li> i3-wm in any Linux distro you prefer</li>
     <li> <a href="https://github.com/jaagr/polybar">Polybar</a> (for most of the themes)</li>
     <li> <a href="https://davedavenport.github.io/rofi/">Rofi</a> (for most of the themes)</li>
-      to make the Polybar configuration work properly on most themes.</li>
-      colors located in "/{Theme_name}/.resources/.extend.Xresources" and recreate them.</li>
     <li> Firefox Themes can be installed using the "Stylish" extension</li>
   </ul>
   
