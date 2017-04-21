@@ -24,7 +24,7 @@
 
     ./apply_theme.sh Minimal
  </li>
- </li> After you run the script you have to manually set the wallpaper
+ <li> After you run the script you have to manually set the wallpaper
 which is located in the {THEME} directory and also use your 
 appearance manager to apply the Icons and the GTK Themes.</li>
   <li> NOTE: If you notice any bugs on the script feel free to contact me and I will address them</li>
@@ -40,6 +40,7 @@ appearance manager to apply the Icons and the GTK Themes.</li>
   <li> cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh</li>
   <li> cp .resources/.Xresources ~/.Xresources</li>
   <li> cp .resources/.extend.Xresources ~/.extend.Xresources</li>
+  <li> cp -R ../.fonts/. ~/.fonts/</li>
   <li> xrdb ~/.Xresources</li>
   <li> i3-msg restart</li>
   </ul>
