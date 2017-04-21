@@ -38,6 +38,10 @@ appearance manager to apply the Icons and the GTK Themes.</li>
   <li> cp .config/polybar/config ~/.config/polybar/config</li>
   <li> cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh</li>
   <li> cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh</li>
+  <li> cp .resources/.Xresources ~/.Xresources</li>
+  <li> cp .resources/.extend.Xresources ~/.extend.Xresources</li>
+  <li> xrdb ~/.Xresources</li>
+  <li> i3-msg restart</li>
   </ul>
   
 
