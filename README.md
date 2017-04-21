@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://github.com/unix121/Themes/blob/master/style.css">
-  <h1>Themes</h1>
+  <h1>i3wm-themes</h1>
   <ul>
-   My collection of themes for i3. 
+   My collection of themes for i3wm. 
   </ul>
   
   <h1>What you might need</h1>
