@@ -200,6 +200,6 @@ else
 fi
 
 echo '[*] Script exiting...'
-echo'[!] Use your Appearance Manager to set the Icons and GTK+ Themes'
+echo '[!] Use your Appearance Manager to set the Icons and GTK+ Themes'
 
 exit
