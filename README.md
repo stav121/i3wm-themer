@@ -3,7 +3,10 @@
   <ul>
    My collection of themes for i3wm.
  
-  <img source="https://github.com/unix121/i3wm-themes/tree/master/workflow/workflow.gif">
+ ![alt text][logo]
+
+[logo]: https://github.com/unix121/i3wm-themes/tree/master/workflow/workflow.gif "Logo Title Text 2"
+
   </ul>
   
   <h1>What you might need</h1>
