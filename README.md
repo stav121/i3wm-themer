@@ -3,7 +3,7 @@
   <ul>
    My collection of themes for i3wm.
  
-  ![screenshot](https://github.com/unix121/i3wm-themes/tree/master/workflow/workflow.gif) 
+  <img source="https://github.com/unix121/i3wm-themes/tree/master/workflow/workflow.gif">
   </ul>
   
   <h1>What you might need</h1>
