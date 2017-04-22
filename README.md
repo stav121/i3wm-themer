@@ -2,8 +2,8 @@
   <h1>i3wm-themes</h1>
   <ul>
    My collection of themes for i3wm.
-   ![alt
-tag](https://github.com/unix121/i3wm-themes/tree/master/workflow/workflow.gif) 
+ 
+ ![alt text](https://github.com/unix121/i3wm-themes/tree/master/workflow/workflow.gif) 
   </ul>
   
   <h1>What you might need</h1>
