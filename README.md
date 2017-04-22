@@ -3,9 +3,7 @@
   <ul>
    My collection of themes for i3wm.
  
- ![alt text][logo]
-
-[logo]: https://github.com/unix121/i3wm-themes/tree/master/workflow/workflow.gif "Logo Title Text 2"
+  ![](https://media.giphy.com/media/3ohze1qNcmQlYrVwIM/giphy.gif)
 
   </ul>
   
