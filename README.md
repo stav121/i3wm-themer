@@ -3,8 +3,6 @@
   <ul>
    My collection of themes for i3wm.
  
-  <!--![](https://media.giphy.com/media/3ohze1qNcmQlYrVwIM/giphy.gif)
-  -->
   ![](https://github.com/unix121/i3wm-themes/blob/master/workflow/workflow.gif?raw=true)
   </ul>
   
