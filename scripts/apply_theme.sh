@@ -183,6 +183,13 @@ then
     echo '  [-] This theme does not have Icon pack included'
   fi
 
+  if  nitrogen --set-scaled ../$THEME/$THEME.png
+  then
+    echo '  [+] Wallpaper set successfully'
+  else
+    echo '  [-] Could not set wallpaper (Nitrogen missing?)'
+  fi
+
   # Finally we restart i3wm
   i3-msg restart
 
@@ -193,4 +200,6 @@ else
 fi
 
 echo '[*] Script exiting...'
+echo'[!] Use your Appearance Manager to set the Icons and GTK+ Themes'
+
 exit

@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="https://github.com/unix121/Themes/blob/master/style.css">
   <h1>i3wm-themes</h1>
   <ul>
-   My collection of themes for i3wm. 
+   My collection of themes for i3wm.
+   ![alt
+tag](https://github.com/unix121/i3wm-themes/branch/workflow/workflow.gif) 
   </ul>
   
   <h1>What you might need</h1>
