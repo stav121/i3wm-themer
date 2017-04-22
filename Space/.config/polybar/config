@@ -127,7 +127,6 @@ time = "%a %b %d, %I:%M %p "
 time-alt = %H:%M
 
 format-prefix-foreground = ${colors.my_foreground}
-;format-underline = ${colors.my_color5}
 format-underline =
 
 
