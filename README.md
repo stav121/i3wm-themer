@@ -80,7 +80,12 @@ appearance manager to apply the Icons and the GTK Themes.</li>
 </ul>
 
 <ul>
-If you are the artist of any of the photos featured in those themes,
-please feel free to contact me at : unix121@protonmail.com
-So that you can get credited.
+
+<h3>Note</h3>
+
+If you are the original artist of any of the photos/pictures 
+featured in those themes, please feel free to contact me, 
+so that you can get credited.
+
+e-mail: unix121@protonmail.com
 </ul>
