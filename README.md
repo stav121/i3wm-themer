@@ -54,7 +54,7 @@ appearance manager to apply the Icons and the GTK Themes.</li>
 
 <ul>
   <li><h2>Blue</h2>
-    <img src="http://imgur.com/z3rliuz">
+    <img src="http://i.imgur.com/z3rliuz.png">
     <a href="http://imgur.com/a/PVCKq">(More can be found here)</a></li>
   <li><h2>Space</h2>
     <img src="https://i.imgur.com/eLkyvc0.png">
