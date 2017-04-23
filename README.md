@@ -53,12 +53,15 @@ appearance manager to apply the Icons and the GTK Themes.</li>
 <h1>Themes</h1>
 
 <ul>
+  <li><h2>Blue</h2>
+    <img src="http://imgur.com/z3rliuz">
+    <a href="http://imgur.com/a/PVCKq">(More can be found here)</a></li>
   <li><h2>Space</h2>
-  <img src="https://i.imgur.com/eLkyvc0.png">
-  <a href="http://imgur.com/a/0hmbl">(More can be found here)</a></li>
+    <img src="https://i.imgur.com/eLkyvc0.png">
+    <a href="http://imgur.com/a/0hmbl">(More can be found here)</a></li>
   <li><h2>Nature</h2>
-  <img src="http://i.imgur.com/1B7IA96.png">
-  <a href="http://imgur.com/a/PuXie">(More can be found here)</a></li>
+    <img src="http://i.imgur.com/1B7IA96.png">
+    <a href="http://imgur.com/a/PuXie">(More can be found here)</a></li>
   <li><h2>Subway</h2>
     <img src="http://i.imgur.com/M5ZH9Dh.png">
     <a href="http://imgur.com/a/1aO8E">(More can be found here)</a></li>
@@ -74,4 +77,10 @@ appearance manager to apply the Icons and the GTK Themes.</li>
   <li><h2>Sea</h2>
     <img src="http://i.imgur.com/yapFCCe.png">
     <a href="http://imgur.com/a/3BsTW">(More can be found here)</a></li>
-  </ul>
+</ul>
+
+<ul>
+If you are the artist of any of the photos featured in those themes,
+please feel free to contact me at : unix121@protonmail.com
+So that you can get credited.
+</ul>
