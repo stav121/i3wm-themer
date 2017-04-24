@@ -43,7 +43,7 @@ then
   else
     echo '  [-] ../.fonts/ directory not found'
   fi
-  
+
   # Now that the file is located we copy everything into the right place
 
   if cp ../$THEME/.i3/config ~/.i3/config
@@ -96,7 +96,7 @@ then
   fi
 
   if cp ../$THEME/.config/polybar/config ~/.config/polybar/config
-  then 
+  then
     echo '  [+] .config/polybar/config configuration file set up successfully'
   else
     echo '  [-] Failed to apply ./config/polybar/config configuration file'
@@ -151,7 +151,7 @@ then
          echo '  [-] Failed to create ~/.themes/ directory'
        fi
     fi
-  else 
+  else
     echo '  [-] This theme does not have a GTK Theme included'
   fi
 
@@ -181,6 +181,20 @@ then
     fi
   else
     echo '  [-] This theme does not have Icon pack included'
+  fi
+
+  if cp ../$THEME/xsettingsd ~/.xsettingsd
+  then
+    echo '  [+] xsettingsd file set up successfully'
+  else
+    echo '  [-] Failed to apply xsettingsd file'
+  fi
+
+  if xsettingsd &
+  then
+    echo '  [+] Icons and GTK Themes applied successfully'
+  else
+    echo '  [-] Failed to apply GTK theme'
   fi
 
   if  nitrogen --set-scaled ../$THEME/$THEME.png
