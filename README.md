@@ -56,6 +56,12 @@ appearance manager to apply the Icons and the GTK Themes.</li>
   <li><h2>Water</h2>
     <img src="http://i.imgur.com/z3rliuz.png">
     <a href="http://imgur.com/a/PVCKq">(More can be found here)</a></li>
+  <li><h2>Fire</h2>
+    <img src="http://i.imgur.com/8U5DmFY.png">
+    <a href="http://imgur.com/a/pYqEl">(More can be found here)</a></li>
+  <li><h2>Ice</h2>
+    <img src="http://i.imgur.com/3a1J77j.png">
+    <a href="http://imgur.com/a/0FMYq">(More can be found here)</a></li>
   <li><h2>Space</h2>
     <img src="https://i.imgur.com/eLkyvc0.png">
     <a href="http://imgur.com/a/0hmbl">(More can be found here)</a></li>
