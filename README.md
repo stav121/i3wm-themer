@@ -26,7 +26,7 @@
 
     ./apply_theme.sh Minimal
  </li>
- <li> After you run the script you have to manually set the wallpaper
+ <li> After you run the script you might have to manually set the wallpaper
 which is located in the {THEME} directory and also use your 
 appearance manager to apply the Icons and the GTK Themes.</li>
   <li> NOTE: If you notice any bugs on the script feel free to contact me and I will address them</li>

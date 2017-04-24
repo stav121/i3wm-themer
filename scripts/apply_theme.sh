@@ -5,6 +5,9 @@
 # E-mail : unix121@protonmail.com
 # Simple script to apply a theme from my collection
 
+# Also contributing: rynnon
+# GitHub: https://github.com/rynnon
+
 THEME=$1
 
 exec 2> /dev/null
@@ -183,6 +186,8 @@ then
     echo '  [-] This theme does not have Icon pack included'
   fi
 
+  # Implementation by : Rynnon 
+
   if cp ../$THEME/xsettingsd ~/.xsettingsd
   then
     echo '  [+] xsettingsd file set up successfully'
@@ -196,6 +201,8 @@ then
   else
     echo '  [-] Failed to apply GTK theme'
   fi
+
+  # End of implementation
 
   if  nitrogen --set-scaled ../$THEME/$THEME.png
   then
