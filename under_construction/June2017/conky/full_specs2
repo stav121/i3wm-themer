@@ -1,0 +1,58 @@
+conky.config = {
+--#####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	--imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'monofur :size=10',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	alignment = 'top_left',
+	background = true,
+	default_color = '759496',
+	cpu_avg_samples = 2,
+	color0 = '2d2d38',
+	double_buffer = true,
+	font = 'monofur:bold:size=12',
+	draw_shades = false,
+	gap_x = 40,
+	gap_y = 225,
+	minimum_width = 300,
+	no_buffers = true,
+	own_window = true,
+	own_window_type = 'override',
+	own_window_transparent = true,
+	update_interval = 1.0,
+	use_xft = true,
+
+};
+
+conky.text = [[
+# MEMORY
+${voffset 18}${font :size=10:bold}memory  ${voffset -3}${color0}${hr 1}${color}
+${goto 15}${voffset 15}${color0}${font conkycolors:size=14}g${font}${color} ${goto 45}${voffset -6}Usage: ${mem} ${alignr}${membar 8,60}
+${goto 15}${voffset 11}${color0}${font conkycolors:size=14}g${font}${color} ${goto 45}${voffset -6}Swap: $swapperc% ${alignr}${swapbar 8,60}
+# DISKS
+${voffset 18}${font :size=10:bold}disks  ${voffset -3}${color0}${hr 1}${color}
+$color${goto 15}${voffset 11}${color0}${font conkycolors:size=14}i${font}${color} ${goto 45}${voffset -6}Activity @ ${diskio}${alignr}${diskiograph 8,60 688486 668ca1}
+${goto 15}${voffset 11}${color0}${font conkycolors:size=14}i${font}${color} ${goto 45}${voffset -6}System @ ${fs_free /}/${fs_size /} ${alignr}${voffset 2}${fs_bar 8,60 /}
+${goto 15}${voffset 11}${color0}${font conkycolors:size=14}i${font}${color} ${goto 45}${voffset -6}Home @ ${fs_free /home}/${fs_size /home} ${alignr}${voffset 2}${fs_bar 8,60 /home}
+# SYSTEM
+${voffset 18}${font :size=10:bold}system  ${voffset -3}${color0}${hr 1}${color}
+${goto 15}${voffset 15}${color0}${font conkycolorslogos:size=32}a${font}${color}${goto 65}${voffset -26}Achitecture: $machine
+${goto 65}Kernel: ${kernel}
+]]

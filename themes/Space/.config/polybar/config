@@ -1,0 +1,187 @@
+;-------------------------------------------------
+;                                                ;
+;           Polybar config for my themes         ;
+; 				                 ;
+;                                                ;
+;-------------------------------------------------
+
+
+[colors]
+;My colors are set from .Xresources to match everything else
+my_background 	= ${xrdb:background}
+my_foreground 	= ${xrdb:foreground}
+my_color0	= ${xrdb:color0}
+my_color1	= ${xrdb:color1}
+my_color2	= ${xrdb:color2}
+my_color3	= ${xrdb:color3}
+my_color4	= ${xrdb:color4}
+my_color5	= ${xrdb:color5}
+my_color6	= ${xrdb:color6}
+my_color7	= ${xrdb:color7}
+my_color8	= ${xrdb:color8}
+my_color9	= ${xrdb:color9}
+my_color10	= ${xrdb:color10}
+my_color11	= ${xrdb:color11}
+my_color12	= ${xrdb:color12}
+my_color13	= ${xrdb:color13}
+my_color14	= ${xrdb:color14}
+my_color15	= ${xrdb:color15}
+
+[bar/main_bar]
+;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP1}
+bottom = false
+width = 100%
+height = 20
+offset-x = 0
+offset-y = 0
+radius = 0.0
+fixed-center = true
+
+
+background = ${colors.my_background}
+foreground =  ${colors.my_foreground}
+
+line-size = 2.5
+line-color = ${colors.my_foreground}
+
+border-size = 0
+border-color = ${colors.my_color2}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-2 = FontAwesome:fontformat=truetype:size=9;1
+font-0 = monofur:fontformat=truetype:size=11;1
+font-1 = monofur:fontformat=truetype:size=11;1
+
+
+modules-left = i3 xwindow
+modules-center = date 
+modules-right = musicinfo
+
+tray-position = right
+tray-padding = 9
+tray-transparent = false
+tray-offset-y = 0%
+tray-offset-x = 0%
+tray-maxsize = 18
+tray-detached = false
+tray-background = ${colors.my_background}
+
+wm-restack = i3
+
+;override-redirect = true
+
+[module/i3]
+type = internal/i3
+
+label-unfocused-background = ${colors.my_background}
+label-unfocused-foreground = ${colors.my_foreground}
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = ${colors.my_background}
+
+label-focused = %index%
+label-focused-foreground = ${colors.my_foreground}
+label-focused-background = ${colors.my_background}
+label-focused-underline = ${colors.my_foreground}
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+label-visible = %index%
+label-visible-underline = ${colors.my_foreground}
+label-visible-padding = 4
+
+label-urgent = %index%
+label-urgent-foreground = ${colors.my_foreground}
+label-urgent-background = ${colors.my_background}
+label-urgent-underline = ${colors.my_foreground}
+label-urgent-padding = 2
+
+[module/musicinfo]
+type = custom/script
+
+exec = ~/.config/polybar/music.sh
+interval = 5
+format = <label>
+label = %output:0:30:...%
+format-padding = 10
+format-foreground = ${colors.my_color8}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = "%d/%m/%Y"
+
+time = "%a %b %d, %I:%M %p "
+
+time-alt = %H:%M
+
+format-prefix-foreground = ${colors.my_foreground}
+format-underline =
+
+
+label = %date% %time%
+
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 99
+
+format-full-background = ${colors.my_background}
+format-charging-background = ${colors.my_background}
+format-charging = "⁣  <label-charging> <animation-charging> "
+format-charging-underline = ${colors.my_color2}
+
+format-discharging-background = ${colors.my_background}
+format-discharging = "⁣ <label-discharging> <ramp-capacity> "
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix-foreground = ${colors.my_background}
+format-full-underline = ${self.format-charging-underline}
+
+format-charing-background = ${colors.my_background}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.my_foreground}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${colors.my_foreground}
+animation-charging-framerate = 750
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+label-padding = 10
+label-foreground = ${colors.my_color8}

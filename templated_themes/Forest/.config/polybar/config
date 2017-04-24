@@ -1,0 +1,128 @@
+[colors]
+background_i3wmthemer 	= ${xrdb:background}
+foreground_i3wmthemer 	= ${xrdb:foreground}
+color00_i3wmthemer	      = ${xrdb:color0}
+color01_i3wmthemer      = ${xrdb:color1}
+color02_i3wmthemer	      = ${xrdb:color2}
+color03_i3wmthemer	      = ${xrdb:color3}
+color04_i3wmthemer	      = ${xrdb:color4}
+color05_i3wmthemer	      = ${xrdb:color5}
+color06_i3wmthemer	      = ${xrdb:color6}
+color07_i3wmthemer	      = ${xrdb:color7}
+color08_i3wmthemer	      = ${xrdb:color8}
+color09_i3wmthemer	      = ${xrdb:color9}
+color10_i3wmthemer	    = ${xrdb:color10}
+color11_i3wmthemer	    = ${xrdb:color11}
+color12_i3wmthemer	    = ${xrdb:color12}
+color13_i3wmthemer	    = ${xrdb:color13}
+color14_i3wmthemer	    = ${xrdb:color14}
+color15_i3wmthemer	    = ${xrdb:color15}
+
+[bar/main_bar]
+bottom = false
+width = 100%
+height = 20
+offset-x = 0
+offset-y = 0
+radius = 0.0
+fixed-center = true
+
+
+background = ${colors.background_i3wmthemer}
+foreground =  ${colors.foreground_i3wmthemer}
+
+line-size = 3
+line-color = ${colors.color04_i3wmthemer}
+
+border-size = 0
+border-color = ${colors.color02_i3wmthemer}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-1 = monofur:fontformat=truetype:size=11;1
+font-2 = monofur:fontformat=truetype:size=11;1
+font-0 = monofur:fontformat=truetype:size=11;1
+
+modules-left = i3
+modules-center = date
+modules-right =
+
+tray-position = right
+tray-padding = 9
+tray-transparent = false
+tray-offset-y = 0%
+tray-offset-x = 0%
+tray-maxsize = 18
+tray-detached = false
+tray-background = ${colors.background_i3wmthemer}
+
+wm-restack = i3
+
+;override-redirect = true
+
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+index-sort = true
+wrapping-scroll = false
+strip-wsnumbers = true
+pin-workspaces = true
+
+label-unfocused-background = ${colors.background_i3wmthemer}
+label-unfocused-foreground = ${colors.foreground_i3wmthemer}
+
+label-mode = %name%
+label-mode-padding = 2
+label-mode-background = ${colors.color04_i3wmthemer}
+
+label-focused = %name%
+label-focused-foreground = ${colors.color04_i3wmthemer}
+label-focused-background = ${colors.background_i3wmthemer}
+label-focused-underline = ${colors.color04_i3wmthemer}
+label-focused-padding = 2
+
+label-unfocused = %name%
+label-unfocused-padding = 2
+
+label-visible = %name%
+label-visible-foreground = ${colors.color04_i3wmthemer}
+label-visible-underline = ${colors.color04_i3wmthemer}
+label-visible-padding = 2
+
+label-urgent = %index%
+label-urgent-foreground = ${colors.color04_i3wmthemer}
+label-urgent-background = ${colors.background_i3wmthemer}
+label-urgent-underline = ${colors.color02_i3wmthemer}
+label-urgent-padding = 2
+
+[module/musicinfo]
+type = custom/script
+
+exec = ~/.config/polybar/music.sh
+interval = 5
+format = <label>
+label = %output:0:30:...%
+format-padding = 10
+format-foreground = ${colors.color02_i3wmthemer}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = "%d/%m/%Y"
+
+time = "%a %b %d, %I:%M %p "
+
+time-alt = %H:%M
+
+format-prefix-foreground = ${colors.foreground_i3wmthemer}
+format-underline =
+
+
+label = %date% %time%

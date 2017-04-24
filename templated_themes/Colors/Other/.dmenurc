@@ -1,0 +1,6 @@
+DMENU_FN="Hack-10.5"
+DMENU_NB="#1e272b"
+DMENU_NF="#ead49b"
+DMENU_SB="#1e272b"
+DMENU_SF="#78824b"
+TERMINAL_CMD="terminal -e"
