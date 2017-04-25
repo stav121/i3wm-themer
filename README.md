@@ -16,6 +16,9 @@
   
 <h1>Installation</h1> 
 <ul>
+<ul>
+<h3>NOTE:</h3> This will completely override your current files so please back them up. Next update for the script is to implement backup option for all the files that this script overrides. Use it carefully.
+</ul>
 <h3>Automated way</h3>
   <ul>
   <li> git clone https://github.com/unix121/i3wm-themes</li>
