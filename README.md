@@ -68,7 +68,7 @@ appearance manager to apply the Icons and the GTK Themes.</li>
 
 <ul>
 <h3>Disclaimer</h3>
-The ways mentioned above override many of your files, use it with caution. I am not responsible if anything happens to your computer. Normally if you follow the instructions step by step everything should be just fine, but unexpected things sometimes happen. The author is not responsible for any damage done.
+The ways mentioned above override many of your files, use them with caution. I am not responsible if anything happens to your computer. Normally if you follow the instructions step by step everything should be just fine, but unexpected things sometimes happen. The author is not responsible for any damage done.
 </ul>
 
 </ul>
