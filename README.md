@@ -26,13 +26,13 @@
 
       ./apply_theme -b {BACKUP NAME}
 
-      Backups are saved under ../Backups/ directory.
+Backups are saved under ../Backups/ directory.
   </li>
   <li> Now apply the theme you want:
 
     ./apply_theme.sh -t {THEME} ({THEME} should be the name of the theme you want to apply)
 
-    (example on how to apply the "Minimal" theme)
+(example on how to apply the "Minimal" theme)
 
     ./apply_theme.sh -t Minimal
  </li>
@@ -40,7 +40,7 @@
 
     ./apply_theme -t /Backups/{BACKUP_NAME}
 
-    {BACKUP NAME} should be the same as the one given in the backup step above.
+{BACKUP NAME} should be the same as the one given in the backup step above.
   </li>
  <li> After you run the script you might have to manually set the wallpaper
 which is located in the {THEME} directory and also use your
@@ -50,7 +50,7 @@ appearance manager to apply the Icons and the GTK Themes.</li>
  <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
   <ul>
   <li> git clone https://github.com/unix121/i3wm-themes </li>
-  <li> Back all the files listed below before replacing them with the theme version in case you want to go back later</li>
+  <li> Backup all the files listed below before replacing them with the theme version in case you want to go back later</li>
   <li> cd i3wm-themes/{THEME_YOU_WANT_TO_APPLY}/</li>
   <li> cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)</li>
   <li> cp .config/compton.conf ~/.config/compton.conf</li>

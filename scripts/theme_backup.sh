@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Written by : unix121
-# Date : April 05, 2017.
-# A simple backup script to save my current i3 configuration
+# GitHub : https://github.com/unix121
+# E-mail : unix121@protonmail.com
+# A simple backup script to save the current i3 configuration.
 
 # First we hide all the error messages
 exec 2>/dev/null

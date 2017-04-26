@@ -2,9 +2,8 @@
 
 # Written by : unix121
 # GitHub : https://github.com/unix121
-# Website : unix121.github.io
 # E-mail : unix121@protonmail.com
-# Simple script to apply a theme from my collection
+# Simple script to apply a theme from the collection.
 
 # Also contributing: rynnon
 # GitHub: https://github.com/rynnon
@@ -12,6 +11,7 @@
 if [ $# -eq 0 ]
 then
   echo "Error: No arguements given"
+  echo "try: ./apply_theme.sh -h for help"
   exit
 fi
 
@@ -252,6 +252,15 @@ then
 
   exec ./theme_backup.sh $THEME
 
+elif [ "$OPTION" == "-h" ]
+then
+  echo "-t {THEME}                   ->  Set a theme (if it exists)."
+  echo "        Example use: ./apply_theme.sh -t ThemeX"
+  echo "-b {BACKUP_NAME}             ->  Create a backup of your files under"
+  echo "                                  ../Backups/ directory"
+  echo "        Example use: ./apply_theme.sh -b Backup123"
+  echo "-t Backups/{BACKUP_NAME}    -> Restore a backup (if it exists)"
+  echo "        Example use: ./apply_theme.sh -t Backups/Backup123"
 fi
 
 echo '[*] Script exiting...'
