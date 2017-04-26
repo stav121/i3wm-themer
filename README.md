@@ -2,10 +2,10 @@
   <h1>i3wm-themes</h1>
   <ul>
    My collection of themes for i3wm.
- 
+
   ![](https://github.com/unix121/i3wm-themes/blob/master/workflow/workflow.gif?raw=true)
   </ul>
-  
+
   <h1>What you might need</h1>
   <ul>
     <li> i3-wm in any Linux distro you prefer</li>
@@ -13,30 +13,44 @@
     <li> <a href="https://davedavenport.github.io/rofi/">Rofi</a> (for most of the themes)</li>
     <li> Firefox Themes can be installed using the "Stylish" extension</li>
   </ul>
-  
-<h1>Installation</h1> 
+
+<h1>Installation</h1>
 <ul>
 <ul>
-<h3>NOTE:</h3> This will completely override your current files so please back them up. Next update for the script is to implement backup option for all the files that this script overrides. Use it carefully.
-</ul>
+
 <h3>Automated way</h3>
   <ul>
   <li> git clone https://github.com/unix121/i3wm-themes</li>
   <li> cd i3wm-themes/scripts/</li>
-  <li> ./apply_theme.sh {THEME} ({THEME} should be the name of the theme you want to apply)
+  <li> First backup your current configuration in case you want to come back:
+
+      ./apply_theme -b {BACKUP NAME}
+
+      Backups are saved under ../Backups/ directory.
+  </li>
+  <li> Now apply the theme you want:
+
+    ./apply_theme.sh -t {THEME} ({THEME} should be the name of the theme you want to apply)
 
     (example on how to apply the "Minimal" theme)
 
-    ./apply_theme.sh Minimal
+    ./apply_theme.sh -t Minimal
  </li>
+ <li> If you want to go back to a backup you can run the script like that:
+
+    ./apply_theme -t /Backups/{BACKUP_NAME}
+
+    {BACKUP NAME} should be the same as the one given in the backup step above.
+  </li>
  <li> After you run the script you might have to manually set the wallpaper
-which is located in the {THEME} directory and also use your 
+which is located in the {THEME} directory and also use your
 appearance manager to apply the Icons and the GTK Themes.</li>
   <li> NOTE: If you notice any bugs on the script feel free to contact me and I will address them</li>
   </ul>
  <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
   <ul>
   <li> git clone https://github.com/unix121/i3wm-themes </li>
+  <li> Back all the files listed below before replacing them with the theme version in case you want to go back later</li>
   <li> cd i3wm-themes/{THEME_YOU_WANT_TO_APPLY}/</li>
   <li> cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)</li>
   <li> cp .config/compton.conf ~/.config/compton.conf</li>
@@ -49,10 +63,14 @@ appearance manager to apply the Icons and the GTK Themes.</li>
   <li> xrdb ~/.Xresources</li>
   <li> i3-msg restart</li>
   </ul>
-  
+
+<ul>
+<h3>Disclaimer</h3>
+The ways mentioned above override many of your files, use it with caution. I am not responsible if anything happens to your computer. Normally if you follow the instructions step by step everything should be just fine, but unexpected things sometimes happen. The author is not responsible for any damage done.
+</ul>
 
 </ul>
-  
+
 <h1>Themes</h1>
 
 <ul>
@@ -92,8 +110,8 @@ appearance manager to apply the Icons and the GTK Themes.</li>
 
 <h3>Note</h3>
 
-If you are the original artist of any of the photos/pictures 
-featured in those themes, please feel free to contact me, 
+If you are the original artist of any of the photos/pictures
+featured in those themes, please feel free to contact me,
 so that you can get credited.
 
 e-mail: unix121@protonmail.com
