@@ -40,7 +40,7 @@ Example on how to apply the "Minimal" theme:
  </li>
  <li> If you want to go back to a backup you can run the script like that:
 
-    ./apply_theme.sh -t /Backups/{BACKUP_NAME}
+    ./apply_theme.sh -t Backups/{BACKUP_NAME}
 
 {BACKUP_NAME} should be the same as the one given in the backup step above.
   </li>
