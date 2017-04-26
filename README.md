@@ -24,7 +24,7 @@
   <li> cd i3wm-themes/scripts/</li>
   <li> First backup your current configuration in case you want to come back:
 
-      ./apply_theme -b {BACKUP NAME}
+      ./apply_theme -b {BACKUP_NAME}
 
 Backups are saved under ../Backups/ directory.
   </li>
