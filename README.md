@@ -42,7 +42,7 @@ Example on how to apply the "Minimal" theme:
 
     ./apply_theme -t /Backups/{BACKUP_NAME}
 
-{BACKUP NAME} should be the same as the one given in the backup step above.
+{BACKUP_NAME} should be the same as the one given in the backup step above.
   </li>
  <li> After you run the script you might have to manually set the wallpaper
 which is located in the {THEME} directory and also use your
