@@ -30,9 +30,11 @@ Backups are saved under ../Backups/ directory.
   </li>
   <li> Now apply the theme you want:
 
-    ./apply_theme.sh -t {THEME} ({THEME} should be the name of the theme you want to apply)
+    ./apply_theme.sh -t {THEME} 
+    
+{THEME} should be the name of the theme you want to apply.
 
-(example on how to apply the "Minimal" theme)
+Example on how to apply the "Minimal" theme:
 
     ./apply_theme.sh -t Minimal
  </li>
