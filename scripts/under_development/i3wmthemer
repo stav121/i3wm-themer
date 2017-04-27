@@ -116,13 +116,17 @@ overwrite(){
   local l=$3
 
   if local line1=$(cat $f1 | grep -w $l)
+  #if local line1=$(cat $f1 | fgrep $l | sed -e 's/[]\/$*.^|[]/\\&/g')
   then
     if [ ! -z "$line1" ]
     then
       if local line2=$(cat $f2 | grep -w $l)
+      #if local line1=$(cat $f2 | fgrep $l | sed -e 's/[]\/$*.^|[]/\\&/g')
       then
         if [ ! -z "$line2" ]
         then
+          echo $line1
+          echo $line2
           if ! sed -i "s/$line2/$line1/g" $f2
           then
             msg -f "Failed to apply change: Overwrite "$l" ."
@@ -177,10 +181,11 @@ then
   then
     msg -i "Located the theme directory."
 
+# -------------------  ~/.Xresources  modification ------------------- #
     # Locating the extend.Xresources files.
     if [ -e "../../themes/$THEME/.resources/.extend.Xresources" ]
     then
-      msg -i "Located ~/.extend.Xresources file."
+      msg -i "Located .extend.Xresources file in theme the directory."
       if [ -e "/$HOME/.extend.Xresources" ]
       then
         msg -i "Located ~/.extend.Xresources file."
@@ -194,7 +199,7 @@ then
         then
           msg -i 'Changing background...'
         fi
-        if overwrite $f1 $f2 ".foreground:"
+        if overwrite $f1 $f2 "*.foreground:"
         then
           msg -i 'Changing foreground...'
         fi
@@ -202,18 +207,20 @@ then
         then
           msg -i 'Changing cursorColor...'
         fi
+      # This is where the changes are not applied and needs fixing #
         if overwrite $f1 $f2 "URxvt.background:"
         then
-          msg -i 'Changing URxvt*.background...'
+          msg -i 'Changing URxvt.background...'
         fi
         if overwrite $f1 $f2 "URxvt.foreground:"
         then
-          msg -i 'Changing URxvt*.foreground...'
+          msg -i 'Changing URxvt.foreground...'
         fi
         if overwrite $f1 $f2 "URxvt.cursorColor:"
         then
-          msg -i 'Changing URxvt*.cursorColor...'
+          msg -i 'Changing URxvt.cursorColor...'
         fi
+      #----------------------- Up to here -----------------------#
 
         for i in {0..15}
         do
@@ -232,12 +239,35 @@ then
       then
         msg -i "Located ~/.extend.Xresources file."
 
-        f1=../$THEME/.resources/.extend.Xresources
-        f2=/$HOME/.extend.Xresources
+        f1=../../themes/$THEME/.resources/.extend.Xresources
+        f2=/$HOME/.Xresources
 
-        overwrite $f1 $f2 "*.background:"
-        overwrite $f1 $f2 "*.foreground:"
-        overwrite $f1 $f2 "*.cursorColor:"
+        if overwrite $f1 $f2 ".background:"
+        then
+          msg -i 'Changing background...'
+        fi
+        if overwrite $f1 $f2 ".*.foreground:"
+        then
+          msg -i 'Changing foreground...'
+        fi
+        if overwrite $f1 $f2 ".cursorColor:"
+        then
+          msg -i 'Changing cursorColor...'
+        fi
+      # This is where the changes are not applied and needs fixing #
+        if overwrite $f1 $f2 "URxvt.background:"
+        then
+          msg -i 'Changing URxvt.background...'
+        fi
+        if overwrite $f1 $f2 "URxvt.foreground:"
+        then
+          msg -i 'Changing URxvt.foreground...'
+        fi
+        if overwrite $f1 $f2 "URxvt.cursorColor:"
+        then
+          msg -i 'Changing URxvt.cursorColor...'
+        fi
+      #----------------------- Up to here -----------------------#
 
         for i in {0..15}
         do
@@ -273,9 +303,88 @@ then
         msg -f "Failed to execute command."
       fi
     fi
+# --------------- End of ~/.Xresources  modification --------------- #
+
+# ------------------- ~/.i3/config  modification ------------------- #
+
+    # Locating the ~/.i3/config file in the theme directory
+    if [ -e "../../themes/$THEME/.i3/config" ]
+    then
+      msg -s "Located .i3/config file in the theme directory."
+
+      # If we are here then we didn't locate the .i3/config file
+      # in the theme directory
+      msg -f "Failed to locate i3wm configuration file in the theme directory."
+      # Now we locate ~/.i3/config
+      if [ -e "/$HOME/.i3/config" ]
+      then
+        msg -s "Located ~/.i3/config file."
+
+        f1=../../themes/$THEME/.i3/config
+        f2=/$HOME/.i3/config
+
+        if overwrite $f1 $f2 "new_window"
+        then
+          msg -i "Changing new_window border."
+        fi
+
+        if overwrite $f1 $f2 "new_float"
+        then
+          msg -i "Changing new_float border..."
+        fi
+
+        if overwrite $f1 $f2 "new_window"
+        then
+          msg -i "Changing new_window border..."
+        fi
+
+        if overwrite $f1 $f2 "client.background"
+        then
+          msg -i "Changing client.background..."
+        fi
+
+        if overwrite $f1 $f2 "client.focused"
+        then
+          msg -i "Changing client.focused colors..."
+        fi
+
+        if overwrite $f1 $f2 "client.unfocused"
+        then
+          msg -i "Changing client.unfocused..."
+        fi
+
+        if overwrite $f1 $f2 "client.focused_inactive"
+        then
+          msg -i "Changing client.focused_inactive..."
+        fi
+
+        if overwrite $f1 $f2 "client.urgent"
+        then
+          msg -i "Changing client.urgent..."
+        fi
+
+        if overwrite $f1 $f2 "client.placeholder"
+        then
+          msg -i "Changing client.placeholder..."
+        fi
 
 
+      elif [ -e "/$HOME/.config/i3/config" ]
+      then
+        msg -s "Located ~/.config/i3/config file."
+      else
+        msg -f "Failed to locate i3 configuration file in your configuration."
+      fi
+    else
 
+      # If we are here then we failed to locate the ./i3/config file
+      # in the theme directory
+      msg -f "Failed to locate i3 configuration file in the theme directory."
+
+    fi
+
+
+# --------------- End of ~/.i3/config  modification ---------------- #
     msg -i "Restarting i3wm..."
     if ! i3-msg restart
     then
