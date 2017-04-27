@@ -23,7 +23,8 @@
 #
 # TODO List:
 # 1 - Overwrite only the colors from ~/.extend.Xresources ( or ~/.Xresources)
-# 2 - Overwrite only the colors from ~/.i3/config
+#     [Almost done] Need to add rofi.
+# 2 - Overwrite only the colors from ~/.i3/config [Almost done]
 # 3 - Overwrite only the shadows and opacity from ~/.config/compton.config
 # 4 - Overwrite only the needed parts of ~/.config/polybar/config
 # 5 - Overwrite only the frame/background/foreground of ~/.config/dunst/dunstrc
@@ -33,8 +34,8 @@
 # 9 - (Last part after the things above have been addressed) - No more hardcoding
 #
 # KNOWN ISSUES AT THE MOMENT:
-# -> About TODO List Task 1:
-#    It replaces all the *.colors but not the URxvt. colors.
+# -> About TODO List Task 2:
+#    It replaces all the "client." but not the "client.focused".
 #
 # The list above will be updated every time something changes or something new
 # needs to be added. Feel free to recommend new features.
@@ -115,19 +116,27 @@ overwrite(){
   local f2=$2
   local l=$3
 
-  if local line1=$(cat $f1 | grep -w $l)
-  #if local line1=$(cat $f1 | fgrep $l | sed -e 's/[]\/$*.^|[]/\\&/g')
+  if local line1=$(cat $f1 | fgrep -w $l)
   then
     if [ ! -z "$line1" ]
     then
-      if local line2=$(cat $f2 | grep -w $l)
-      #if local line1=$(cat $f2 | fgrep $l | sed -e 's/[]\/$*.^|[]/\\&/g')
+      if local line2=$(cat $f2 | fgrep -w $l)
       then
         if [ ! -z "$line2" ]
         then
+          echo
           echo $line1
           echo $line2
-          if ! sed -i "s/$line2/$line1/g" $f2
+
+          line=$( fgrep -n $l $f2 | cut -d':' -f1 )
+          #line=$( grep -w $l $f2 | cut -d':' -f1 )
+          #line=$(awk "/$l/{print NR}" $f2)
+          echo $line
+          replacement=$line1
+          echo $replacement
+
+          #if ! sed -i "s/$line2/$line1/g" $f2
+          if  sed -i "${line}s/.*/$replacement/" $f2
           then
             msg -f "Failed to apply change: Overwrite "$l" ."
           else
@@ -195,32 +204,35 @@ then
         f1=../../themes/$THEME/.resources/.extend.Xresources
         f2=/$HOME/.extend.Xresources
 
-        if overwrite $f1 $f2 ".background:"
+        if overwrite $f1 $f2 "*.background:"
         then
           msg -i 'Changing background...'
         fi
+
         if overwrite $f1 $f2 "*.foreground:"
         then
           msg -i 'Changing foreground...'
         fi
-        if overwrite $f1 $f2 ".cursorColor:"
+
+        if overwrite $f1 $f2 "*.cursorColor:"
         then
           msg -i 'Changing cursorColor...'
         fi
-      # This is where the changes are not applied and needs fixing #
-        if overwrite $f1 $f2 "URxvt.background:"
+
+        if overwrite $f1 $f2 "URxvt.background"
         then
           msg -i 'Changing URxvt.background...'
         fi
-        if overwrite $f1 $f2 "URxvt.foreground:"
+
+        if overwrite $f1 $f2 "URxvt.foreground"
         then
           msg -i 'Changing URxvt.foreground...'
         fi
-        if overwrite $f1 $f2 "URxvt.cursorColor:"
+
+        if overwrite $f1 $f2 "URxvt.cursorColor"
         then
           msg -i 'Changing URxvt.cursorColor...'
         fi
-      #----------------------- Up to here -----------------------#
 
         for i in {0..15}
         do
@@ -242,38 +254,39 @@ then
         f1=../../themes/$THEME/.resources/.extend.Xresources
         f2=/$HOME/.Xresources
 
-        if overwrite $f1 $f2 ".background:"
+        if overwrite $f1 $f2 "*.background:"
         then
           msg -i 'Changing background...'
         fi
-        if overwrite $f1 $f2 ".*.foreground:"
+
+        if overwrite $f1 $f2 "*.foreground:"
         then
           msg -i 'Changing foreground...'
         fi
-        if overwrite $f1 $f2 ".cursorColor:"
+
+        if overwrite $f1 $f2 "*.cursorColor:"
         then
           msg -i 'Changing cursorColor...'
         fi
-      # This is where the changes are not applied and needs fixing #
-        if overwrite $f1 $f2 "URxvt.background:"
+
+        if overwrite $f1 $f2 "URxvt.background"
         then
           msg -i 'Changing URxvt.background...'
         fi
-        if overwrite $f1 $f2 "URxvt.foreground:"
+
+        if overwrite $f1 $f2 "URxvt.foreground"
         then
           msg -i 'Changing URxvt.foreground...'
         fi
-        if overwrite $f1 $f2 "URxvt.cursorColor:"
+
+        if overwrite $f1 $f2 "URxvt.cursorColor"
         then
           msg -i 'Changing URxvt.cursorColor...'
         fi
-      #----------------------- Up to here -----------------------#
 
         for i in {0..15}
         do
-          FLAG=1
           # Constructing our strings
-          #a="*.color"
           a="*.color"
           b=$a$i
           c=":"
