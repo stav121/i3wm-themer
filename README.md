@@ -12,6 +12,7 @@
     <li> <a href="https://github.com/jaagr/polybar">Polybar</a> (for most of the themes)</li>
     <li> <a href="https://davedavenport.github.io/rofi/">Rofi</a> (for most of the themes)</li>
     <li> Firefox Themes can be installed using the "Stylish" extension</li>
+    <li> Most of the GTK Themes and Icons were created using <a href="https://github.com/actionless/oomox">oomox</a></li>
   </ul>
 
 <h1>Installation</h1>
@@ -30,8 +31,8 @@ Backups are saved under ../Backups/ directory.
   </li>
   <li> Now apply the theme you want:
 
-    ./apply_theme.sh -t {THEME} 
-    
+    ./apply_theme.sh -t {THEME}
+
 {THEME} should be the name of the theme you want to apply.
 
 Example on how to apply the "Minimal" theme:
@@ -40,7 +41,7 @@ Example on how to apply the "Minimal" theme:
  </li>
  <li> If you want to go back to a backup you can run the script like that:
 
-    ./apply_theme.sh -t Backups/{BACKUP_NAME}
+    ./apply_theme.sh -t ../backups/{BACKUP_NAME}
 
 {BACKUP_NAME} should be the same as the one given in the backup step above.
   </li>
@@ -53,7 +54,7 @@ appearance manager to apply the Icons and the GTK Themes.</li>
   <ul>
   <li> git clone https://github.com/unix121/i3wm-themes </li>
   <li> Backup all the files listed below before replacing them with the theme version in case you want to go back later</li>
-  <li> cd i3wm-themes/{THEME_YOU_WANT_TO_APPLY}/</li>
+  <li> cd i3wm-themes/themes/{THEME_YOU_WANT_TO_APPLY}/</li>
   <li> cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)</li>
   <li> cp .config/compton.conf ~/.config/compton.conf</li>
   <li> cp .config/polybar/config ~/.config/polybar/config</li>
@@ -68,7 +69,7 @@ appearance manager to apply the Icons and the GTK Themes.</li>
 
 <ul>
 <h3>Disclaimer</h3>
-The ways mentioned above override many of your files, use them with caution. I am not responsible if anything happens to your computer. Normally if you follow the instructions step by step everything should be just fine, but unexpected things sometimes happen. The author is not responsible for any damage done.
+The ways mentioned above overwrite many of your files, use them with caution. I am not responsible if anything happens to your computer. Normally if you follow the instructions step by step everything should be just fine, but unexpected things sometimes happen. The author is not responsible for any damage done.
 </ul>
 
 </ul>

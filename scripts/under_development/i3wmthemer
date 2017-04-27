@@ -1,0 +1,314 @@
+#!/usr/bin/env bash
+
+# NOTE TO ALL DEVELOPERS
+# If you are interested in helping to improve this script,
+# feel free to make any change you think that is necessary
+# and submit a Pull Request on the original repository:
+# https://github.com/unix121/i3wm-themes
+# Every change is welcome, every contributor will be credited (as should)
+#
+# General goal of this script is to replace the original version listed under
+# "scripts" directory of this repository, named "apply_theme.sh". It has to
+# replace only the needed lines in each configuration file instead of the
+# entire file, to improve functionality, flexibility and help users keep their
+# current configuration but changing only what needs to be changed.
+#
+# Before you start improving it make sure that you have the latest version
+# of the script, this script is updated frequently.
+#
+# Last update: 27 April 2017
+#
+# Here is a list of the things that
+# need addressing :
+#
+# TODO List:
+# 1 - Overwrite only the colors from ~/.extend.Xresources ( or ~/.Xresources)
+# 2 - Overwrite only the colors from ~/.i3/config
+# 3 - Overwrite only the shadows and opacity from ~/.config/compton.config
+# 4 - Overwrite only the needed parts of ~/.config/polybar/config
+# 5 - Overwrite only the frame/background/foreground of ~/.config/dunst/dunstrc
+# 6 - Overwrite only the background/foregrounds of ~/.dmenurc
+# 7 - Overwrite only the colorscheme from ~/.vmric
+# 8 - Overwrite only the Icon Pack / GTK Theme from ~/.xsettingsd
+# 9 - (Last part after the things above have been addressed) - No more hardcoding
+#
+# KNOWN ISSUES AT THE MOMENT:
+# -> About TODO List Task 1:
+#    It replaces all the *.colors but not the URxvt. colors.
+#
+# The list above will be updated every time something changes or something new
+# needs to be added. Feel free to recommend new features.
+#
+# Lastly,this is the "unstable" version of the script, there is "stable" version
+# under "scripts" directory of this repository named "apply_theme.sh".
+
+# If you decide to change this script and use it please make sure you credited
+# the author(s) and contributor(s) listed below.
+
+# Written by : Stavros Grigoriou (unix121)
+# GitHub : https://github.com/unix121
+# E-mail : unix121@protonmail.com
+# Simple script to apply a theme from the collection.
+
+# Also contributing: rynnon
+# GitHub: https://github.com/rynnon
+
+#exec 2> /dev/null
+
+# Printing function
+msg(){
+  NORMAL="\e[1;0m"
+  BOLD="\e[1;1m"
+  COLORED="${BOLD}\e[1;32m"
+  local option=$1
+  local message=$2; shift
+
+  if [ "$option" == "-n" ]
+  then
+    #Normal information display messages
+    printf "\n${COLORED}${BOLD}[*]${NORMAL} ${message}"
+  elif [ "$option" ==  "-e" ]
+  then
+    # Error messages
+    printf "\n${COLORED}${BOLD}${message}"
+  elif [  "$option" == "-i" ]
+  then
+    # Subprocess error messages
+    printf "\n\t${COLORED}${BOLD}[*]${NORMAL} ${message}"
+  elif [ "$option" == "-s" ]
+  then
+    # Subprocess success messages
+    printf "\n\t${COLORED}${BOLD}[+]${NORMAL} ${message}"
+  elif [ "$option" == "-f" ]
+  then
+    # Subprocess failure messages
+    printf "\n\t${COLORED}${BOLD}[-]${NORMAL} ${message}"
+  elif [ "$option" == "-p" ]
+  then
+    # Subprocess information message
+    printf "\n\t${COLORED}${BOLD}[!]${NORMAL}${message}"
+  elif [ "$option" == "-h" ]
+  then
+    # Help infomrmation messages
+    printf "\n${NORMAL}${message}"
+  elif [ "$option" == "-c" ]
+  then
+    # Caution message
+    printf "\n${COLORED}${BOLD}[!]${NORMAL} ${message}"
+  else
+    # Wrong argument given error
+    printf "\n${COLORED}${BOLD}Printing error...!{$NORMAL}"
+  fi
+}
+
+# Exit function
+ext(){
+  echo
+  msg -n "i3wmthemer finished\n\n"
+  exit 0
+}
+
+# Sed function
+overwrite(){
+
+  local f1=$1
+  local f2=$2
+  local l=$3
+
+  if local line1=$(cat $f1 | grep -w $l)
+  then
+    if [ ! -z "$line1" ]
+    then
+      if local line2=$(cat $f2 | grep -w $l)
+      then
+        if [ ! -z "$line2" ]
+        then
+          if ! sed -i "s/$line2/$line1/g" $f2
+          then
+            msg -f "Failed to apply change: Overwrite "$l" ."
+          else
+            msg -s "Applied change: Overwrite "$l" ."
+          fi
+        else
+          msg -f "Failed to apply change: Overwrite "$l" ."
+        fi
+      else
+      msg -f "Failed to apply change: Overwrite "$l" ."
+      fi
+    else
+      msg -f "Failed to apply change: Overwrite "$l" ."
+    fi
+  else
+    msg -f "Failed to apply change: Overwrite "$l" ."
+  fi
+
+}
+
+# Simple initiation message
+echo
+msg -n "i3wmthemer script started"
+echo
+
+# Check if no arguments were given
+if [ $# -eq 0 ]
+then
+  msg -e "Error: No arguments given"
+  msg -e "try: ./apply_theme.sh -h for help"
+  echo
+  ext
+fi
+
+OPTION=$1
+THEME=$2
+
+if [ "$OPTION" ==  "-t" ]
+then
+  msg -n "You have entered theming mode."
+
+  if [ -z "$THEME" ]
+  then
+    msg -e "ERROR: No theme given in arguments"
+    ext
+  fi
+
+  FLAG=0
+  # Locating the theme directory.
+  if [ -d "../../themes/$THEME" ]
+  then
+    msg -i "Located the theme directory."
+
+    # Locating the extend.Xresources files.
+    if [ -e "../../themes/$THEME/.resources/.extend.Xresources" ]
+    then
+      msg -i "Located ~/.extend.Xresources file."
+      if [ -e "/$HOME/.extend.Xresources" ]
+      then
+        msg -i "Located ~/.extend.Xresources file."
+
+        FLAG=1
+
+        f1=../../themes/$THEME/.resources/.extend.Xresources
+        f2=/$HOME/.extend.Xresources
+
+        if overwrite $f1 $f2 ".background:"
+        then
+          msg -i 'Changing background...'
+        fi
+        if overwrite $f1 $f2 ".foreground:"
+        then
+          msg -i 'Changing foreground...'
+        fi
+        if overwrite $f1 $f2 ".cursorColor:"
+        then
+          msg -i 'Changing cursorColor...'
+        fi
+        if overwrite $f1 $f2 "URxvt.background:"
+        then
+          msg -i 'Changing URxvt*.background...'
+        fi
+        if overwrite $f1 $f2 "URxvt.foreground:"
+        then
+          msg -i 'Changing URxvt*.foreground...'
+        fi
+        if overwrite $f1 $f2 "URxvt.cursorColor:"
+        then
+          msg -i 'Changing URxvt*.cursorColor...'
+        fi
+
+        for i in {0..15}
+        do
+          # Constructing our strings
+          a="*.color"
+          b=$a$i
+          c=":"
+          d=$b$c
+          msg -i "Changing color"$i"..."
+          overwrite $f1 $f2 $d
+        done
+
+        msg -i "Finished editing ~/.extend.Xresources file."
+
+      elif [ -e "/$HOME/.Xresources" ]
+      then
+        msg -i "Located ~/.extend.Xresources file."
+
+        f1=../$THEME/.resources/.extend.Xresources
+        f2=/$HOME/.extend.Xresources
+
+        overwrite $f1 $f2 "*.background:"
+        overwrite $f1 $f2 "*.foreground:"
+        overwrite $f1 $f2 "*.cursorColor:"
+
+        for i in {0..15}
+        do
+          FLAG=1
+          # Constructing our strings
+          #a="*.color"
+          a="*.color"
+          b=$a$i
+          c=":"
+          d=$b$c
+          msg -i "Changing color"$i"..."
+          overwrite $f1 $f2 $d
+        done
+
+        msg -i "Finished editing ~/.Xresources file."
+
+      else
+        msg -f "Failed to locate Xresources file."
+      fi
+    else
+      msg -f "Failed to locate .extend.Xresources file in the theme directory."
+    fi
+
+    # If the flag is "1" that means that changes have been made and we have
+    # to run xrdb.
+    if [ $FLAG -eq 1 ]
+    then
+      msg -i "Executing 'xrdb ~/.Xresources' command."
+      if xrdb ~/.Xresources
+      then
+        msg -s "Success!"
+      else
+        msg -f "Failed to execute command."
+      fi
+    fi
+
+
+
+    msg -i "Restarting i3wm..."
+    if ! i3-msg restart
+    then
+      msg -s "Success!"
+    else
+      msg -f "Failed to restart i3wm."
+    fi
+
+  else
+    msg -f "Failed to locate theme directory."
+    ext
+  fi
+
+elif [ "$OPTION" == "-b" ]
+then
+  msg -n "You have entered backup mode."
+
+
+elif [ "$OPTION" == "-h" ]
+then
+  msg -h "-t {THEME}                   ->  Set a theme."
+  msg -h "        Example use: ./apply_theme.sh -t ThemeX"
+  msg -h "-b {BACKUP_NAME}             ->  Create a backup of your files under"
+  msg -h "                                  ../Backups/ directory."
+  msg -h "        Example use: ./apply_theme.sh -b Backup123"
+  msg -h "-t Backups/{BACKUP_NAME}    -> Restore a backup."
+  msg -h "        Example use: ./apply_theme.sh -t Backups/Backup123"
+
+else
+  msg -e "ERROR: No valid arguement given"
+
+fi
+
+ext
+
+exit 0

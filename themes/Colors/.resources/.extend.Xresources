@@ -1,0 +1,69 @@
+! COLOR PALETTE HERE !
+*.foreground:   #EAD49B
+*.background:   #1E272B
+*.cursorColor:  #EAD49B
+
+*.cursor:      #EAD49B
+*.color0:      #1E272B
+*.color1:      #685742
+*.color2:      #9D6A47
+*.color3:      #B36D43
+*.color4:      #78824B
+*.color5:      #D99F57
+*.color6:      #C9A554
+*.color7:      #EAD49B
+*.color9:      #685742
+*.color10:     #9D6A47
+*.color11:     #B36D43
+*.color12:     #78824B
+*.color13:     #D99F57
+*.color14:     #C9A554
+*.color15:     #EAD49B
+*.color8:      #666666
+
+*fading:                15
+*fadeColor:             black
+*pointerColorBackground:#2B2C2B
+*pointerColorForeground:#16A085
+
+Xcursor.theme: Maia-Cursor
+Xcursor.size:  0
+
+XTerm*background: #6aa7a5
+XTerm*foreground: #6aa7a5
+XTerm*reverseVideo: on
+XTerm*faceName: HackRegular:size=11:antialias=true
+XTerm*selectToClipboard: true
+
+! URxvt SETUP HERE !
+URxvt.internalBorder: 6
+URxvt.font: xft:Hack:size=10
+URxvt.depth: 32
+URxvt.background:	[100]#1E272B
+URxvt*scrollBar:                      false
+URxvt*mouseWheelScrollPage:           false
+URxvt*cursorBlink:                    true
+URxvt*foreground: 		                #EAD49B
+URxvt*cursorColor:		                #EAD49B
+URxvt*saveLines:                      5000
+
+! ROFI SETUP HERE !
+
+! Enable the extended coloring options
+rofi.color-enabled: true
+!                  bg       border   separator
+rofi.color-window: #1E272B, #9D6A47, #9D6A47
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #1E272B, #EAD49B, #1E272B, #1E272B, #78824B
+rofi.color-active: #1E272B, #EAD49B, #1E272B, #1E272B, #78824B
+rofi.color-urgent: #1E272B, #EAD49B, #1E272B, #1E272B, #78824B
+
+rofi.separator-style: solid
+rofi.sidebar-mode: false
+rofi.lines: 5
+rofi.font: Hack Regular 12
+rofi.bw: 1
+rofi.columns: 2
+rofi.padding: 5
+rofi.fixed-num-lines: true
+rofi.hide-scrollbar: true

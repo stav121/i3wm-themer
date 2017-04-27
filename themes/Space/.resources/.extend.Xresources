@@ -1,0 +1,69 @@
+! COLOR PALETTE HERE !
+*.foreground:   #c6c6c6
+*.background:   #1f1f1f
+*.cursorColor:  #c6c6c6
+
+*.color0:       #828282
+*.color8:       #828282
+*.color1:       #cc6666
+*.color9:       #cc6666
+*.color2:       #81a2be
+*.color10:      #81a2be
+*.color3:       #f0c674
+*.color11:      #f0c674
+*.color4:       #81a2be
+*.color12:      #81a2be
+*.color5:       #b294bb
+*.color13:      #b294bb
+*.color6:       #8abeb7
+*.color14:      #8abeb7
+*.color7:       #c5c8c6
+*.color15:      #c5c8c6
+
+*fading:                15
+*fadeColor:             black
+*pointerColorBackground:#2B2C2B
+*pointerColorForeground:#16A085
+
+Xcursor.theme: Breeze
+Xcursor.size:  0
+
+XTerm*background: #6aa7a5
+XTerm*foreground: #6aa7a5
+XTerm*reverseVideo: on
+XTerm*faceName: HackRegular:size=11:antialias=true
+XTerm*selectToClipboard: true
+
+! URxvt SETUP HERE !
+URxvt.internalBorder: 6
+URxvt.font: xft:monofur:size=12
+URxvt.geometry: 80x20
+URxvt.depth: 32
+URxvt.background:	[100]#1f1f1f
+URxvt*scrollBar:                      false
+URxvt*mouseWheelScrollPage:           false
+URxvt*cursorBlink:                    true
+URxvt*foreground: 		                #c6c6c6
+URxvt*cursorColor:		                #c6c6c6
+URxvt*saveLines:                      5000
+
+! ROFI SETUP HERE !
+
+! Enable the extended coloring options
+rofi.color-enabled: true
+!                  bg       border   separator
+rofi.color-window: #1f1f1f, #c6c6c6, #c6c6c6
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #1f1f1f, #828282, #1f1f1f, #1f1f1f, #c6c6c6
+rofi.color-active: #1f1f1f, #828282, #1f1f1f, #1f1f1f, #c6c6c6
+rofi.color-urgent: #1f1f1f, #828282, #1f1f1f, #1f1f1f, #c6c6c6
+
+rofi.separator-style: solid
+rofi.sidebar-mode: false
+rofi.lines: 5
+rofi.font: monofur 13
+rofi.bw: 1
+rofi.columns: 2
+rofi.padding: 5
+rofi.fixed-num-lines: true
+rofi.hide-scrollbar: true

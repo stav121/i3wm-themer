@@ -1,6 +1,47 @@
 #!/usr/bin/env bash
 
-# Written by : unix121
+# NOTE TO ALL DEVELOPERS
+# If you are interested in helping to improve this script,
+# feel free to make any change you think that is necessary
+# and submit a Pull Request on the original repository:
+# https://github.com/unix121/i3wm-themes
+# Every change is welcome, every contributor will be credited (as should)
+#
+# General goal of this script is to overwrite only the lines that are
+# necesary and not the entire configuration so that personal modification
+# from every user is not lost. What it does not is overwrite entire files
+# which is not desired as a final goal for this project.
+#
+# Before you start improving it make sure that you have the latest version
+# of the script, this script is updated frequently.
+#
+# Last update: 27 April 2017
+#
+# Here is a list of the things that
+# need addressing :
+#
+# TODO List:
+# 1 - Overwrite only the colors from ~/.extend.Xresources ( or ~/.Xresources)
+# 2 - Overwrite only the colors from ~/.i3/config
+# 3 - Overwrite only the shadows and opacity from ~/.config/compton.config
+# 4 - Overwrite only the needed parts of ~/.config/polybar/config
+# 5 - Overwrite only the frame/background/foreground of ~/.config/dunst/dunstrc
+# 6 - Overwrite only the background/foregrounds of ~/.dmenurc
+# 7 - Overwrite only the colorscheme from ~/.vmric
+# 8 - Overwrite only the Icon Pack / GTK Theme from ~/.xsettingsd
+# 9 - (Last part after the things above have been addressed) - No more hardcoding
+#
+# The list above will be updated every time something changes or something new
+# needs to be added. Feel free to recommend new features.
+#
+# Lastly,this is the "stable" version of the script, there is a new under
+# development "unstable" version of this script under "under_developemnt"
+# directory of this repository named "i3wmthemer".
+
+# If you decide to change this script and use it please make sure you credited
+# the author(s) and contributor(s) listed below.
+
+# Written by : Stavros Grigoriou (unix121)
 # GitHub : https://github.com/unix121
 # E-mail : unix121@protonmail.com
 # Simple script to apply a theme from the collection.
@@ -8,34 +49,97 @@
 # Also contributing: rynnon
 # GitHub: https://github.com/rynnon
 
+# Simple function to display messages in a certain way
+msg(){
+  NORMAL="\e[1;0m"
+  BOLD="\e[1;1m"
+  COLORED="${BOLD}\e[1;32m"
+  local option=$1
+  local message=$2; shift
+
+  if [ "$option" == "-n" ]
+  then
+    #Normal information display messages
+    printf "\n${COLORED}${BOLD}[*]${NORMAL} ${message}"
+  elif [ "$option" ==  "-e" ]
+  then
+    # Error messages
+    printf "\n${COLORED}${BOLD}${message}"
+  elif [  "$option" == "-i" ]
+  then
+    # Subprocess error messages
+    printf "\n\t${COLORED}${BOLD}[*]${NORMAL} ${message}"
+  elif [ "$option" == "-s" ]
+  then
+    # Subprocess success messages
+    printf "\n\t${COLORED}${BOLD}[+]${NORMAL} ${message}"
+  elif [ "$option" == "-f" ]
+  then
+    # Subprocess failure messages
+    printf "\n\t${COLORED}${BOLD}[-]${NORMAL} ${message}"
+  elif [ "$option" == "-p" ]
+  then
+    # Subprocess information message
+    printf "\n\t${COLORED}${BOLD}[!]${NORMAL}${message}"
+  elif [ "$option" == "-h" ]
+  then
+    # Help infomrmation messages
+    printf "\n${NORMAL}${message}"
+  elif [ "$option" == "-c" ]
+  then
+    # Caution message
+    printf "\n${COLORED}${BOLD}[!]${NORMAL} ${message}"
+  else
+    # Wrong argument given error
+    printf "\n${COLORED}${BOLD}Printing error...!{$NORMAL}"
+  fi
+}
+
+# Exit function
+ext(){
+  echo
+  msg -n "i3wmthemer finished\n\n"
+  exit 0
+}
+
+# Simple initiation message
+echo
+msg -n "i3wmthemer script started"
+echo
+
+# Check if no arguments were given
 if [ $# -eq 0 ]
 then
-  echo "Error: No arguements given"
-  echo "try: ./apply_theme.sh -h for help"
-  exit
+  msg -e "Error: No arguments given"
+  msg -e "try: ./apply_theme.sh -h for help"
+  echo
+  ext
 fi
 
+# Parse the command line arguments
 OPTION=$1
-
 THEME=$2
 
+# Hide the system messages
 exec 2> /dev/null
 
+# Check the options given
 if [ "$OPTION" == "-t" ]
 then
 
   if [ -z "$THEME" ]
   then
-    echo '[-] Error: No theme given'
-    exit
+    msg -e 'Error: No theme given'
+    msg -e 'try: ./apply_theme.sh -h for help'
+    ext
   fi
 
-  echo '[*] Applying the theme..'
+  msg -i 'Applying the theme..'
 
   # First we try to locate the theme
-  if [ -d "../$THEME" ]
+  if [ -d "../themes/$THEME" ]
   then
-    echo '  [+] Located the theme directory...'
+    msg -s 'Located the theme directory...'
 
     # First copy all the fonts into the right directory
     if [ -d "../.fonts" ]
@@ -44,226 +148,354 @@ then
        then
         if cp -R ../.fonts/. ~/.fonts/
         then
-          echo '  [+] Fonts are set up successfully'
+          msg -s 'Fonts are set up successfully'
         else
-          echo '  [-] Failed to copy Fonts into ~/.fonts/ directory'
+          msg -f 'Failed to copy Fonts into ~/.fonts/ directory'
         fi
       else
-        echo '  [*] Could not locate ~/.fonts/ directory, attemptint to create it...'
+        echo '  [*] Could not locate ~/.fonts/ directory, attempting to create it...'
         if mkdir ~/.fonts/
         then
-          echo ' [+] ~/.fonts/ directory created successfully'
+          msg -s '~/.fonts/ directory created successfully'
           if cp -R ../.fonts/. ~/.fonts/
           then
-            echo '  [+] Fonts migration completed successfully'
+            msg -s 'Fonts migration completed successfully'
           else
-            echo '  [-] Failed to create ~/.fonts/ directory'
+            msg -f 'Failed to create ~/.fonts/ directory'
           fi
         fi
       fi
     else
-      echo '  [-] ../.fonts/ directory not found'
+      msg -f '../.fonts/ directory not found'
    fi
 
     # Now that the file is located we copy everything into the right place
 
-    if cp ../$THEME/.i3/config ~/.i3/config
+    # First we locate the i3wm configuration file in both the theme and
+    # the user's configuration. There are 2 possible places for it to be
+    # either "~/.i3/config" or ~/.config/i3/config
+    if [ -e ~/.i3/config ]
     then
-      echo '  [+] .i3/config configuration file set up successfully'
+      if cp ../themes/$THEME/.i3/config ~/.i3/config
+      then
+        msg -s '.i3/config configuration file set up successfully'
+      else
+        msg -f 'Failed to apply changes to ~/.i3/config configuration file'
+      fi
+    elif [ -e ~/.config/i3/config ]
+    then
+      if cp ../themes/$THEME/.i3/config ~/.config/i3/config
+      then
+        msg -s '.config/i3/config configuration file set up successfully'
+      else
+        msg -f 'Failed to apply changes to ~/.config/i3/config configuration file'
+      fi
     else
-      echo '  [-] Failed to apply .i3/config configuration file'
+      # If we are here that means that the i3wm configuration file is not
+      # located in either ~/.i3/config or ~/.config/i3/config
+      msg -f 'Failed to locate i3wm configuraion file in your /home/ directory'
     fi
 
-    if cp ../$THEME/.config/compton.conf ~/.config/compton.conf
+    if cp ../themes/$THEME/.config/compton.conf ~/.config/compton.conf
     then
-      echo '  [+] .config/compton.conf configuration file set up successfully'
+      msg -s '.config/compton.conf configuration file set up successfully'
     else
-      echo '  [-] Failed to apply .config/compton.conf configuration file'
+      msg -f 'Failed to apply .config/compton.conf configuration file'
     fi
 
-    if cp ../$THEME/.resources/.Xresources ~/.Xresources
+    if cp ../themes/$THEME/.resources/.Xresources ~/.Xresources
     then
-      echo '  [+] .Xresources file set up successfully'
+      msg -s '.Xresources file set up successfully'
     else
-      echo '  [-] Failed to apply .Xresources configuration file'
+      msg -f 'Failed to apply .Xresources configuration file'
     fi
 
-    if cp ../$THEME/.resources/.extend.Xresources ~/.extend.Xresources
+    if cp ../themes/$THEME/.resources/.extend.Xresources ~/.extend.Xresources
     then
-      echo '  [+] .extend.Xresources file set up successfully'
+      msg -s '.extend.Xresources file set up successfully'
     else
-      echo '  [-] Failed to apply .extend.Xresources configuration file'
+      msg -f 'Failed to apply .extend.Xresources configuration file'
     fi
 
-    if cp ../$THEME/Other/.vimrc ~/.vimrc
+    if cp ../themes/$THEME/Other/.vimrc ~/.vimrc
     then
-      echo '  [+] .vimrc configuration file set up successfully'
+      msg -s '.vimrc configuration file set up successfully'
     else
-      echo '  [-] Failed to apply .vimrc configuraion file'
+      msg -f 'Failed to apply .vimrc configuraion file'
     fi
 
-    if cp ../$THEME/Other/.dmenurc ~/.dmenurc
+    if cp ../themes/$THEME/Other/.dmenurc ~/.dmenurc
     then
-      echo '  [+] .dmenurc configuration file set up successfully'
+      msg -s '.dmenurc configuration file set up successfully'
     else
-      echo '  [-] Failed to apply .dmenurc configuration file'
+      msg -f 'Failed to apply .dmenurc configuration file'
     fi
 
     if xrdb ~/.Xresources
     then
-      echo '  [+] Terminal Theme applied successfully'
+      msg -s 'Terminal Theme applied successfully'
     else
-      echo '  [-] Failed to apply terminal theme'
+      msg -f 'Failed to apply terminal theme'
     fi
 
-    if cp ../$THEME/.config/polybar/config ~/.config/polybar/config
+    if cp ../themes/$THEME/.config/polybar/config ~/.config/polybar/config
     then
-      echo '  [+] .config/polybar/config configuration file set up successfully'
+      msg -s '.config/polybar/config configuration file set up successfully'
     else
-      echo '  [-] Failed to apply ./config/polybar/config configuration file'
+      msg -f 'Failed to apply ./config/polybar/config configuration file'
     fi
 
 
     if cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh
     then
       chmod u+x ~/.config/polybar/launch.sh
-      echo '  [+] .config/polybar/launch.sh script set up successfully'
+      msg -s '.config/polybar/launch.sh script set up successfully'
     else
-      echo '  [-] Failed to apply .config/polybar/launch.sh script'
+      msg -f 'Failed to apply .config/polybar/launch.sh script'
     fi
 
     if [ -x "~/.config/polybar/music.sh" ]
     then
-      echo '    [*] music.sh is already in the right folder'
+      msg -p 'music.sh is already in the right folder'
     else
       if cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh
       then
          chmod u+x ~/.config/polybar/music.sh
-         echo '  [+] .config/polybar/music.sh script set up successfully'
+         msg -s '.config/polybar/music.sh script set up successfully'
       else
-         echo '  [-] Failed to apply .config/polybar/music.sh script'
+         msg -f 'Failed to apply .config/polybar/music.sh script'
       fi
     fi
 
     # Copying the GTK Theme into the right folder
 
-    if [ -d "../$THEME/.themes" ]
+    if [ -d "../themes/$THEME/.themes" ]
     then
       if [ -d "/$HOME/.themes/" ]
       then
-        if cp -R  ../$THEME/.themes/. ~/.themes/
+        if cp -R  ../themes/$THEME/.themes/. ~/.themes/
         then
-          echo  '  [+] GTK Theme migration completed successfully'
+          msg -s  'GTK Theme migration completed successfully'
         else
-          echo '   [-] Failed to copy GTK Theme into ~/.themes/'
+          msg -f 'Failed to copy GTK Theme into ~/.themes/'
         fi
       else
-        echo '  [*] Could not locate ~/.themes/ directory, attempting to create it...'
+        msg -p 'Could not locate ~/.themes/ directory, attempting to create it...'
          if mkdir ~/.themes/
          then
-           echo '  [+] ~/.themes/ directory created successfully'
-           if cp -R ../$THEME/.themes/. ~/.themes/
+           msg -s '~/.themes/ directory created successfully'
+           if cp -R ../themes/$THEME/.themes/. ~/.themes/
            then
-             echo '  [+] GTK Theme migration completed successfully'
+             msg -s 'GTK Theme migration completed successfully'
            else
-             echo '  [-] Failed to copy GTK Theme into ~/.themes/ directory'
+             msg -f 'Failed to copy GTK Theme into ~/.themes/ directory'
            fi
          else
-           echo '  [-] Failed to create ~/.themes/ directory'
+           msg -f 'Failed to create ~/.themes/ directory'
          fi
       fi
     else
-      echo '  [-] This theme does not have a GTK Theme included'
+      msg -f 'This theme does not have a GTK Theme included'
     fi
 
     # Copying the Icons into the right folder
-    if [ -d "../$THEME/.icons" ]
+    if [ -d "../themes/$THEME/.icons" ]
     then
       if [ -d "/$HOME/.icons/" ]
       then
-        if cp -R ../$THEME/.icons/. ~/.icons/
+        if cp -R ../themes/$THEME/.icons/. ~/.icons/
         then
-          echo '  [+] Icon migration completed successfully'
+          msg -s 'Icon migration completed successfully'
         else
-          echo '  [-] Failed to copy Icons into ~/.icons/ directory'
+          msg -f 'Failed to copy Icons into ~/.icons/ directory'
         fi
       else
-        echo '  [*] Could not locate ~/.icons/ directory, attempting to create it...'
+        msg -p 'Could not locate ~/.icons/ directory, attempting to create it...'
         if mkdir ~/.icons/
         then
-          echo '  [+] ~/.icons/ directory created successfully'
-          if cp -R  ../$THEME/.icons/. ~/.icons/
+          msg -s '~/.icons/ directory created successfully'
+          if cp -R  ../themes/$THEME/.icons/. ~/.icons/
           then
-            echo '  [+] Icon migration completed successfully'
+            msg -s 'Icon migration completed successfully'
           else
-            echo '  [-] Failed to create ~/.icons/ directory'
+            msg -f 'Failed to create ~/.icons/ directory'
           fi
         fi
       fi
     else
-      echo '  [-] This theme does not have Icon pack included'
+      msg -f 'This theme does not have Icon pack included'
     fi
 
-    # Implementation by : Rynnon
+#<---------------- Implementation by : Rynnon -------------------->
 
-    if cp ../$THEME/.xsettingsd ~/.xsettingsd
+    if cp ../themes/$THEME/.xsettingsd ~/.xsettingsd
     then
-      echo '  [+] xsettingsd file set up successfully'
+      msg -s 'xsettingsd file set up successfully'
     else
-      echo '  [-] Failed to apply xsettingsd file'
+      msg -f 'Failed to apply xsettingsd file'
     fi
 
     if xsettingsd &
     then
-      echo '  [+] Icons and GTK Themes applied successfully'
+      msg -s 'Icons and GTK Themes applied successfully'
     else
-      echo '  [-] Failed to apply GTK theme'
+      msg -f 'Failed to apply GTK theme and Icons'
     fi
 
-    # End of implementation
+##<---------------- End of implementation -------------------->
 
-    if  nitrogen --set-scaled ../$THEME/$THEME.png
+    if  nitrogen --set-scaled ../themes/$THEME/$THEME.png
     then
-      echo '  [+] Wallpaper set successfully'
+      msg -s 'Wallpaper set successfully'
     else
-      echo '  [-] Could not set wallpaper (Nitrogen missing?)'
+      msg -f 'Could not set wallpaper (Nitrogen missing?)'
     fi
 
     # Finally we restart i3wm
     i3-msg restart
 
-    echo '[!] Use your Appearance Manager to set the Icons and GTK+ Themes'
+    msg -c 'Use your Appearance Manager to set the Icons and GTK+ Themes'
 
   else
 
-    echo '[-] ERROR: Could not locate the theme directory...'
+    msg -e 'ERROR: Could not locate the theme directory...'
   fi
+
 elif [ "$OPTION" == "-b" ]
 then
-  echo "[+] Backing up your files"
+  # Backup mode. We locate the ../Backups/ directory
+  # If it exists then we write into it, otherwise
+  # we create it.
+  msg -n "Backing up your files"
 
-  if [ -d "../Backups" ]
+  if [ -d "../backups" ]
   then
-    echo "  [+] Located backup Directory "
+    msg -s "Located backup directory"
   else
-    mkdir ../Backups
-    echo  "  [+] Created backup directory"
+    mkdir ../backups
+    msg -s  "Created backup directory"
   fi
 
-  exec ./theme_backup.sh $THEME
+#<------------------------- BACKUP ------------------------->
 
+  if [ -z "$THEME" ]
+  then
+    msg -e 'Error: No backup name given'
+    msg -e 'try: ./apply_theme.sh -h for help'
+    ext
+  fi
+
+  if mkdir ../backups/$THEME
+    then
+    msg -s 'Folder created successfully'
+  else
+    msg -f 'Error, folder might already exist'
+    ext
+  fi
+
+  mkdir ../backups/$THEME/.resources/
+
+  if cp ~/.Xresources ../backups/$THEME/.resources/.Xresources
+    then
+    msg -s 'Saved ~/.Xresources successfully'
+  else
+    msg -f 'Failed to save ~/.Xresources'
+  fi
+
+  if cp ~/.extend.Xresources ../backups/$THEME/.resources/.extend.Xresources
+    then
+    msg -s 'Saved ~/.extend.Xresources successfully'
+  else
+    msg -f 'Failed to save ~/.extend.Xresources'
+  fi
+
+  mkdir ../backups/$THEME/.config/
+  mkdir ../backups/$THEME/.config/polybar/
+
+  if cp ~/.config/polybar/config ../backups/$THEME/.config/polybar/config
+  then
+    msg -s 'Saved ~/.config/polybar/config successfully'
+  else
+    msg -f 'Failed to save ~/.config/polybar/config'
+  fi
+
+  if cp ~/.config/polybar/launch.sh ../backups/$THEME/.config/polybar/launch.sh
+  then
+    msg -s 'Saved ~/.config/polybar/launch.sh successfully'
+  else
+    msg -f 'Failed to save ~/.config/polybar/config'
+  fi
+
+  if cp ~/.config/compton.conf ../backups/$THEME/.config/compton.conf
+    then
+    msg -s 'Saved ~/.config/compton.conf successfully'
+  else
+    msg -f 'msg -fFailed to save ~/.config/compton.conf'
+  fi
+
+  mkdir ../backups/$THEME/.i3/
+
+  if cp ~/.i3/config ../backups/$THEME/.i3/config
+    then
+    msg -s 'Saved ~/.i3/config successfully'
+  else
+    msg -f 'Failed to save ~/.i3/config'
+  fi
+
+  mkdir ../backups/$THEME/Other/
+
+  if cp ~/.dmenurc ../backups/$THEME/Other/.dmenurc
+    then
+    msg -s 'Saved ~/.dmenurc successfully'
+  else
+    msg -f 'Failed to save ~/.dmenurc'
+  fi
+
+  if cp ~/.vimrc ../backups/$THEME/Other/.vimrc
+    then
+    msg -s 'Saved ~/.vimrc successfully'
+  else
+    msg -f 'Failed to save ~/.vimrc'
+  fi
+
+  mkdir ../backups/$THEME/.config/dunst/
+
+  if cp ~/.config/dunst/dunstrc ../backups/$THEME/.config/dunst/dunstrc
+  then
+    msg -s 'Saved ~/.config/dunst/dunstrc successfully'
+  else
+    msg -f 'Failed to save ~/.config/dunst/dunstrc'
+  fi
+
+  if cp ~/.xsettingsd ../backups/$THEME/.xsettingsd
+  then
+    msg -s 'Saved ~/.xsettingsd successfully'
+  else
+    msg -f 'Faled to save ~/.xsettingsd'
+  fi
+
+  msg -c "Your backup theme is now saved under ../backups/ directory\n"
+
+  ext
+#<------------------------END OF BACKUP -------------------->
 elif [ "$OPTION" == "-h" ]
 then
-  echo "-t {THEME}                   ->  Set a theme (if it exists)."
-  echo "        Example use: ./apply_theme.sh -t ThemeX"
-  echo "-b {BACKUP_NAME}             ->  Create a backup of your files under"
-  echo "                                  ../Backups/ directory"
-  echo "        Example use: ./apply_theme.sh -b Backup123"
-  echo "-t Backups/{BACKUP_NAME}    -> Restore a backup (if it exists)"
-  echo "        Example use: ./apply_theme.sh -t Backups/Backup123"
+  # Simple help display
+  msg -h "-t {THEME}                   ->  Set a theme (if it exists)."
+  msg -h "        Example use: ./apply_theme.sh -t ThemeX"
+  msg -h "-b {BACKUP_NAME}             ->  Create a backup of your files under"
+  msg -h "                                  ../Backups/ directory"
+  msg -h "        Example use: ./apply_theme.sh -b Backup123"
+  msg -h "-t ../backups/{BACKUP_NAME}    -> Restore a backup (if it exists)"
+  msg -h "        Example use: ./apply_theme.sh -t ../backups/Backup123\n"
+
+else
+  # If we are here that means that no right command argument was given.
+  msg -e "Error: No arguments given"
+  msg -e "try: ./apply_theme.sh -h for help"
+  echo
+  ext
 fi
 
-echo '[*] Script exiting...'
-
-
-exit
+# Script ended, time to exit
+ext
