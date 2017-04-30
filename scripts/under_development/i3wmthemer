@@ -23,12 +23,14 @@
 #
 # TODO List:
 # 1 - Overwrite only the colors from ~/.extend.Xresources ( or ~/.Xresources)
-#     [Almost done] Need to add rofi.
-# 2 - Overwrite only the colors from ~/.i3/config [Almost done]
-# 3 - Overwrite only the shadows and opacity from ~/.config/compton.config
-# 4 - Overwrite only the needed parts of ~/.config/polybar/config
+#     [Almost done] Need to add rofi [DONE] - Nothing new to add (yet).
+# 2 - Overwrite only the colors from ~/.i3/config [Almost done] - See [KNOWN
+#     ISSUES AT THE MOMENT] section.
+# 3 - Overwrite only the shadows and opacity from ~/.config/compton.config [DONE]
+# 4 - Overwrite only the needed parts of ~/.config/polybar/config [Almost DONE]
 # 5 - Overwrite only the frame/background/foreground of ~/.config/dunst/dunstrc
-# 6 - Overwrite only the background/foregrounds of ~/.dmenurc
+#
+# 6 - Overwrite only the background/foregrounds of ~/.dmenurc [DONE]
 # 7 - Overwrite only the colorscheme from ~/.vmric
 # 8 - Overwrite only the Icon Pack / GTK Theme from ~/.xsettingsd
 # 9 - (Last part after the things above have been addressed) - No more hardcoding
@@ -54,7 +56,7 @@
 # Also contributing: rynnon
 # GitHub: https://github.com/rynnon
 
-#exec 2> /dev/null
+exec 2> /dev/null
 
 # Printing function
 msg(){
@@ -67,7 +69,7 @@ msg(){
   if [ "$option" == "-n" ]
   then
     #Normal information display messages
-    printf "\n${COLORED}${BOLD}[*]${NORMAL} ${message}"
+    printf "\n${COLORED}${BOLD}[*] ${message}${NORMAL}"
   elif [ "$option" ==  "-e" ]
   then
     # Error messages
@@ -75,7 +77,7 @@ msg(){
   elif [  "$option" == "-i" ]
   then
     # Subprocess error messages
-    printf "\n\t${COLORED}${BOLD}[*]${NORMAL} ${message}"
+    printf "\n\t${COLORED}${BOLD}[*] ${message}${NORMAL}"
   elif [ "$option" == "-s" ]
   then
     # Subprocess success messages
@@ -87,7 +89,7 @@ msg(){
   elif [ "$option" == "-p" ]
   then
     # Subprocess information message
-    printf "\n\t${COLORED}${BOLD}[!]${NORMAL}${message}"
+    printf "\n\t${COLORED}${BOLD}[!] ${message}${NORMAL}"
   elif [ "$option" == "-h" ]
   then
     # Help infomrmation messages
@@ -124,19 +126,19 @@ overwrite(){
       then
         if [ ! -z "$line2" ]
         then
-          echo
-          echo $line1
-          echo $line2
+          #echo
+          #echo $line1
+          #echo $line2
 
           line=$( fgrep -n $l $f2 | cut -d':' -f1 )
           #line=$( grep -w $l $f2 | cut -d':' -f1 )
           #line=$(awk "/$l/{print NR}" $f2)
-          echo $line
+          #echo $line
           replacement=$line1
-          echo $replacement
+          #echo $replacement
 
           #if ! sed -i "s/$line2/$line1/g" $f2
-          if  sed -i "${line}s/.*/$replacement/" $f2
+          if ! sed -i "${line}s/.*/$replacement/" $f2
           then
             msg -f "Failed to apply change: Overwrite "$l" ."
           else
@@ -204,35 +206,13 @@ then
         f1=../../themes/$THEME/.resources/.extend.Xresources
         f2=/$HOME/.extend.Xresources
 
-        if overwrite $f1 $f2 "*.background:"
-        then
-          msg -i 'Changing background...'
-        fi
-
-        if overwrite $f1 $f2 "*.foreground:"
-        then
-          msg -i 'Changing foreground...'
-        fi
-
-        if overwrite $f1 $f2 "*.cursorColor:"
-        then
-          msg -i 'Changing cursorColor...'
-        fi
-
-        if overwrite $f1 $f2 "URxvt.background"
-        then
-          msg -i 'Changing URxvt.background...'
-        fi
-
-        if overwrite $f1 $f2 "URxvt.foreground"
-        then
-          msg -i 'Changing URxvt.foreground...'
-        fi
-
-        if overwrite $f1 $f2 "URxvt.cursorColor"
-        then
-          msg -i 'Changing URxvt.cursorColor...'
-        fi
+        overwrite $f1 $f2 "*.background:"
+        overwrite $f1 $f2 "*.foreground:"
+        overwrite $f1 $f2 "*.cursorColor:"
+        overwrite $f1 $f2 "URxvt.background"
+        overwrite $f1 $f2 "URxvt*foreground"
+        overwrite $f1 $f2 "URxvt*cursorColor"
+        overwrite $f1 $f2 "URxvt.font"
 
         for i in {0..15}
         do
@@ -241,9 +221,19 @@ then
           b=$a$i
           c=":"
           d=$b$c
-          msg -i "Changing color"$i"..."
           overwrite $f1 $f2 $d
         done
+
+        #<------- Rofi Customization ------>
+
+        overwrite $f1 $f2 "rofi.color-enabled"
+        overwrite $f1 $f2 "rofi.color-window"
+        overwrite $f1 $f2 "rofi.color-normal"
+        overwrite $f1 $f2 "rofi.color-active"
+        overwrite $f1 $f2 "rofi.color-urgent"
+        overwrite $f1 $f2 "rofi.font"
+
+        #<--- End of Rofi Customization ---->
 
         msg -i "Finished editing ~/.extend.Xresources file."
 
@@ -254,35 +244,13 @@ then
         f1=../../themes/$THEME/.resources/.extend.Xresources
         f2=/$HOME/.Xresources
 
-        if overwrite $f1 $f2 "*.background:"
-        then
-          msg -i 'Changing background...'
-        fi
-
-        if overwrite $f1 $f2 "*.foreground:"
-        then
-          msg -i 'Changing foreground...'
-        fi
-
-        if overwrite $f1 $f2 "*.cursorColor:"
-        then
-          msg -i 'Changing cursorColor...'
-        fi
-
-        if overwrite $f1 $f2 "URxvt.background"
-        then
-          msg -i 'Changing URxvt.background...'
-        fi
-
-        if overwrite $f1 $f2 "URxvt.foreground"
-        then
-          msg -i 'Changing URxvt.foreground...'
-        fi
-
-        if overwrite $f1 $f2 "URxvt.cursorColor"
-        then
-          msg -i 'Changing URxvt.cursorColor...'
-        fi
+        overwrite $f1 $f2 "*.background:"
+        overwrite $f1 $f2 "*.foreground:"
+        overwrite $f1 $f2 "*.cursorColor:"
+        overwrite $f1 $f2 "URxvt.background"
+        overwrite $f1 $f2 "URxvt*foreground"
+        overwrite $f1 $f2 "URxvt*cursorColor"
+        overwrite $f1 $f2 "URxvt.font"
 
         for i in {0..15}
         do
@@ -291,9 +259,19 @@ then
           b=$a$i
           c=":"
           d=$b$c
-          msg -i "Changing color"$i"..."
           overwrite $f1 $f2 $d
         done
+
+        #<------- Rofi Customization ------>
+
+        overwrite $f1 $f2 "rofi.color-enabled"
+        overwrite $f1 $f2 "rofi.color-window"
+        overwrite $f1 $f2 "rofi.color-normal"
+        overwrite $f1 $f2 "rofi.color-active"
+        overwrite $f1 $f2 "rofi.color-urgent"
+        overwrite $f1 $f2 "rofi.font"
+
+        #<--- End of Rofi Customization ---->
 
         msg -i "Finished editing ~/.Xresources file."
 
@@ -311,7 +289,7 @@ then
       msg -i "Executing 'xrdb ~/.Xresources' command."
       if xrdb ~/.Xresources
       then
-        msg -s "Success!"
+        msg -i "Success!"
       else
         msg -f "Failed to execute command."
       fi
@@ -325,9 +303,6 @@ then
     then
       msg -s "Located .i3/config file in the theme directory."
 
-      # If we are here then we didn't locate the .i3/config file
-      # in the theme directory
-      msg -f "Failed to locate i3wm configuration file in the theme directory."
       # Now we locate ~/.i3/config
       if [ -e "/$HOME/.i3/config" ]
       then
@@ -336,58 +311,38 @@ then
         f1=../../themes/$THEME/.i3/config
         f2=/$HOME/.i3/config
 
-        if overwrite $f1 $f2 "new_window"
-        then
-          msg -i "Changing new_window border."
-        fi
+        overwrite $f1 $f2 "new_window"
+        overwrite $f1 $f2 "new_float"
+        overwrite $f1 $f2 "new_window"
+        overwrite $f1 $f2 "client.background"
+        overwrite $f1 $f2 "client.focused" # This is still bugged #
+        overwrite $f1 $f2 "client.unfocused"
+        overwrite $f1 $f2 "client.focused_inactive"
+        overwrite $f1 $f2 "client.urgent"
+        overwrite $f1 $f2 "client.placeholder"
 
-        if overwrite $f1 $f2 "new_float"
-        then
-          msg -i "Changing new_float border..."
-        fi
-
-        if overwrite $f1 $f2 "new_window"
-        then
-          msg -i "Changing new_window border..."
-        fi
-
-        if overwrite $f1 $f2 "client.background"
-        then
-          msg -i "Changing client.background..."
-        fi
-
-        if overwrite $f1 $f2 "client.focused"
-        then
-          msg -i "Changing client.focused colors..."
-        fi
-
-        if overwrite $f1 $f2 "client.unfocused"
-        then
-          msg -i "Changing client.unfocused..."
-        fi
-
-        if overwrite $f1 $f2 "client.focused_inactive"
-        then
-          msg -i "Changing client.focused_inactive..."
-        fi
-
-        if overwrite $f1 $f2 "client.urgent"
-        then
-          msg -i "Changing client.urgent..."
-        fi
-
-        if overwrite $f1 $f2 "client.placeholder"
-        then
-          msg -i "Changing client.placeholder..."
-        fi
 
 
       elif [ -e "/$HOME/.config/i3/config" ]
       then
         msg -s "Located ~/.config/i3/config file."
+
+        f1=../../themes/$THEME/.i3/config
+        f2=/$HOME/.i3/config
+
+        overwrite $f1 $f2 "new_window"
+        overwrite $f1 $f2 "new_float"
+        overwrite $f1 $f2 "new_window"
+        overwrite $f1 $f2 "client.background"
+        overwrite $f1 $f2 "client.focused" # This is still bugged #
+        overwrite $f1 $f2 "client.unfocused"
+        overwrite $f1 $f2 "client.focused_inactive"
+        overwrite $f1 $f2 "client.urgent"
+        overwrite $f1 $f2 "client.placeholder"
       else
         msg -f "Failed to locate i3 configuration file in your configuration."
       fi
+
     else
 
       # If we are here then we failed to locate the ./i3/config file
@@ -398,26 +353,168 @@ then
 
 
 # --------------- End of ~/.i3/config  modification ---------------- #
+
+# ------------------ Polybar customization ------------------------- #
+    if [ -e "../../themes/$THEME/.config/polybar/config" ]
+    then
+      # Located the polybar configuration file in the theme directory
+      msg -s "Located .config/polybar/config file in the theme directory."
+
+      if [ -e "/$HOME/.config/polybar/config" ]
+      then
+        # Located the polybar configuration file in the user's directory
+        msg -s "Located ~/.config/polybar/config file."
+
+        f1=../../themes/$THEME/.config/polybar/config
+        f2=/$HOME/.config/polybar/config
+
+        # Copying the needed parts of the configuration
+        #overwrite $f1 $f2 "bottom"
+        #overwrite $f1 $f2 "height"
+        #overwrite $f1 $f2 "width"
+        #overwrite $f1 $f2 "offset-x"
+        #overwrite $f1 $f2 "offset-y"
+        overwrite $f1 $f2 "fixed-center"
+        overwrite $f1 $f2 "font-0"
+        overwrite $f1 $f2 "font-1"
+        overwrite $f1 $f2 "font-2"
+        overwrite $f1 $f2 "font-3"
+        overwrite $f1 $f2 "line-size"
+        overwrite $f1 $f2 "line-color"
+        overwrite $f1 $f2 "border-size"
+        overwrite $f1 $f2 "border-color"
+        overwrite $f1 $f2 "padding-left"
+        overwrite $f1 $f2 "padding-right"
+        overwrite $f1 $f2 "module-margin-left"
+        overwrite $f1 $f2 "module-margin-right"
+        overwrite $f1 $f2 "modules-right"
+        overwrite $f1 $f2 "modules-center"
+        overwrite $f1 $f2 "modules-left"
+        overwrite $f1 $f2 "tray-position"
+        overwrite $f1 $f2 "tray-padding"
+        overwrite $f1 $f2 "tray-transparent"
+        overwrite $f1 $f2 "tray-offset-x"
+        overwrite $f1 $f2 "tray-offset-y"
+        overwrite $f1 $f2 "tray-maxsize"
+        overwrite $f1 $f2 "tray-detached"
+        overwrite $f1 $f2 "tray-background"
+        overwrite $f1 $f2 "wm-restack"
+
+      else
+        # Failed to located user's polybar configuration file.
+        msg -f "Failed to locate ~/.config/polybar/config in your configuration"
+      fi
+
+
+    else
+      # If we are here that means that we failed to locate /.config/polybar/config
+      # in the theme directory. (Possibly bad indexing in the theme directory)
+      msg -f "Failed to locate polybar configuration file in the theme directory"
+    fi
+
+
+# --------------- End of Polybar customization --------------------- #
+
+# --------------------- dmenu customization ------------------------ #
+
+  if [ -e "../../themes/$THEME/Other/.dmenurc" ]
+  then
+    # Located the polybar configuration file in the theme directory
+    msg -s "Located .config/polybar/config file in the theme directory."
+
+    if [ -e "/$HOME/.dmenurc" ]
+    then
+      msg -s "Located ~/.dmenurc file."
+
+
+      f1=../../themes/$THEME/Other/.dmenurc
+      f2=/$HOME/.dmenurc
+
+      overwrite $f1 $f2 "DMENU_NF="
+      overwrite $f1 $f2 "DMENU_FN="
+      overwrite $f1 $f2 "DMENU_SB="
+      overwrite $f1 $f2 "DMENU_NB="
+      overwrite $f1 $f2 "DMENU_SF="
+
+    else
+      # Failed to locate dmenurc in user's directory
+      msg -f "Failed to locate ~/.dmenurc in your configuration"
+    fi
+
+  else
+    # Failed to locate the dmeny configuration file in theme directory
+    msg -f "Failed to locate dmenu configuration file in the theme directory"
+  fi
+
+# ---------------- end of dmeny customization ---------------------- #
+
+# ------------------- Compton configuration ------------------------ #
+
+  if [ -e "../../themes/$THEME/.config/compton.conf" ]
+  then
+    # Located the compton configuration file in the theme directory
+    msg -s "Located .config/compton.config file in the theme directory."
+
+    if [ -e "/$HOME/.config/compton.conf" ]
+    then
+      # Located user's compton configuration file in user's directory
+      msg -s "Located ~/.config/compton.conf file."
+
+
+      f1=../../themes/$THEME/.config/compton.conf
+      f2=/$HOME/.config/compton.conf
+
+      overwrite $f1 $f2 "shadow-radius"
+      overwrite $f1 $f2 "shadow-offset-x"
+      overwrite $f1 $f2 "shadow-offset-y"
+      overwrite $f1 $f2 "shadow-opacity"
+      overwrite $f1 $f2 "no-dock-shadow"
+
+    else
+      # Failed to locate compton configuration file in user's directory
+      msg -f "Failed to locate ~/.config/compton.conf in your configuration"
+    fi
+
+  else
+    # Failed to locate the compton configuration file in theme directory
+    msg -f "Failed to locate compton configuration file in the theme directory"
+  fi
+
+
+# --------------- end of compton configuration --------------------- #
+
+
+# -------- Last part, now we restart i3wm to apply changes---------- #
     msg -i "Restarting i3wm..."
     if ! i3-msg restart
     then
-      msg -s "Success!"
+      msg -i "Success!"
     else
       msg -f "Failed to restart i3wm."
     fi
 
+    msg -c "Almost done, please use your appearance manager to set the wallpaper and GTK/Icon themes"
+
   else
+
+    # In that case we failed to locate the theme directory, that means
+    # probably bad pathing in the theme directory.
     msg -f "Failed to locate theme directory."
     ext
   fi
 
 elif [ "$OPTION" == "-b" ]
 then
+  # Simple backup mode, copy all the files that are changes from the themer
+  # in case the user wants to come back to an old configuration.
   msg -n "You have entered backup mode."
 
 
 elif [ "$OPTION" == "-h" ]
 then
+  # Simple help prompt.
+  # Remember to update this every time something changes in the way
+  # That we call the script.
   msg -h "-t {THEME}                   ->  Set a theme."
   msg -h "        Example use: ./apply_theme.sh -t ThemeX"
   msg -h "-b {BACKUP_NAME}             ->  Create a backup of your files under"
@@ -427,10 +524,10 @@ then
   msg -h "        Example use: ./apply_theme.sh -t Backups/Backup123"
 
 else
+  # No valid option given while starting the themer.
   msg -e "ERROR: No valid arguement given"
 
 fi
 
+# Finished, time to call the exit function to leave the program.
 ext
-
-exit 0
