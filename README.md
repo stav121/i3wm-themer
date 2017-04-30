@@ -72,7 +72,7 @@ Backups are saved under ../backups/ directory.
 
   This will add the lines that are in /templates/ directory to your i3 and polybar configuration files.
 
-  DO NOT GO FURTHER IF THOSE CHANGES ARE NOT APPLIES CORRECTLY
+  DO NOT GO FURTHER IF THOSE CHANGES ARE NOT APPLIED CORRECTLY
 
   After that step you should have something like <a href="https://github.com/unix121/i3wm-themer/blob/master/templates/.i3/config">
   this</a> added to your i3 configuration file and something like <a href="https://github.com/unix121/i3wm-themer/blob/master/templates/.config/polybar/config">this</a> added under [colors] tag in
