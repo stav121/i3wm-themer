@@ -30,6 +30,26 @@ This script will overwrite only the needed parts from your configuration files
 in order to apply the basic visuals of any of the themes listed below.
 </ul>
 <ul>
+  <ul>Basic requirements:
+  This script is still hardcoded so you have to chack where your configuration
+  files are before you use it.
+  <li> i3 configuration file must be placed either under
+
+    ~/.i3/config or ~/.config/i3/config  
+
+</li><li>Polybar configuration file must be under
+
+  ~/.config/polybar/config
+
+</li><li>Compton configuration file must be under
+
+    ~/.config/compton.conf
+
+</li><li>.Xresources should be under
+
+    ~/.Xresources or ~/.extend.Xresources
+</li>    
+  </ul>
   <li> git clone https://github.com/unix121/i3wm-themes</li>
   <li> cd i3wm-themes/scripts/</li>
   <li> First backup your current configuration in case you want to come back:
@@ -81,6 +101,7 @@ appearance manager to apply the Icons and the GTK Themes.</li>
 <ul>
 <h3>Disclaimer</h3>
 The ways mentioned above overwrite some parts of your files, use them with caution. I am not responsible if anything happens to your computer. Normally if you follow the instructions step by step everything should be just fine, but unexpected things sometimes happen. The author is not responsible for any damage done.
+Also the script is still under development so any feedback/help would be much appreciated.
 </ul>
 
 </ul>
