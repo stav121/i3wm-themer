@@ -1,47 +1,74 @@
-<link rel="stylesheet" href="https://github.com/unix121/Themes/blob/master/style.css">
-  <h1>i3wm-themes</h1>
-  <ul>
-   My collection of themes for i3wm.
-
-  ![](https://github.com/unix121/i3wm-themes/blob/master/workflow/workflow.gif?raw=true)
-  </ul>
-
-  <h1>What you might need</h1>
-  <ul>
-    <li> i3-wm in any Linux distro you prefer</li>
-    <li> <a href="https://github.com/jaagr/polybar">Polybar</a> (for most of the themes)</li>
-    <li> <a href="https://davedavenport.github.io/rofi/">Rofi</a> (for most of the themes)</li>
-    <li> Firefox Themes can be installed using the "Stylish" extension</li>
-    <li> Most of the GTK Themes and Icons were created using <a href="https://github.com/actionless/oomox">oomox</a></li>
-  </ul>
-
-<h1>Installation</h1>
+<h1>i3wm-themes</h1>
 <ul>
-<ul>
+  My collection of themes for i3wm.
 
-<h3>Automated way</h3>
-  <ul>
+  ![](https://github.com/unix121/i3wm-themes/blob/master/workflow/workflow1.gif?raw=true)
+</ul>
+
+<h1>What you might need</h1>
+<ul>
+  <li> i3-wm in any Linux distro you prefer</li>
+  <li> <a href="https://github.com/jaagr/polybar">Polybar</a> (for most of the themes)</li>
+  <li> <a href="https://davedavenport.github.io/rofi/">Rofi</a> (for most of the themes)</li>
+  <li> <a href="https://wiki.archlinux.org/index.php/nitrogen">Nitrogen</a> (To set the wallpapers, can also be done manually)</li>
+  <li> Firefox Themes can be installed using the "Stylish" extension</li>
+  <li> Most of the GTK Themes and Icons were created using <a href="https://github.com/actionless/oomox">oomox</a></li>
+</ul>
+
+<ul>
+  All the necessary changes to your configuration files can be found under /templated_themes/{THEME}/ directory.
+  Copy what you like from every configuration.
+  Under /themes/{THEME}/ directory you can find my exact configuration files, but I do not recommend to copy them
+  directly once they contain my own keybindings and generally settings that might not be suitable for you,
+  but instead you can use the script below to apply the necessary parts from my configuration files
+  to your configuration files.
+</ul>
+
+<h1>How to use the scripts</h1>
+<ul>
+This script will overwrite only the needed parts from your configuration files
+in order to apply the basic visuals of any of the themes listed below.
+</ul>
+<ul>
   <li> git clone https://github.com/unix121/i3wm-themes</li>
   <li> cd i3wm-themes/scripts/</li>
   <li> First backup your current configuration in case you want to come back:
 
-      ./apply_theme -b {BACKUP_NAME}
+      ./i3wmthemer -b {BACKUP_NAME}
 
-Backups are saved under ../Backups/ directory.
+    Backups are saved under ../backups/ directory.
+  </li>
+
+  <li> Now need the run script into configuration mode (Only the first time you ever run the script):
+
+      ./i3wmthemer -c
+
+  This will add the lines that are in /templates/ directory to your i3 and polybar configuration files.
+
+  DO NOT GO FURTHER IF THOSE CHANGES ARE NOT APPLIES CORRECTLY
+
+  After that step you should have something like <a href="https://github.com/unix121/i3wm-themes/blob/master/templates/.i3/config">
+  this</a> added to your i3 configuration file and something like <a href="https://github.com/unix121/i3wm-themes/blob/master/templates/.config/polybar/config">this</a> added under [colors] tag in
+  your polybar configuration file.
+
+  If those changes are not applied then you might have to copy them manually.
+
+  Run this script only the first time you use this script just to setup your files.
+  It is not needed to run it every time you want to apply a theme, only the first time.
   </li>
   <li> Now apply the theme you want:
 
-    ./apply_theme.sh -t {THEME}
+    ./i3wmthemer -t {THEME}
 
 {THEME} should be the name of the theme you want to apply.
 
-Example on how to apply the "Minimal" theme:
+Example on how to apply the "Forest" theme:
 
-    ./apply_theme.sh -t Minimal
+    ./i3wmthemer -t Forest
  </li>
  <li> If you want to go back to a backup you can run the script like that:
 
-    ./apply_theme.sh -t ../backups/{BACKUP_NAME}
+    ./i3wmthemer -t ../backups/{BACKUP_NAME}
 
 {BACKUP_NAME} should be the same as the one given in the backup step above.
   </li>
@@ -49,27 +76,11 @@ Example on how to apply the "Minimal" theme:
 which is located in the {THEME} directory and also use your
 appearance manager to apply the Icons and the GTK Themes.</li>
   <li> NOTE: If you notice any bugs on the script feel free to contact me and I will address them</li>
-  </ul>
- <h3>Manual Way</h3> To copy the basic configuration of a theme follow those steps:
-  <ul>
-  <li> git clone https://github.com/unix121/i3wm-themes </li>
-  <li> Backup all the files listed below before replacing them with the theme version in case you want to go back later</li>
-  <li> cd i3wm-themes/themes/{THEME_YOU_WANT_TO_APPLY}/</li>
-  <li> cp .i3/config ~/.i3/config (or ~/.config/i3/config depending on your configuration file location)</li>
-  <li> cp .config/compton.conf ~/.config/compton.conf</li>
-  <li> cp .config/polybar/config ~/.config/polybar/config</li>
-  <li> cp ../scripts/polybar/launch.sh ~/.config/polybar/launch.sh</li>
-  <li> cp ../scripts/polybar/music.sh ~/.config/polybar/music.sh</li>
-  <li> cp .resources/.Xresources ~/.Xresources</li>
-  <li> cp .resources/.extend.Xresources ~/.extend.Xresources</li>
-  <li> cp -R ../.fonts/. ~/.fonts/</li>
-  <li> xrdb ~/.Xresources</li>
-  <li> i3-msg restart</li>
-  </ul>
+</ul>
 
 <ul>
 <h3>Disclaimer</h3>
-The ways mentioned above overwrite many of your files, use them with caution. I am not responsible if anything happens to your computer. Normally if you follow the instructions step by step everything should be just fine, but unexpected things sometimes happen. The author is not responsible for any damage done.
+The ways mentioned above overwrite some parts of your files, use them with caution. I am not responsible if anything happens to your computer. Normally if you follow the instructions step by step everything should be just fine, but unexpected things sometimes happen. The author is not responsible for any damage done.
 </ul>
 
 </ul>
@@ -77,6 +88,12 @@ The ways mentioned above overwrite many of your files, use them with caution. I 
 <h1>Themes</h1>
 
 <ul>
+  <li><h2>Sky</h2>
+    <img src="http://i.imgur.com/mFbVgTf.png">
+    <a href="http://imgur.com/a/p2ziB">(More can be found here)</a></li>
+  <li><h2>Forest</h2>
+    <img src="http://i.imgur.com/1WafFRk.png">
+    <a href="http://imgur.com/a/SuKKf">(More can be found here)</a></li>
   <li><h2>Water</h2>
     <img src="http://i.imgur.com/z3rliuz.png">
     <a href="http://imgur.com/a/PVCKq">(More can be found here)</a></li>

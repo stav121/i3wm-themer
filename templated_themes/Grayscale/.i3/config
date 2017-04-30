@@ -1,0 +1,31 @@
+new_window pixel 1
+new_float pixel 1
+
+hide_edge_borders none
+
+set_from_resource	  $background_i3wmthemer	background
+set_from_resource	  $foreground_i3wmthemer	foreground
+set_from_resource	  $color00_i3wmthemer		  color0
+set_from_resource 	$color01_i3wmthemer 	    color1
+set_from_resource 	$color02_i3wmthemer 	    color2
+set_from_resource 	$color03_i3wmthemer 	    color3
+set_from_resource 	$color04_i3wmthemer 	    color4
+set_from_resource 	$color05_i3wmthemer 	    color5
+set_from_resource 	$color06_i3wmthemer		  color6
+set_from_resource	  $color07_i3wmthemer		  color7
+set_from_resource	  $color08_i3wmthemer		  color8
+set_from_resource	  $color09_i3wmthemer		  color9
+set_from_resource	  $color10_i3wmthemer	    color10
+set_from_resource	  $color11_i3wmthemer	    color11
+set_from_resource	  $color12_i3wmthemer	    color12
+set_from_resource	  $color13_i3wmthemer	    color13
+set_from_resource	  $color14_i3wmthemer	    color14
+set_from_resource	  $color15_i3wmthemer	    color15
+
+client.background	$background_i3wmthemer
+
+client.focused         	$foreground_i3wmthemer	$background_i3wmthemer	$foreground_i3wmthemer	$color07_i3wmthemer		  $color07_i3wmthemer
+client.unfocused       	$foreground_i3wmthemer	$background_i3wmthemer	$foreground_i3wmthemer	$background_i3wmthemer	$background_i3wmthemer
+client.focused_inactive	$foreground_i3wmthemer	$background_i3wmthemer	$foreground_i3wmthemer	$background_i3wmthemer	$background_i3wmthemer
+client.urgent		        $foreground_i3wmthemer	$background_i3wmthemer	$foreground_i3wmthemer	$background_i3wmthemer	$background_i3wmthemer
+client.placeholder	    $foreground_i3wmthemer	$background_i3wmthemer	$foreground_i3wmthemer	$background_i3wmthemer	$background_i3wmthemer

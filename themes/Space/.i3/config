@@ -314,7 +314,7 @@ set_from_resource	$color13	color13
 set_from_resource	$color14	color14
 set_from_resource	$color15	color15
 
-# Polybar launch script (located ~/.config/polybar/launch.sh) 
+# Polybar launch script (located ~/.config/polybar/launch.sh)
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
@@ -326,11 +326,11 @@ bindsym $mod+m bar mode toggle
 # My colors
 client.background	$background
 
-client.focused         	$foreground	$background	$foreground	$foreground		$foreground	
-client.unfocused       	$foreground	$background	$foreground	$color8		$color8
-client.focused_inactive	$foreground	$background	$foreground	$color8		$color8
-client.urgent		$foreground	$background	$foreground	$color8		$color8
-client.placeholder	$foreground	$background	$foreground	$color8		$color8
+client.focused         	$foreground	$background	$foreground	$foreground		$foreground
+client.unfocused       	$foreground	$background	$foreground	$color8		    $color8
+client.focused_inactive	$foreground	$background	$foreground	$color8		    $color8
+client.urgent		        $foreground	$background	$foreground	$color8		    $color8
+client.placeholder	    $foreground	$background	$foreground	$color8		    $color8
 
 
 #############################
@@ -349,7 +349,7 @@ gaps outer 8
 # Smart gaps (gaps used if only more than one container on the workspace)
 #smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 #smart_borders on
 

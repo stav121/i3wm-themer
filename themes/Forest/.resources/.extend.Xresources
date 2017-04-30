@@ -1,0 +1,71 @@
+*.foreground:   #cfd2cf
+*.background:   #2f2f38
+*.cursorColor:  #cfd2cf
+
+*.color0:       #34343e
+*.color8:       #b0c4bb
+*.color1:       #9aafaa
+*.color9:       #9aafaa
+*.color2:       #759496
+*.color10:      #759496
+*.color3:       #93b3b0
+*.color11:      #93b3b0
+*.color4:       #688486
+*.color12:      #688486
+*.color5:       #668ca1
+*.color13:      #668ca1
+*.color6:       #759496
+*.color14:      #759496
+*.color7:       #b0c4bb
+*.color15:      #b0c4bb
+
+
+*fading:                15
+*fadeColor:             black
+*pointerColorBackground:#2B2C2B
+*pointerColorForeground:#16A085
+
+Xcursor.theme: Maia-Cursor
+Xcursor.size:  0
+
+XTerm*background: #6aa7a5
+XTerm*foreground: #6aa7a5
+XTerm*reverseVideo: on
+!XTerm*faceName: Terminus:size=11:antialias=true
+!XTerm*faceName: InconsolataRegular:size=11:antialias=true
+XTerm*faceName: HackRegular:size=11:antialias=true
+XTerm*selectToClipboard: true
+
+! URxvt SETUP HERE !
+URxvt.internalBorder: 6
+URxvt.font: xft:monofur:size=12
+URxvt.geometry: 80x20
+URxvt.depth: 32
+URxvt.background:	[100]#2f2f38
+URxvt*scrollBar:                      false
+URxvt*mouseWheelScrollPage:           false
+URxvt*cursorBlink:                    true
+URxvt*foreground: 		                #cfd2cf
+URxvt*cursorColor:		                #cfd2cf
+URxvt*saveLines:                      5000
+
+! ROFI SETUP HERE !
+
+! Enable the extended coloring options
+rofi.color-enabled: true
+!                  bg       border   separator
+rofi.color-window: #2f2f38, #688486, #688486
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #2f2f38, #688486, #2f2f38, #2f2f38, #cfd2cf
+rofi.color-active: #2f2f38, #688486, #2f2f38, #2f2f38, #cfd2cf
+rofi.color-urgent: #2f2f38, #688486, #2f2f38, #2f2f38, #cfd2cf
+
+rofi.separator-style: solid
+rofi.sidebar-mode: false
+rofi.lines: 5
+rofi.font: monofur 13
+rofi.bw: 1
+rofi.columns: 2
+rofi.padding: 5
+rofi.fixed-num-lines: true
+rofi.hide-scrollbar: true
