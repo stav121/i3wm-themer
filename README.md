@@ -30,19 +30,19 @@ This script is still hardcoded so you have to check where your configuration
 files are before you use it.
 <li> i3 configuration file must be placed either under
 
-  ~/.i3/config or ~/.config/i3/config  
+      ~/.i3/config or ~/.config/i3/config  
 
 </li><li>Polybar configuration file must be under
 
-~/.config/polybar/config
+      ~/.config/polybar/config
 
 </li><li>Compton configuration file must be under
 
-  ~/.config/compton.conf
+      ~/.config/compton.conf
 
 </li><li>.Xresources should be under
 
-  ~/.Xresources or ~/.extend.Xresources
+      ~/.Xresources or ~/.extend.Xresources
 
 </li><li>dmenu configuration file should be under
 
@@ -63,7 +63,7 @@ in order to apply the basic visuals of any of the themes listed below.
 
       ./i3wmthemer -b {BACKUP_NAME}
 
-    Backups are saved under ../backups/ directory.
+Backups are saved under ../backups/ directory.
   </li>
 
   <li> Now need the run script into configuration mode (Only the first time you ever run the script):
