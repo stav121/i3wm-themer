@@ -1,4 +1,4 @@
-<h1>i3wm-themes</h1>
+<h1>i3wm-themer</h1>
 <ul>
   My collection of themes for i3wm.
 
