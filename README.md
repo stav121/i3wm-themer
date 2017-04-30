@@ -24,32 +24,39 @@
   to your configuration files.
 </ul>
 
+<h3>Basic requirements (for the script)</h3>
+<ul>
+This script is still hardcoded so you have to check where your configuration
+files are before you use it.
+<li> i3 configuration file must be placed either under
+
+  ~/.i3/config or ~/.config/i3/config  
+
+</li><li>Polybar configuration file must be under
+
+~/.config/polybar/config
+
+</li><li>Compton configuration file must be under
+
+  ~/.config/compton.conf
+
+</li><li>.Xresources should be under
+
+  ~/.Xresources or ~/.extend.Xresources
+
+</li><li>dmenu configuration file should be under
+
+      ~/.dmenurc
+</li>
+</ul>
+
 <h1>How to use the scripts</h1>
 <ul>
 This script will overwrite only the needed parts from your configuration files
 in order to apply the basic visuals of any of the themes listed below.
 </ul>
 <ul>
-  <ul>Basic requirements:
-  This script is still hardcoded so you have to chack where your configuration
-  files are before you use it.
-  <li> i3 configuration file must be placed either under
 
-    ~/.i3/config or ~/.config/i3/config  
-
-</li><li>Polybar configuration file must be under
-
-  ~/.config/polybar/config
-
-</li><li>Compton configuration file must be under
-
-    ~/.config/compton.conf
-
-</li><li>.Xresources should be under
-
-    ~/.Xresources or ~/.extend.Xresources
-</li>    
-  </ul>
   <li> git clone https://github.com/unix121/i3wm-themes</li>
   <li> cd i3wm-themes/scripts/</li>
   <li> First backup your current configuration in case you want to come back:
