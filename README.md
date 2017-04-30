@@ -2,7 +2,7 @@
 <ul>
   My collection of themes for i3wm.
 
-  ![](https://github.com/unix121/i3wm-themes/blob/master/workflow/workflow1.gif?raw=true)
+  ![](https://github.com/unix121/i3wm-themer/blob/master/workflow/workflow1.gif?raw=true)
 </ul>
 
 <h1>What you might need</h1>
@@ -57,8 +57,8 @@ in order to apply the basic visuals of any of the themes listed below.
 </ul>
 <ul>
 
-  <li> git clone https://github.com/unix121/i3wm-themes</li>
-  <li> cd i3wm-themes/scripts/</li>
+  <li> git clone https://github.com/unix121/i3wm-themer</li>
+  <li> cd i3wm-themer/scripts/</li>
   <li> First backup your current configuration in case you want to come back:
 
       ./i3wmthemer -b {BACKUP_NAME}
@@ -74,8 +74,8 @@ Backups are saved under ../backups/ directory.
 
   DO NOT GO FURTHER IF THOSE CHANGES ARE NOT APPLIES CORRECTLY
 
-  After that step you should have something like <a href="https://github.com/unix121/i3wm-themes/blob/master/templates/.i3/config">
-  this</a> added to your i3 configuration file and something like <a href="https://github.com/unix121/i3wm-themes/blob/master/templates/.config/polybar/config">this</a> added under [colors] tag in
+  After that step you should have something like <a href="https://github.com/unix121/i3wm-themer/blob/master/templates/.i3/config">
+  this</a> added to your i3 configuration file and something like <a href="https://github.com/unix121/i3wm-themer/blob/master/templates/.config/polybar/config">this</a> added under [colors] tag in
   your polybar configuration file.
 
   If those changes are not applied then you might have to copy them manually.
