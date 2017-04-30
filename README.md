@@ -121,7 +121,7 @@ The ways mentioned above overwrite some parts of your files, use them with cauti
   <li><h2>Grayscale</h2>
     <img src="http://i.imgur.com/K0uT5ua.png">
     <a href="http://imgur.com/gallery/1TYFd">(More can be found here)</a></li>
-  <li><h2>Sea</h2>
+  <li><h2>Sea</h2>(Cannot be set via the script yet)
     <img src="http://i.imgur.com/yapFCCe.png">
     <a href="http://imgur.com/a/3BsTW">(More can be found here)</a></li>
 </ul>
