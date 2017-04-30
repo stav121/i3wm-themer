@@ -779,7 +779,7 @@ then
 # <--------------- end of compton configuration ---------------------> #
 
 # <----------------- Change the background using nitrogen ------------> #
-    if  nitrogen --set-scaled ..//themes/$THEME/$THEME.png
+    if  nitrogen --set-scaled ../templated_themes/$THEME/$THEME.png
     then
       msg -s 'Wallpaper set successfully'
     else
