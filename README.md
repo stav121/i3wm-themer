@@ -48,6 +48,10 @@ files are before you use it.
 
       ~/.dmenurc
 </li>
+</li>You will still have to make some changes "by hand" even after using the script
+once it's still under development and doesn't change everything on it's own.
+</li>
+<li>For common issues check the issues section in the repository</li> 
 </ul>
 
 <h1>How to use the scripts</h1>

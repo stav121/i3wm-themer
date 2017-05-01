@@ -158,6 +158,51 @@ overwrite(){
 
 }
 
+# Added as a fast fix on the issue that the script would not
+# Replace background and foreground in the polybar configuration
+# Needs further improvements.
+overwrite_exact(){
+
+  local f1=$1
+  local f2=$2
+  local l=$3
+
+  if local line1=$(cat $f1 | grep -w "^$l")
+  then
+    if [ ! -z "$line1" ]
+    then
+      #echo $line1
+      if local line2=$(cat $f2 | grep -w "^$l")
+      then
+        if [ ! -z "$line2" ]
+        then
+          #echo $line2
+
+          #line=$( grep -w "$line2" $f2 )
+          #replacement=$line1
+          #echo $replacement
+
+          if ! sed -i "s/$line2/$line1/g" $f2
+          then
+            msg -f "Failed to apply change: Overwrite "$l" ."
+          else
+            msg -s "Applied change: Overwrite "$l" ."
+          fi
+        else
+          msg -f "Failed to apply change: Overwrite "$l" ."
+        fi
+      else
+      msg -f "Failed to apply change: Overwrite "$l" ."
+      fi
+    else
+      msg -f "Failed to apply change: Overwrite "$l" ."
+    fi
+  else
+    msg -f "Failed to apply change: Overwrite "$l" ."
+  fi
+
+}
+
 configure(){
   # This script will add the necessary lines to the configuration
   # Files in order to make those themes work.
@@ -699,6 +744,8 @@ then
         overwrite $f1 $f2 "tray-detached"
         overwrite $f1 $f2 "tray-background"
         overwrite $f1 $f2 "wm-restack"
+        overwrite_exact $f1 $f2 "background"
+        overwrite_exact $f1 $f2 "foreground"
 
       else
         # Failed to located user's polybar configuration file.
