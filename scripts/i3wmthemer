@@ -16,34 +16,30 @@
 # Before you start improving it make sure that you have the latest version
 # of the script, this script is updated frequently.
 #
-# Last update: 1 May 2017
+# Last update: 2 May 2017
 #
 # Here is a list of the things that
 # need addressing :
 #
 # TODO List:
 # 1 - Overwrite only the colors from ~/.extend.Xresources ( or ~/.Xresources)
-#     [Almost done] Need to add rofi [DONE] - Nothing new to add (yet).
-# 2 - Overwrite only the colors from ~/.i3/config [Almost done] - See [KNOWN
-#     ISSUES AT THE MOMENT] section. [FIXED]
+#     Need to add rofi [DONE] - Nothing new to add (yet).
+# 2 - Overwrite only the colors from ~/.i3/config [ DONE] -
 # 3 - Overwrite only the shadows and opacity from ~/.config/compton.config [DONE]
 # 4 - Overwrite only the needed parts of ~/.config/polybar/config [Almost DONE]
 # 5 - Overwrite only the frame/background/foreground of ~/.config/dunst/dunstrc
-#
-# 6 - Overwrite only the background/foregrounds of ~/.dmenurc [DONE]
+# 6 - Overwrite only the background/foregrounds/textcolors of ~/.dmenurc [DONE]
 # 7 - Overwrite only the colorscheme from ~/.vmric
 # 8 - Overwrite only the Icon Pack / GTK Theme from ~/.xsettingsd
 # 9 - (Last part after the things above have been addressed) - No more hardcoding
 #
 # KNOWN ISSUES AT THE MOMENT:
-# -> About TODO List Task 2:
-#    It replaces all the "client." but not the "client.focused". [FIXED]
+# [EMPTY]
 #
 # The list above will be updated every time something changes or something new
 # needs to be added. Feel free to recommend new features.
 #
-# Lastly,this is the "unstable" version of the script, there is "stable" version
-# under "scripts" directory of this repository named "i3wmthemer".
+# Lastly,this script is under development so please take care while using it.
 
 # If you decide to change this script and use it please make sure you credited
 # the author(s) and contributor(s) listed below.
@@ -116,44 +112,44 @@ ext(){
   exit 0
 }
 
-# Sed function
+# Function to overwrite files based on line numbers.
 overwrite(){
 
-  local f1=$1
-  local f2=$2
-  local l=$3
+  local file1=$1
+  local file2=$2
+  local replacement=$3
 
-  if local line1=$(cat $f1 | fgrep -w $l)
+  if local templine=$(cat $file1 | fgrep -w $replacement)
   then
-    if [ ! -z "$line1" ]
+    if [ ! -z "$templine" ]
     then
-      if local line2=$(cat $f2 | fgrep -w $l)
+      if local userline=$(cat $file2 | fgrep -w $replacement)
       then
-        if [ ! -z "$line2" ]
+        if [ ! -z "$userline" ]
         then
 
-          line=$( fgrep -n $l $f2 | cut -d':' -f1 )
-          #line=$( grep -w $l $f2 | cut -d':' -f1 )
-          #line=$(awk "/$l/{print NR}" $f2)
-          replacement=$line1
+          line=$( fgrep -n $replacement $file2 | cut -d':' -f1 )
+          #line=$( grep -w $replacement $file2 | cut -d':' -f1 )
+          #line=$(awk "/$replacement/{print NR}" $file2)
+          replacement=$templine
 
-          if ! sed -i "${line}s/.*/$replacement/" $f2
+          if ! sed -i "${line}s/.*/$replacement/" $file2
           then
-            msg -f "Failed to apply change: Overwrite "$l" ."
+            msg -f "Failed to apply change: Overwrite "$replacement" ."
           else
-            msg -s "Applied change: Overwrite "$l" ."
+            msg -s "Applied change: Overwrite "$replacement" ."
           fi
         else
-          msg -f "Failed to apply change: Overwrite "$l" ."
+          msg -f "Failed to apply change: Overwrite "$replacement" ."
         fi
       else
-      msg -f "Failed to apply change: Overwrite "$l" ."
+      msg -f "Failed to apply change: Overwrite "$replacement" ."
       fi
     else
-      msg -f "Failed to apply change: Overwrite "$l" ."
+      msg -f "Failed to apply change: Overwrite "$replacement" ."
     fi
   else
-    msg -f "Failed to apply change: Overwrite "$l" ."
+    msg -f "Failed to apply change: Overwrite "$replacement" ."
   fi
 
 }
@@ -163,42 +159,35 @@ overwrite(){
 # Needs further improvements.
 overwrite_exact(){
 
-  local f1=$1
-  local f2=$2
-  local l=$3
+  local file1=$1
+  local file2=$2
+  local replacement=$3
 
-  if local line1=$(cat $f1 | grep -w "^$l")
+  if local templine=$(cat $file1 | grep -w "^$replacement")
   then
-    if [ ! -z "$line1" ]
+    if [ ! -z "$templine" ]
     then
-      #echo $line1
-      if local line2=$(cat $f2 | grep -w "^$l")
+      if local userline=$(cat $file2 | grep -w "^$replacement")
       then
-        if [ ! -z "$line2" ]
+        if [ ! -z "$userline" ]
         then
-          #echo $line2
-
-          #line=$( grep -w "$line2" $f2 )
-          #replacement=$line1
-          #echo $replacement
-
-          if ! sed -i "s/$line2/$line1/g" $f2
+          if ! sed -i "s/$userline/$templine/g" $file2
           then
-            msg -f "Failed to apply change: Overwrite "$l" ."
+            msg -f "Failed to apply change: Overwrite "$replacement" ."
           else
-            msg -s "Applied change: Overwrite "$l" ."
+            msg -s "Applied change: Overwrite "$replacement" ."
           fi
         else
-          msg -f "Failed to apply change: Overwrite "$l" ."
+          msg -f "Failed to apply change: Overwrite "$replacement" ."
         fi
       else
-      msg -f "Failed to apply change: Overwrite "$l" ."
+      msg -f "Failed to apply change: Overwrite "$replacement" ."
       fi
     else
-      msg -f "Failed to apply change: Overwrite "$l" ."
+      msg -f "Failed to apply change: Overwrite "$replacement" ."
     fi
   else
-    msg -f "Failed to apply change: Overwrite "$l" ."
+    msg -f "Failed to apply change: Overwrite "$replacement" ."
   fi
 
 }
@@ -214,14 +203,14 @@ configure(){
   then
 
     msg -s "Located the i3 template file in the template directory."
-    i3tempath=..//templates/.i3/config
+    i3tempath=../templates/.i3/config
 
     flag1=0
-    if [ -e "/$HOME/.i3/config" ]
+    if [ -e "$HOME/.i3/config" ]
     then
       flag1=1
       i3path=$HOME/.i3/config
-    elif [ -e "/$HOME/.config/i3/config" ]
+    elif [ -e "$HOME/.config/i3/config" ]
     then
       flag1=1
       i3path=$HOME/.config/i3/config
@@ -306,7 +295,7 @@ configure(){
 
 # < -------------------- Polybar configuration -----------------------> #
 
-  if [ -e "..//templates/.config/polybar/config" ]
+  if [ -e "../templates/.config/polybar/config" ]
   then
     msg -s "Located Polybar configuration template in template directory."
     polytempath=..//templates/.config/polybar/config
@@ -443,11 +432,11 @@ then
     msg -i "Located the theme directory."
 
   # < -------------- Copy the fonts into the system --------------->
-    if [ -d "..//.fonts" ]
+    if [ -d "../.fonts" ]
     then
       if [ -d "/$HOME/.fonts/" ]
        then
-        if cp -R ..//.fonts/. ~/.fonts/
+        if cp -R ../.fonts/. ~/.fonts/
         then
           msg -s 'Fonts are set up successfully'
         else
@@ -458,7 +447,7 @@ then
         if mkdir ~/.fonts/
         then
           msg -s '~/.fonts/ directory created successfully'
-          if cp -R ..//.fonts/. ~/.fonts/
+          if cp -R ../.fonts/. ~/.fonts/
           then
             msg -s 'Fonts migration completed successfully'
           else
@@ -539,23 +528,36 @@ then
     # Locating the extend.Xresources files.
     if [ -e "../templated_themes/$THEME/.resources/.extend.Xresources" ]
     then
+      # We have found the Resources file from the templated themes.
       msg -i "Located .extend.Xresources file in theme the directory."
-      if [ -e "/$HOME/.extend.Xresources" ]
+
+      resourcestempfile=../templated_themes/$THEME/.resources/.extend.Xresources
+      FLAG=0
+
+      # Locating the user's resources file.
+      if [ -e "$HOME/.extend.Xresources" ]
       then
         msg -i "Located ~/.extend.Xresources file."
-
+        resourcesfile=$HOME/.extend.Xresources
         FLAG=1
+      elif [ -e "$HOME/.Xresources" ]
+      then
+        resourcesfile=$HOME/.Xresources
+        msg -i "Located ~/.Xresources file."
+        FLAG=1
+      fi
 
-        f1=../templated_themes/$THEME/.resources/.extend.Xresources
-        f2=/$HOME/.extend.Xresources
-
-        overwrite $f1 $f2 "*.background:"
-        overwrite $f1 $f2 "*.foreground:"
-        overwrite $f1 $f2 "*.cursorColor:"
-        overwrite $f1 $f2 "URxvt.background"
-        overwrite $f1 $f2 "URxvt*foreground"
-        overwrite $f1 $f2 "URxvt*cursorColor"
-        overwrite $f1 $f2 "URxvt.font"
+      if [ $FLAG -eq 1 ]
+      then
+        # If we are here then we have found the user's resources file
+        # and it's time to apply the changes
+        overwrite $resourcestempfile $resourcesfile "*.background:"
+        overwrite $resourcestempfile $resourcesfile "*.foreground:"
+        overwrite $resourcestempfile $resourcesfile "*.cursorColor:"
+        overwrite $resourcestempfile $resourcesfile "URxvt.background"
+        overwrite $resourcestempfile $resourcesfile "URxvt*foreground"
+        overwrite $resourcestempfile $resourcesfile "URxvt*cursorColor"
+        overwrite $resourcestempfile $resourcesfile "URxvt.font"
 
         for i in {0..15}
         do
@@ -564,65 +566,24 @@ then
           b=$a$i
           c=":"
           d=$b$c
-          overwrite $f1 $f2 $d
+          overwrite $resourcestempfile $resourcesfile $d
         done
 
         #<------- Rofi Customization ------>
 
-        overwrite $f1 $f2 "rofi.color-enabled"
-        overwrite $f1 $f2 "rofi.color-window"
-        overwrite $f1 $f2 "rofi.color-normal"
-        overwrite $f1 $f2 "rofi.color-active"
-        overwrite $f1 $f2 "rofi.color-urgent"
-        overwrite $f1 $f2 "rofi.font"
+        overwrite $resourcestempfile $resourcesfile "rofi.color-enabled"
+        overwrite $resourcestempfile $resourcesfile "rofi.color-window"
+        overwrite $resourcestempfile $resourcesfile "rofi.color-normal"
+        overwrite $resourcestempfile $resourcesfile "rofi.color-active"
+        overwrite $resourcestempfile $resourcesfile "rofi.color-urgent"
+        overwrite $resourcestempfile $resourcesfile "rofi.font"
 
         #<--- End of Rofi Customization ---->
 
         msg -i "Finished editing ~/.extend.Xresources file."
 
-      elif [ -e "/$HOME/.Xresources" ]
-      then
-        msg -i "Located ~/.extend.Xresources file."
-
-        FLAG=1
-
-        f1=../templated_themes/$THEME/.resources/.extend.Xresources
-        f2=/$HOME/.Xresources
-
-        overwrite $f1 $f2 "*.background:"
-        overwrite $f1 $f2 "*.foreground:"
-        overwrite $f1 $f2 "*.cursorColor:"
-        overwrite $f1 $f2 "URxvt.background"
-        overwrite $f1 $f2 "URxvt*foreground"
-        overwrite $f1 $f2 "URxvt*cursorColor"
-        overwrite $f1 $f2 "URxvt.font"
-
-        for i in {0..15}
-        do
-          # Constructing our strings
-          a="*.color"
-          b=$a$i
-          c=":"
-          d=$b$c
-          overwrite $f1 $f2 $d
-        done
-
-        #<------- Rofi Customization ------>
-
-        overwrite $f1 $f2 "rofi.color-enabled"
-        overwrite $f1 $f2 "rofi.color-window"
-        overwrite $f1 $f2 "rofi.color-normal"
-        overwrite $f1 $f2 "rofi.color-active"
-        overwrite $f1 $f2 "rofi.color-urgent"
-        overwrite $f1 $f2 "rofi.font"
-
-        #<--- End of Rofi Customization ---->
-
-        msg -i "Finished editing ~/.Xresources file."
-
-      else
-        msg -f "Failed to locate Xresources file."
       fi
+
     else
       msg -f "Failed to locate .extend.Xresources file in the theme directory."
     fi
@@ -646,46 +607,40 @@ then
     # Locating the ~/.i3/config file in the theme directory
     if [ -e "../templated_themes/$THEME/.i3/config" ]
     then
+      # If we are here then we have located the i3 configuration file
+      # in the themplated theme's folder
       msg -s "Located .i3/config file in the theme directory."
 
-      # Now we locate ~/.i3/config
-      if [ -e "/$HOME/.i3/config" ]
+      i3tempfile=../templated_themes/$THEME/.i3/config
+
+      FLAG=0
+
+      # Now we locate the user's i3 configuration file
+      if [ -e "$HOME/.i3/config" ]
       then
         msg -s "Located ~/.i3/config file."
-
-        f1=../templated_themes/$THEME/.i3/config
-        f2=/$HOME/.i3/config
-
-        overwrite $f1 $f2 "new_window"
-        overwrite $f1 $f2 "new_float"
-        overwrite $f1 $f2 "new_window"
-        overwrite $f1 $f2 "client.background"
-        overwrite_exact $f1 $f2 "client.focused"
-        overwrite $f1 $f2 "client.unfocused"
-        overwrite $f1 $f2 "client.focused_inactive"
-        overwrite $f1 $f2 "client.urgent"
-        overwrite $f1 $f2 "client.placeholder"
-
-
-
-      elif [ -e "/$HOME/.config/i3/config" ]
+        i3file=$HOME/.i3/config
+        FLAG=1
+      elif [ -e "$HOME/.config/i3/config" ]
       then
         msg -s "Located ~/.config/i3/config file."
+        i3file=$HOME/.i3/config
+        FLAG=1
+      fi
 
-        f1=../templated_themes/$THEME/.i3/config
-        f2=/$HOME/.i3/config
+      if [ $FLAG -eq 1 ]
+      then
+        # Apply the changes
+        overwrite $i3tempfile $i3file "new_window"
+        overwrite $i3tempfile $i3file "new_float"
+        overwrite $i3tempfile $i3file "new_window"
+        overwrite $i3tempfile $i3file "client.background"
+        overwrite_exact $i3tempfile $i3file "client.focused"
+        overwrite $i3tempfile $i3file "client.unfocused"
+        overwrite $i3tempfile $i3file "client.focused_inactive"
+        overwrite $i3tempfile $i3file "client.urgent"
+        overwrite $i3tempfile $i3file "client.placeholder"
 
-        overwrite $f1 $f2 "new_window"
-        overwrite $f1 $f2 "new_float"
-        overwrite $f1 $f2 "new_window"
-        overwrite $f1 $f2 "client.background"
-        overwrite_exact $f1 $f2 "client.focused" # This is still bugged #
-        overwrite $f1 $f2 "client.unfocused"
-        overwrite $f1 $f2 "client.focused_inactive"
-        overwrite $f1 $f2 "client.urgent"
-        overwrite $f1 $f2 "client.placeholder"
-      else
-        msg -f "Failed to locate i3 configuration file in your configuration."
       fi
 
     else
@@ -710,42 +665,42 @@ then
         # Located the polybar configuration file in the user's directory
         msg -s "Located ~/.config/polybar/config file."
 
-        f1=../templated_themes/$THEME/.config/polybar/config
-        f2=/$HOME/.config/polybar/config
+        polybartempfile=../templated_themes/$THEME/.config/polybar/config
+        polybarfile=/$HOME/.config/polybar/config
 
         # Copying the needed parts of the configuration
-        #overwrite $f1 $f2 "bottom"
-        #overwrite $f1 $f2 "height"
-        #overwrite $f1 $f2 "width"
-        #overwrite $f1 $f2 "offset-x"
-        #overwrite $f1 $f2 "offset-y"
-        overwrite $f1 $f2 "fixed-center"
-        overwrite $f1 $f2 "font-0"
-        overwrite $f1 $f2 "font-1"
-        overwrite $f1 $f2 "font-2"
-        overwrite $f1 $f2 "font-3"
-        overwrite $f1 $f2 "line-size"
-        overwrite $f1 $f2 "line-color"
-        overwrite $f1 $f2 "border-size"
-        overwrite $f1 $f2 "border-color"
-        overwrite $f1 $f2 "padding-left"
-        overwrite $f1 $f2 "padding-right"
-        overwrite $f1 $f2 "module-margin-left"
-        overwrite $f1 $f2 "module-margin-right"
-        #overwrite $f1 $f2 "modules-right"
-        #overwrite $f1 $f2 "modules-center"
-        #overwrite $f1 $f2 "modules-left"
-        overwrite $f1 $f2 "tray-position"
-        overwrite $f1 $f2 "tray-padding"
-        overwrite $f1 $f2 "tray-transparent"
-        overwrite $f1 $f2 "tray-offset-x"
-        overwrite $f1 $f2 "tray-offset-y"
-        overwrite $f1 $f2 "tray-maxsize"
-        overwrite $f1 $f2 "tray-detached"
-        overwrite $f1 $f2 "tray-background"
-        overwrite $f1 $f2 "wm-restack"
-        overwrite_exact $f1 $f2 "background"
-        overwrite_exact $f1 $f2 "foreground"
+        #overwrite $polybartempfile $polybarfile "bottom"
+        #overwrite $polybartempfile $polybarfile "height"
+        #overwrite $polybartempfile $polybarfile "width"
+        #overwrite $polybartempfile $polybarfile "offset-x"
+        #overwrite $polybartempfile $polybarfile "offset-y"
+        overwrite $polybartempfile $polybarfile "fixed-center"
+        overwrite $polybartempfile $polybarfile "font-0"
+        overwrite $polybartempfile $polybarfile "font-1"
+        overwrite $polybartempfile $polybarfile "font-2"
+        overwrite $polybartempfile $polybarfile "font-3"
+        overwrite $polybartempfile $polybarfile "line-size"
+        overwrite $polybartempfile $polybarfile "line-color"
+        overwrite $polybartempfile $polybarfile "border-size"
+        overwrite $polybartempfile $polybarfile "border-color"
+        overwrite $polybartempfile $polybarfile "padding-left"
+        overwrite $polybartempfile $polybarfile "padding-right"
+        overwrite $polybartempfile $polybarfile "module-margin-left"
+        overwrite $polybartempfile $polybarfile "module-margin-right"
+        #overwrite $polybartempfile $polybarfile "modules-right"
+        #overwrite $polybartempfile $polybarfile "modules-center"
+        #overwrite $polybartempfile $polybarfile "modules-left"
+        overwrite $polybartempfile $polybarfile "tray-position"
+        overwrite $polybartempfile $polybarfile "tray-padding"
+        overwrite $polybartempfile $polybarfile "tray-transparent"
+        overwrite $polybartempfile $polybarfile "tray-offset-x"
+        overwrite $polybartempfile $polybarfile "tray-offset-y"
+        overwrite $polybartempfile $polybarfile "tray-maxsize"
+        overwrite $polybartempfile $polybarfile "tray-detached"
+        overwrite $polybartempfile $polybarfile "tray-background"
+        overwrite $polybartempfile $polybarfile "wm-restack"
+        overwrite_exact $polybartempfile $polybarfile "background"
+        overwrite_exact $polybartempfile $polybarfile "foreground"
 
       else
         # Failed to located user's polybar configuration file.
@@ -774,14 +729,14 @@ then
       msg -s "Located ~/.dmenurc file."
 
 
-      f1=../templated_themes/$THEME/Other/.dmenurc
-      f2=/$HOME/.dmenurc
+      dmenutempfile=../templated_themes/$THEME/Other/.dmenurc
+      dmenufile=/$HOME/.dmenurc
 
-      overwrite $f1 $f2 "DMENU_NF="
-      overwrite $f1 $f2 "DMENU_FN="
-      overwrite $f1 $f2 "DMENU_SB="
-      overwrite $f1 $f2 "DMENU_NB="
-      overwrite $f1 $f2 "DMENU_SF="
+      overwrite $dmenutempfile $dmenufile "DMENU_NF="
+      overwrite $dmenutempfile $dmenufile "DMENU_FN="
+      overwrite $dmenutempfile $dmenufile "DMENU_SB="
+      overwrite $dmenutempfile $dmenufile "DMENU_NB="
+      overwrite $dmenutempfile $dmenufile "DMENU_SF="
 
     else
       # Failed to locate dmenurc in user's directory
@@ -808,14 +763,14 @@ then
       msg -s "Located ~/.config/compton.conf file."
 
 
-      f1=../templated_themes/$THEME/.config/compton.conf
-      f2=/$HOME/.config/compton.conf
+      comptontempfile=../templated_themes/$THEME/.config/compton.conf
+      comptonfile=/$HOME/.config/compton.conf
 
-      overwrite $f1 $f2 "shadow-radius"
-      overwrite $f1 $f2 "shadow-offset-x"
-      overwrite $f1 $f2 "shadow-offset-y"
-      overwrite $f1 $f2 "shadow-opacity"
-      overwrite $f1 $f2 "no-dock-shadow"
+      overwrite $comptontempfile $comptonfile "shadow-radius"
+      overwrite $comptontempfile $comptonfile "shadow-offset-x"
+      overwrite $comptontempfile $comptonfile "shadow-offset-y"
+      overwrite $comptontempfile $comptonfile "shadow-opacity"
+      overwrite $comptontempfile $comptonfile "no-dock-shadow"
 
     else
       # Failed to locate compton configuration file in user's directory
