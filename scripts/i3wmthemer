@@ -624,7 +624,7 @@ then
       elif [ -e "$HOME/.config/i3/config" ]
       then
         msg -s "Located ~/.config/i3/config file."
-        i3file=$HOME/.i3/config
+        i3file=$HOME/.config/i3/config
         FLAG=1
       fi
 
