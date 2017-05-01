@@ -16,7 +16,7 @@
 # Before you start improving it make sure that you have the latest version
 # of the script, this script is updated frequently.
 #
-# Last update: 30 April 2017
+# Last update: 1 May 2017
 #
 # Here is a list of the things that
 # need addressing :
@@ -25,7 +25,7 @@
 # 1 - Overwrite only the colors from ~/.extend.Xresources ( or ~/.Xresources)
 #     [Almost done] Need to add rofi [DONE] - Nothing new to add (yet).
 # 2 - Overwrite only the colors from ~/.i3/config [Almost done] - See [KNOWN
-#     ISSUES AT THE MOMENT] section.
+#     ISSUES AT THE MOMENT] section. [FIXED]
 # 3 - Overwrite only the shadows and opacity from ~/.config/compton.config [DONE]
 # 4 - Overwrite only the needed parts of ~/.config/polybar/config [Almost DONE]
 # 5 - Overwrite only the frame/background/foreground of ~/.config/dunst/dunstrc
@@ -37,7 +37,7 @@
 #
 # KNOWN ISSUES AT THE MOMENT:
 # -> About TODO List Task 2:
-#    It replaces all the "client." but not the "client.focused".
+#    It replaces all the "client." but not the "client.focused". [FIXED]
 #
 # The list above will be updated every time something changes or something new
 # needs to be added. Feel free to recommend new features.
@@ -660,7 +660,7 @@ then
         overwrite $f1 $f2 "new_float"
         overwrite $f1 $f2 "new_window"
         overwrite $f1 $f2 "client.background"
-        overwrite $f1 $f2 "client.focused" # This is still bugged #
+        overwrite_exact $f1 $f2 "client.focused"
         overwrite $f1 $f2 "client.unfocused"
         overwrite $f1 $f2 "client.focused_inactive"
         overwrite $f1 $f2 "client.urgent"
@@ -679,7 +679,7 @@ then
         overwrite $f1 $f2 "new_float"
         overwrite $f1 $f2 "new_window"
         overwrite $f1 $f2 "client.background"
-        overwrite $f1 $f2 "client.focused" # This is still bugged #
+        overwrite_exact $f1 $f2 "client.focused" # This is still bugged #
         overwrite $f1 $f2 "client.unfocused"
         overwrite $f1 $f2 "client.focused_inactive"
         overwrite $f1 $f2 "client.urgent"
