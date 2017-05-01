@@ -53,8 +53,13 @@
 # E-mail : unix121@protonmail.com
 # Simple script to apply a theme from the collection.
 
-# Also contributing: rynnon
+# Contributors:
+#
+# Contributor #1: rynnon
 # GitHub: https://github.com/rynnon
+#
+# Contributor #2: ve9u
+# GithubL https://github.com/ve9u
 
 exec 2> /dev/null
 
@@ -174,7 +179,7 @@ configure(){
     elif [ -e "/$HOME/.config/i3/config" ]
     then
       flag1=1
-      i3path=$HOME/.config/i3/conig
+      i3path=$HOME/.config/i3/config
     fi
 
     if [ $flag1 -eq 1 ]
