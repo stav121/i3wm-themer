@@ -72,7 +72,7 @@ The backup directory will contain your configuration files mentioned in [Basic r
 If anything goes wrong you can still just copy-paste them back to their original place to get back to your current configuration manually.
   </li>
 
-  <li> Now need the run script into configuration mode to apply some of the basic changes for the theme:
+  <li> Now run script into configuration mode to apply some of the basic changes for the theme:
 
       ./i3wmthemer -c
 
