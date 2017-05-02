@@ -29,7 +29,7 @@ fixed-center = true
 
 
 background = ${colors.background_i3wmthemer}
-foreground =  ${colors.background_i3wmthemer}
+foreground =  ${colors.foreground_i3wmthemer}
 
 line-size = 2.5
 line-color = ${colors.color04_i3wmthemer}

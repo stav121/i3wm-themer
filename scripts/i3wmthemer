@@ -93,7 +93,7 @@ msg(){
     printf "\n\t${COLORED}${BOLD}[!] ${message}${NORMAL}"
   elif [ "$option" == "-h" ]
   then
-    # Help infomrmation messages
+    # Help information messages
     printf "\n${NORMAL}${message}"
   elif [ "$option" == "-c" ]
   then
@@ -202,7 +202,7 @@ configure(){
   if [ -e "..//templates/.i3/config" ]
   then
 
-    msg -s "Located the i3 template file in the template directory."
+    msg -i "Located the i3 template file in the template directory."
     i3tempath=../templates/.i3/config
 
     flag1=0
@@ -218,7 +218,7 @@ configure(){
 
     if [ $flag1 -eq 1 ]
     then
-      msg -s "Located your i3 configuration file"
+      msg -i "Located your i3 configuration file"
 
       # We add the following lines in the configuration file
 
@@ -227,7 +227,7 @@ configure(){
       d="background_i3wmthemer"
       newline=$( cat $i3tempath | grep $d )
       check=$( cat $i3path | grep "$newline" )
-      if [[ ! $check ]]
+      if [[ -z $check ]]
       then
         if sed -i "1s/^/$newline\n/" $i3path
         then
@@ -242,7 +242,7 @@ configure(){
       d="foreground_i3wmthemer"
       newline=$( cat $i3tempath | grep $d )
       check=$( cat $i3path | grep "$newline" )
-      if [[ ! $check ]]
+      if [[ -z "$check" ]]
       then
         if sed -i "1s/^/$newline\n/" $i3path
         then
@@ -297,14 +297,14 @@ configure(){
 
   if [ -e "../templates/.config/polybar/config" ]
   then
-    msg -s "Located Polybar configuration template in template directory."
+    msg -i "Located Polybar configuration template in template directory."
     polytempath=..//templates/.config/polybar/config
 
     flag2=0
     if [ -e "$HOME/.config/polybar/config" ]
     then
       flag2=1
-      msg -s "Located your polybar configuration file."
+      msg -i "Located your polybar configuration file."
       polypath=$HOME/.config/polybar/config
 
     else
@@ -324,7 +324,7 @@ configure(){
       d="background_i3wmthemer"
       newline=$( cat $polytempath | grep $d )
       check=$( cat $polypath | grep "$newline" )
-      if [[ ! $check ]]
+      if [[ -z $check ]]
       then
         if sed -i "${line}s/^/$newline\n/" $polypath
         then
@@ -339,7 +339,7 @@ configure(){
       d="foreground_i3wmthemer"
       newline=$( cat $polytempath | grep $d )
       check=$( cat $polypath | grep "$newline" )
-      if [[ ! $check ]]
+      if [[ -z $check ]]
       then
         if sed -i "${line}s/^/$newline\n/" $polypath
         then
@@ -941,7 +941,7 @@ elif [ "$OPTION" == "-c" ]
 then
   # Modification mode #
   msg -n "You have entered configuration mode."
-  msg -n "i3wmthemer will try to configure your dotfiles to\noprepare them to apply the themes"
+  msg -n "i3wmthemer will try to configure your dotfiles to prepare them to apply the themes"
 
   # Run the configuration script
   configure

@@ -7,7 +7,7 @@
 
 <h1>What you might need</h1>
 <ul>
-  <li> i3-wm in any Linux distro you prefer</li>
+  <li> i3-wm (maybe i3-gaps in some sections) in any Linux distro you prefer</li>
   <li> <a href="https://github.com/jaagr/polybar">Polybar</a> (for most of the themes)</li>
   <li> <a href="https://davedavenport.github.io/rofi/">Rofi</a> (for most of the themes)</li>
   <li> <a href="https://wiki.archlinux.org/index.php/nitrogen">Nitrogen</a> (To set the wallpapers, can also be done manually)</li>
@@ -67,10 +67,12 @@ in order to apply the basic visuals of any of the themes listed below.
 
       ./i3wmthemer -b {BACKUP_NAME}
 
-Backups are saved under ../backups/ directory.
+Backups are saved under i3wmthemer/backups/ directory.
+The backup directory will contain your configuration files mentioned in [Basic requirements] section.
+If anything goes wrong you can still just copy-paste them back to their original place to get back to your current configuration manually.
   </li>
 
-  <li> Now need the run script into configuration mode (Only the first time you ever run the script):
+  <li> Now need the run script into configuration mode to apply some of the basic changes for the theme:
 
       ./i3wmthemer -c
 
@@ -85,7 +87,7 @@ Backups are saved under ../backups/ directory.
   If those changes are not applied then you might have to copy them manually.
 
   Run this script only the first time you use this script just to setup your files.
-  It is not needed to run it every time you want to apply a theme, only the first time.
+  You don't need to run it every time you want to apply a theme, only the first time.
   </li>
   <li> Now apply the theme you want:
 
