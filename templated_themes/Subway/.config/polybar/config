@@ -69,14 +69,14 @@ wm-restack = i3
 type = internal/i3
 
 label-unfocused-background = ${colors.background_i3wmthemer}
-label-unfocused-foreground = ${colors.background_i3wmthemer}
+label-unfocused-foreground = ${colors.foreground_i3wmthemer}
 
 label-mode = %mode%
 label-mode-padding = 2
 label-mode-background = ${colors.color04_i3wmthemer}
 
 label-focused = %index%
-label-focused-foreground = ${colors.background_i3wmthemer}
+label-focused-foreground = ${colors.color04_i3wmthemer}
 label-focused-background = ${colors.background_i3wmthemer}
 label-focused-underline = ${colors.color04_i3wmthemer}
 label-focused-padding = 2
@@ -85,13 +85,15 @@ label-unfocused = %index%
 label-unfocused-padding = 2
 
 label-visible = %index%
-label-visible-underline = ${colors.background_i3wmthemer}
+
+label-visible-foreground = ${colors.color04_i3wmthemer}
+label-visible-underline = ${colors.color04_i3wmthemer}
 label-visible-padding = 4
 
 label-urgent = %index%
 label-urgent-foreground = ${colors.background_i3wmthemer}
 label-urgent-background = ${colors.background_i3wmthemer}
-label-urgent-underline = ${colors.my_color8}
+label-urgent-underline = ${colors.color08_i3wmthemer}
 label-urgent-padding = 2
 
 [module/date]

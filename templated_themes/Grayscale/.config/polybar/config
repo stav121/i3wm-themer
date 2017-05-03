@@ -48,9 +48,9 @@ font-0 = Hack:fontformat=truetype:size=9;1
 font-1 = Hack:fontformat=truetype:size=9;1
 font-2 = FontAwesome:fontformat=truetype:size=9;1
 
-modules-left = i3 xwindow
+modules-left = i3
 modules-center = date
-modules-right = battery
+modules-right =
 
 tray-position = right
 tray-padding = 9
@@ -73,27 +73,28 @@ label-unfocused-background = ${colors.background_i3wmthemer}
 label-unfocused-foreground = ${colors.foreground_i3wmthemer}
 
 
-label-mode = %mode%
+label-mode = %name%
 label-mode-padding = 2
-label-mode-background = ${colors.color07_i3wmthemer	}
+label-mode-background = ${colors.color04_i3wmthemer	}
 
-label-focused = %index%
-label-focused-foreground = ${colors.foreground_i3wmthemer}
+label-focused = %name%
+label-focused-foreground = ${colors.color04_i3wmthemer}
 label-focused-background = ${colors.background_i3wmthemer}
-label-focused-underline = ${colors.color07_i3wmthemer	}
+label-focused-underline = ${colors.color04_i3wmthemer	}
 label-focused-padding = 2
 
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = 2
 
-label-visible = %index%
-label-visible-underline = ${colors.foreground_i3wmthemer}
+label-visible = %name%
+label-visible-foreground = ${colors.color04_i3wmthemer}
+label-visible-underline = ${colors.color04_i3wmthemer}
 label-visible-padding = 4
 
-label-urgent = %index%
-label-urgent-foreground = ${colors.foreground_i3wmthemer}
+label-urgent = %name%
+label-urgent-foreground = ${colors.color04_i3wmthemer}
 label-urgent-background = ${colors.background_i3wmthemer}
-label-urgent-underline = ${colors.color07_i3wmthemer	}
+label-urgent-underline = ${colors.color04_i3wmthemer	}
 label-urgent-padding = 2
 
 

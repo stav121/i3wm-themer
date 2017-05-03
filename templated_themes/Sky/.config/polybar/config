@@ -81,7 +81,7 @@ label-mode-padding = 2
 label-mode-background = ${colors.color04_i3wmthemer}
 
 label-focused = %name%
-label-focused-foreground = ${colors.foreground_i3wmthemer}
+label-focused-foreground = ${colors.color04_i3wmthemer}
 label-focused-background = ${colors.background_i3wmthemer}
 label-focused-underline = ${colors.color04_i3wmthemer}
 label-focused-padding = 2
@@ -90,7 +90,8 @@ label-unfocused = %name%
 label-unfocused-padding = 2
 
 label-visible = %name%
-label-visible-underline = ${colors.foreground_i3wmthemer}
+label-visible-foreground = ${colors.color04_i3wmthemer}
+label-visible-underline = ${colors.color04_i3wmthemer}
 label-visible-padding = 2
 
 label-urgent = %index%

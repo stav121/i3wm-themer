@@ -1,22 +1,22 @@
 [colors]
-my_background 	= ${xrdb:background}
-my_foreground 	= ${xrdb:foreground}
-my_color0	= ${xrdb:color0}
-my_color1	= ${xrdb:color1}
-my_color2	= ${xrdb:color2}
-my_color3	= ${xrdb:color3}
-my_color4	= ${xrdb:color4}
-my_color5	= ${xrdb:color5}
-my_color6	= ${xrdb:color6}
-my_color7	= ${xrdb:color7}
-my_color8	= ${xrdb:color8}
-my_color9	= ${xrdb:color9}
-my_color10	= ${xrdb:color10}
-my_color11	= ${xrdb:color11}
-my_color12	= ${xrdb:color12}
-my_color13	= ${xrdb:color13}
-my_color14	= ${xrdb:color14}
-my_color15	= ${xrdb:color15}
+background_i3wmthemer 	= ${xrdb:background}
+foreground_i3wmthemer 	= ${xrdb:foreground}
+color00_i3wmthemer	      = ${xrdb:color0}
+color01_i3wmthemer      = ${xrdb:color1}
+color02_i3wmthemer	      = ${xrdb:color2}
+color03_i3wmthemer	      = ${xrdb:color3}
+color04_i3wmthemer	      = ${xrdb:color4}
+color05_i3wmthemer	      = ${xrdb:color5}
+color06_i3wmthemer	      = ${xrdb:color6}
+color07_i3wmthemer	      = ${xrdb:color7}
+color08_i3wmthemer	      = ${xrdb:color8}
+color09_i3wmthemer	      = ${xrdb:color9}
+color10_i3wmthemer	    = ${xrdb:color10}
+color11_i3wmthemer	    = ${xrdb:color11}
+color12_i3wmthemer	    = ${xrdb:color12}
+color13_i3wmthemer	    = ${xrdb:color13}
+color14_i3wmthemer	    = ${xrdb:color14}
+color15_i3wmthemer	    = ${xrdb:color15}
 
 [bar/main_bar]
 bottom = false
@@ -28,14 +28,14 @@ radius = 0.0
 fixed-center = true
 
 
-background = ${colors.my_background}
-foreground =  ${colors.my_foreground}
+background = ${colors.background_i3wmthemer}
+foreground =  ${colors.foreground_i3wmthemer}
 
 line-size = 2.5
-line-color = ${colors.my_color4}
+line-color = ${colors.color04_i3wmthemer}
 
 border-size = 0
-border-color = ${colors.my_color2}
+border-color = ${colors.color02_i3wmthemer}
 
 padding-left = 0
 padding-right = 0
@@ -59,7 +59,7 @@ tray-offset-y = 0%
 tray-offset-x = 0%
 tray-maxsize = 18
 tray-detached = false
-tray-background = ${colors.my_background}
+tray-background = ${colors.background_i3wmthemer}
 
 wm-restack = i3
 
@@ -68,30 +68,31 @@ wm-restack = i3
 [module/i3]
 type = internal/i3
 
-label-unfocused-background = ${colors.my_background}
-label-unfocused-foreground = ${colors.my_foreground}
+label-unfocused-background = ${colors.background_i3wmthemer}
+label-unfocused-foreground = ${colors.foreground_i3wmthemer}
 
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = ${colors.my_color4}
+label-mode-background = ${colors.color04_i3wmthemer}
 
 label-focused = %index%
-label-focused-foreground = ${colors.my_foreground}
-label-focused-background = ${colors.my_background}
-label-focused-underline = ${colors.my_color4}
+label-focused-foreground = ${colors.color04_i3wmthemer}
+label-focused-background = ${colors.background_i3wmthemer}
+label-focused-underline = ${colors.color04_i3wmthemer}
 label-focused-padding = 2
 
 label-unfocused = %index%
 label-unfocused-padding = 2
 
 label-visible = %index%
-label-visible-underline = ${colors.my_foreground}
+label-visible-foreground = ${colors.color04_i3wmthemer}
+label-visible-underline = ${colors.color04_i3wmthemer}
 label-visible-padding = 4
 
 label-urgent = %index%
-label-urgent-foreground = ${colors.my_foreground}
-label-urgent-background = ${colors.my_background}
-label-urgent-underline = ${colors.my_color8}
+label-urgent-foreground = ${colors.foreground_i3wmthemer}
+label-urgent-background = ${colors.background_i3wmthemer}
+label-urgent-underline = ${colors.color08_i3wmthemer}
 label-urgent-padding = 2
 
 [module/musicinfo]
@@ -102,7 +103,7 @@ interval = 5
 format = <label>
 label = %output:0:30:...%
 format-padding = 10
-format-foreground = ${colors.my_color2}
+format-foreground = ${colors.color02_i3wmthemer}
 
 [module/date]
 type = internal/date
@@ -115,7 +116,7 @@ time = "%a %b %d, %I:%M %p "
 
 time-alt = %H:%M
 
-format-prefix-foreground = ${colors.my_foreground}
+format-prefix-foreground = ${colors.foreground_i3wmthemer}
 format-underline =
 
 

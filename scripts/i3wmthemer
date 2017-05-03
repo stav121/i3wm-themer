@@ -675,10 +675,10 @@ then
         overwrite_exact $polybartempfile $polybarfile "offset-x"
         overwrite_exact $polybartempfile $polybarfile "offset-y"
         overwrite_exact $polybartempfile $polybarfile "fixed-center"
-        overwrite_exact $polybartempfile $polybarfile "font-0"
-        overwrite_exact $polybartempfile $polybarfile "font-1"
-        overwrite_exact $polybartempfile $polybarfile "font-2"
-        overwrite_exact $polybartempfile $polybarfile "font-3"
+        #overwrite_exact $polybartempfile $polybarfile "font-0"
+        #overwrite_exact $polybartempfile $polybarfile "font-1"
+        #overwrite_exact $polybartempfile $polybarfile "font-2"
+        #overwrite_exact $polybartempfile $polybarfile "font-3"
         overwrite_exact $polybartempfile $polybarfile "line-size"
         overwrite_exact $polybartempfile $polybarfile "line-color"
         overwrite_exact $polybartempfile $polybarfile "border-size"
@@ -687,9 +687,9 @@ then
         overwrite_exact $polybartempfile $polybarfile "padding-right"
         overwrite_exact $polybartempfile $polybarfile "module-margin-left"
         overwrite_exact $polybartempfile $polybarfile "module-margin-right"
-        overwrite_exact $polybartempfile $polybarfile "modules-right"
-        overwrite_exact $polybartempfile $polybarfile "modules-center"
-        overwrite_exact $polybartempfile $polybarfile "modules-left"
+        #overwrite_exact $polybartempfile $polybarfile "modules-right"
+        #overwrite_exact $polybartempfile $polybarfile "modules-center"
+        #overwrite_exact $polybartempfile $polybarfile "modules-left"
         overwrite_exact $polybartempfile $polybarfile "tray-position"
         overwrite_exact $polybartempfile $polybarfile "tray-padding"
         overwrite_exact $polybartempfile $polybarfile "tray-transparent"
@@ -702,6 +702,23 @@ then
         overwrite_exact $polybartempfile $polybarfile "background"
         overwrite_exact $polybartempfile $polybarfile "foreground"
         overwrite       $polybartempfile $polybarfile "override-redirect"
+        overwrite_exact $polybartempfile $polybarfile "label-unfocused-background"
+        overwrite_exact $polybartempfile $polybarfile "label-unfocused-foreground"
+        overwrite_exact $polybartempfile $polybarfile "label-unfocused-underline"
+        overwrite_exact $polybartempfile $polybarfile "label-focused-background"
+        overwrite_exact $polybartempfile $polybarfile "label-focused-foreground"
+        overwrite_exact $polybartempfile $polybarfile "label-focused-underline"
+        overwrite_exact $polybartempfile $polybarfile "label-mode-background"
+        overwrite_exact $polybartempfile $polybarfile "label-visible-background"
+        overwrite_exact $polybartempfile $polybarfile "label-visible-foreground"
+        overwrite_exact $polybartempfile $polybarfile "label-visible-underline"
+        overwrite_exact $polybartempfile $polybarfile "label-urgent-background"
+        overwrite_exact $polybartempfile $polybarfile "label-urgent-foreground"
+        overwrite_exact $polybartempfile $polybarfile "label-urgent-underline"
+        overwrite_exact $polybartempfile $polybarfile "line-size"
+        overwrite_exact $polybartempfile $polybarfile "line-color"
+        overwrite_exact $polybartempfile $polybarfile "border-size"
+        overwrite_exact $polybartempfile $polybarfile "border-color"
 
       else
         # Failed to located user's polybar configuration file.
@@ -749,7 +766,7 @@ then
     msg -f "Failed to locate dmenu configuration file in the theme directory"
   fi
 
-# <---------------- end of dmeny customization ----------------------> #
+# <---------------- end of dmenu customization ----------------------> #
 
 # <------------------- Compton configuration ------------------------> #
 
