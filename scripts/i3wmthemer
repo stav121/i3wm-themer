@@ -981,7 +981,7 @@ then
 
 else
   # No valid option given while starting the themer.
-  msg -e "ERROR: No valid arguement given"
+  msg -e "ERROR: No valid argument given"
 
 fi
 
