@@ -122,6 +122,8 @@ Also the script is still under development so any feedback/help would be much ap
 <h1>Themes</h1>
 
 <ul>
+  <li><h2>Clouds</h2>
+    <img src="http://i.imgur.com/QAORpDM.png">
   <li><h2>Sky</h2>
     <img src="http://i.imgur.com/mFbVgTf.png">
     <a href="http://imgur.com/a/p2ziB">(More can be found here)</a></li>
