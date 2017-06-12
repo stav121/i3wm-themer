@@ -1,0 +1,71 @@
+conky.config = {
+--#####################
+-- - Conky settings - #
+--#####################
+	update_interval = 1,
+	total_run_times = 0,
+	net_avg_samples = 1,
+	cpu_avg_samples = 1,
+	--imlib_cache_size = 0,
+	double_buffer = true,
+	no_buffers = true,
+
+--####################
+-- - Text settings - #
+--####################
+	use_xft = true,
+	font = 'monofur :size=10',
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+
+--############################
+-- - Window specifications - #
+--############################
+	alignment = 'top_right',
+	background = true,
+	default_color = '759496',
+	cpu_avg_samples = 2,
+	color0 = '2d2d38',
+	double_buffer = true,
+	font = 'monofur:bold:size=12',
+	draw_shades = false,
+	gap_x = 30,
+	gap_y = 225,
+	minimum_width = 325,
+	no_buffers = true,
+	own_window = true,
+	own_window_type = 'override',
+	own_window_transparent = true,
+	update_interval = 1.0,
+	use_xft = true,
+
+};
+
+
+--##############
+-- - Colours - #
+--##############
+
+conky.text = [[
+# GENERAL
+${voffset 18}${font :size=10:bold}general  ${voffset -3}${color0}${hr 1}${color}
+${goto 15}${voffset 15}${color0}${font conkycolors:size=14}o${font}${color} ${goto 45}${voffset -5}Uptime ${alignr}${uptime}
+${goto 15}${voffset 11}${color0}${font conkycolors:size=14}C${font}${color} ${goto 45}${voffset -5}Processes ${alignr}$processes ($running_processes running)
+${goto 45}${voffset 11}Highest ${goto 232}CPU${alignr}RAM
+${goto 45}${voffset -5}${hr 1}
+${voffset 1}${goto 45}${top name 1} ${goto 226}${top cpu 1}${alignr}${top mem 1}
+${voffset 1}${goto 45}${top name 2} ${goto 226}${top cpu 2}${alignr}${top mem 2}
+${voffset 1}${goto 45}${top name 3} ${goto 226}${top cpu 3}${alignr}${top mem 3}
+${voffset 1}${goto 45}${top name 4} ${goto 226}${top cpu 4}${alignr}${top mem 4}
+# PROCESSOR
+${voffset 18}${font :size=10:bold}processor  ${voffset -3}${color0}${hr 1}${color}
+${goto 15}${voffset 15}${color0}${font conkycolors:size=14}E${font}${color} ${goto 45}${voffset -5}Frequency ${alignr}${color0}${freq_g (1)} GHz${color}
+${goto 15}${voffset 11}${color0}${font conkycolors:size=14}E${font}${color} ${goto 45}${voffset -5}Usage: ${cpu}% ${alignr}${cpugraph 8,60}
+# PROCESSOR LOAD
+# ${voffset 18}${font :size=10:bold}CPU LOAD  ${voffset -3}${color0}${hr 1}${color}
+${goto 15}${voffset 25}${color0}${font conkycolors:size=14}c${font}${color} ${goto 45}${voffset -4}CPU 1 @ ${color0}${cpu cpu1}%${color}${alignr}CPU 2 @ ${color0}${cpu cpu2}%${color}   ${voffset 1}${color0}${font conkycolors:size=14}c${font}${color}
+${goto 15}${voffset 5}${color0}${font conkycolors:size=14}c${font}${color} ${goto 45}${voffset -4}CPU 3 @ ${color0}${cpu cpu3}%${color}${alignr}CPU 4 @ ${color0}${cpu cpu4}%${color}   ${voffset 1}${color0}${font conkycolors:size=14}c${font}${color}
+# PROCESSOR TEMP
+# ${voffset 18}${font :size=10:bold}CPU TEMP  ${voffset -3}${color0}${hr 1}${color}
+${goto 15}${voffset 25}${color0}${font conkycolors:size=14}c${font}${color} ${goto 45}${voffset -4}Core 1 @ ${color0}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}${alignr}Core 2 @ ${color0}${execi 30 sensors | grep 'Core 1' | awk '{print $3}' | sed 's/+//' | sed 's/\.0//g'}${color}   ${voffset 1}${color0}${font conkycolors:size=14}c${font}${color}
+]];
