@@ -904,7 +904,7 @@ then
     then
     msg -s 'Saved ~/.config/compton.conf successfully'
   else
-    msg -f 'msg -fFailed to save ~/.config/compton.conf'
+    msg -f 'Failed to save ~/.config/compton.conf'
   fi
 
   mkdir ../backups/$THEME/.i3/
