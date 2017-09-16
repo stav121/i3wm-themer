@@ -151,7 +151,7 @@ format-discharging-underline = ${self.format-charging-underline}
 format-full-prefix-foreground = ${colors.my_background}
 format-full-underline = ${self.format-charging-underline}
 
-format-charing-background = ${colors.my_background}
+format-charging-background = ${colors.my_background}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
