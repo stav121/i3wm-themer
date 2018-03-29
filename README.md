@@ -121,7 +121,7 @@ Also the script is still under development so any feedback/help would be much ap
 
 <ul>
 <h3>Support this project</h3>
-Become a Patreon: https://www.patreon.com/unix121
+Patreon: https://www.patreon.com/unix121
 </ul>
 
 <h1>Themes</h1>
