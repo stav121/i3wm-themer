@@ -1,0 +1,3 @@
+i3-config: /home/unix121/.i3/config
+polybar-config: /home/unix121/.config/polybar/config
+xresources: /home/unix121/.Xresources
