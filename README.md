@@ -1,179 +1,127 @@
 <h1>i3wm-themer</h1>
 <ul>
-  My collection of themes for i3wm.
+Personal collection of themes and scripts for <a href="https://www.i3wm.org">i3wm</a>.
 
-  ![](https://github.com/unix121/i3wm-themer/blob/master/workflow/workflow1.gif?raw=true)
+![](workflow/workflow.gif?raw=true)
 </ul>
 
-<h1>What you might need</h1>
+<h3>Update [April 4, 2018]</h3>
+Due to the high amount of requests to update this repository, I took the time to *completely* rework
+it from the ground up. The old script is gone, the old configs are long gone. There is a <a
+href="src/i3wm-themer.py">new script</a> used to apply/modify the themes for i3wm, polybar and .Xresources, all the old themes have been
+reworked and a few new added. The script now uses a <a href="src/config.yaml">configuration file</a> used to locate your configs
+more accurately and the themes are now presented in a <a href="src/themes">JSON</a> format to make them easier to read/modify/add your own.
+This time I decided to add a few <a href="src/defaults">default configuration files</a> for you to use, to avoid the "oh my dots are now 
+messed up" complains. With all that said, I hope you enjoy the fully reworked repo, I put a lot of
+effort to make it meet everyone's needs/likings.
+
+<h1>Why?</h1>
 <ul>
-  <li> i3-wm (maybe i3-gaps in some sections) in any Linux distro you prefer</li>
-  <li> <a href="https://github.com/jaagr/polybar">Polybar</a> (for most of the themes)</li>
-  <li> <a href="https://davedavenport.github.io/rofi/">Rofi</a> (for most of the themes)</li>
-  <li> <a href="https://wiki.archlinux.org/index.php/nitrogen">Nitrogen</a> (To set the wallpapers, can also be done manually)</li>
-  <li> Firefox Themes can be installed using the "Stylish" extension</li>
-  <li> Most of the GTK Themes and Icons were created using <a href="https://github.com/actionless/oomox">oomox</a></li>
+<li>You like CLI tools too much</li>
+<li>You like simple and minimalistic desktop themes</li>
+<li>You always wanted to use i3wm but can't figure it out on your own</li>
+<li>You want to change themes on the go</li>
+<li><a href="https://www.i3wm.org">i3wm</a> is awesome</li>
+<li>Satan > Jesus</li>
 </ul>
 
+<h1>What you will need</h1>
 <ul>
-  All the necessary changes to your configuration files can be found under /templated_themes/{THEME}/ directory.
-  Copy what you like from every configuration.
-  Under /themes/{THEME}/ directory you can find my exact configuration files, but I do not recommend to copy them
-  directly once they contain my own keybindings and generally settings that might not be suitable for you,
-  but instead you can use the script below to apply the necessary parts from my configuration files
-  to your configuration files.
+<li><a href="https://github.com/Airblader/i3">i3-gaps</a></li>
+<li><a href="https://github.com/jaagr/polybar">Polybar</a></li>
+<li><a href="https://github.com/DaveDavenport">Rofi</a></li>
+<li><a href="https://fontawesome.com">Font-Awesome-5</a></li>
+<li><a href="https://aur.archlinux.org/packages/nitrogen-git/">Nitrogen</a></li>
+<li><a href="https://aur.archlinux.org/packages/nerd-fonts-complete/">nerd-fonts-complete</a></li>
+<li><a href="https://github.com/adobe-fonts/source-code-pro">Adobe Source Code Pro font</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/Rxvt-unicode">rxvt-unicode</a></li>
 </ul>
 
-<h3>Basic requirements (for the script)</h3>
+<h2>Using the script</h2>
 <ul>
-This script is still hardcoded so you have to check where your configuration
-files are before you use it.
-<li> i3 configuration file must be placed either under
+Clone this repository and install the requirements for the script.
 
-      ~/.i3/config or ~/.config/i3/config  
+    git clone https://github.com/unix121/i3wm-themer
+    cd i3wm-themer/
+    sudo pip install -r requirements.txt
 
-</li><li>Polybar configuration file must be under
+If you are on Arch Linux, ArchLabs Linux, Manjaro Linux (Those are the ones that I tested so far)
+install everything from the `What you will need` section:
 
-      ~/.config/polybar/config
+    ./install_requirements_arch.sh
 
-</li><li>Compton configuration file must be under
+If you are not on one of the above, install them using your Package manager.
 
-      ~/.config/compton.conf
+Make sure you have the requirements mentioned earlier installed.
+Edit the <a href="src/config.yaml">config.yaml</a> file and add your full path of i3wm config, polybar config and .Xresources
+files. In the end it should look something like this:
 
-</li><li>.Xresources should be under
+    i3-config: /home/[USER]/.i3/config
+    polybar-config: /home/[USER]/.config/polybar/config
+    xresources: /home/[USER]/.Xresources
 
-      ~/.Xresources or ~/.extend.Xresources
+Where `[USER]` is your `$USER`.
 
-</li><li>dmenu configuration file should be under
+Copy the script in the <a href="scripts/">scripts</a> folder to your polybar directory:
 
-      ~/.dmenurc
-</li>
-<li>You will still have to make some changes "by hand" even after using the script
-once it's still under development and doesn't change everything on it's own.
-</li>
-<li>For common issues check the issues section in the repository</li>
+    cp -r ../scripts/* /home/$USER/.config/polybar/
+
+Backup your files:
+
+    mkdir ~/Backup
+    python i3wm-themer.py --config config.yaml --backup /home/[USER]/Backups
+
+This step will copy the files that you set in the `config.yaml` for safekeeping in case things go
+wrong.
+
+Install the `config files` located in the <a href="src/defaults">src/defaults/</a> directory (not 100% required but
+I suggest you do so just to be sure).
+
+    python i3wm-themer.py --config config.yaml --install defaults/
+
+In case you get lost `$mod+Return` will open a new terminal, `$mode+d` will launch Rofi. (For the
+rest of the shortcuts just take a look on the config file for i3, and change them to your needs.)
+
+Now you are basically ready to go. Pick a theme you like from the collection and load it:
+
+    python i3wm-themer.py --config config.yaml --load themes/[theme_id].json
+
+(Where [theme_id] is the name of the theme you want to try!)
+
+TADA!!!
+
+Now every time you want to change a theme you can just run the command above with the theme you like
+and apply it instantly.
+
+You can always use the `--help` on the script to check the given options.
 </ul>
 
-<h1>How to use the scripts</h1>
+<h2>Disclaimer</h2>
 <ul>
-This script will overwrite only the needed parts from your configuration files
-in order to apply the basic visuals of any of the themes listed below.
+I am not responsible for any harm done to your PC by anything in the repository. Use everything with
+caution!
 </ul>
+
+<h2>Available Themes</h2>
 <ul>
+Just take a look at the <a href="src/themes/">Theme collection</a> and pick the ones you like.
 
-  <li> git clone https://github.com/unix121/i3wm-themer</li>
-  <li> cd i3wm-themer/scripts/</li>
-  <li> First backup your current configuration in case you want to come back:
+![](workflow/themepreview.png?raw=true)
 
-      ./i3wmthemer -b {BACKUP_NAME}
-
-Backups are saved under i3wmthemer/backups/ directory.
-The backup directory will contain your configuration files mentioned in [Basic requirements] section.
-If anything goes wrong you can still just copy-paste them back to their original place to get back to your current configuration manually.
-  </li>
-
-  <li> Now run the script in configuration mode to apply some of the basic changes for the theme:
-
-      ./i3wmthemer -c
-
-  This will add the lines that are in /templates/ directory to your i3 and polybar configuration files.
-
-  DO NOT GO FURTHER IF THOSE CHANGES ARE NOT APPLIED CORRECTLY
-
-  After that step you should have something like <a href="https://github.com/unix121/i3wm-themer/blob/master/templates/.i3/config">
-  this</a> added to your i3 configuration file and something like <a href="https://github.com/unix121/i3wm-themer/blob/master/templates/.config/polybar/config">this</a> added under [colors] tag in
-  your polybar configuration file.
-
-  If those changes are not applied then you might have to copy them manually.
-
-  Run this script only the first time you use this script just to setup your files.
-  You don't need to run it every time you want to apply a theme, only the first time.
-  </li>
-  <li> Now apply the theme you want:
-
-    ./i3wmthemer -t {THEME}
-
-{THEME} should be the name of the theme you want to apply.
-
-Example on how to apply the "Forest" theme:
-
-    ./i3wmthemer -t Forest
- </li>
- <li> If you want to go back to a backup you can run the script like that:
-
-    ./i3wmthemer -t ../backups/{BACKUP_NAME}
-
-{BACKUP_NAME} should be the same as the one given in the backup step above.
-  </li>
- <li> After you run the script you might have to manually set the wallpaper
-which is located in the {THEME} directory and also use your
-appearance manager to apply the Icons and the GTK Themes.</li>
-  <li> NOTE: If you notice any bugs on the script feel free to contact me and I will address them</li>
 </ul>
 
+<h2>Author</h2>
 <ul>
-<h3>Disclaimer</h3>
-The ways mentioned above overwrite some parts of your files, use them with caution. I am not responsible if anything happens to your computer. Normally if you follow the instructions step by step everything should be just fine, but unexpected things sometimes happen. The author is not responsible for any damage done.
-Also the script is still under development so any feedback/help would be much appreciated.
+<a href="https://github.com/unix121">Stavros Grigoriou (unix121)</a>
 </ul>
 
-</ul>
-
+<h2>Support this project</h2>
 <ul>
-<h3>Support this project</h3>
-Patreon: https://www.patreon.com/unix121
+<a href="https://patreon.com/unix121">Patreon</a>
 </ul>
 
-<h1>Themes</h1>
-
+<h2>Credits</h2>
 <ul>
-  <li><h2>Clouds</h2>
-    <img src="http://i.imgur.com/QAORpDM.png">
-  <li><h2>Sky</h2>
-    <img src="http://i.imgur.com/mFbVgTf.png">
-    <a href="http://imgur.com/a/p2ziB">(More can be found here)</a></li>
-  <li><h2>Forest</h2>
-    <img src="http://i.imgur.com/1WafFRk.png">
-    <a href="http://imgur.com/a/SuKKf">(More can be found here)</a></li>
-  <li><h2>Water</h2>
-    <img src="http://i.imgur.com/z3rliuz.png">
-    <a href="http://imgur.com/a/PVCKq">(More can be found here)</a></li>
-  <li><h2>Fire</h2>
-    <img src="http://i.imgur.com/8U5DmFY.png">
-    <a href="http://imgur.com/a/pYqEl">(More can be found here)</a></li>
-  <li><h2>Ice</h2>
-    <img src="http://i.imgur.com/3a1J77j.png">
-    <a href="http://imgur.com/a/0FMYq">(More can be found here)</a></li>
-  <li><h2>Space</h2>
-    <img src="https://i.imgur.com/eLkyvc0.png">
-    <a href="http://imgur.com/a/0hmbl">(More can be found here)</a></li>
-  <li><h2>Nature</h2>
-    <img src="http://i.imgur.com/1B7IA96.png">
-    <a href="http://imgur.com/a/PuXie">(More can be found here)</a></li>
-  <li><h2>Subway</h2>
-    <img src="http://i.imgur.com/M5ZH9Dh.png">
-    <a href="http://imgur.com/a/1aO8E">(More can be found here)</a></li>
-  <li><h2>Colors</h2>
-    <img src="http://i.imgur.com/ZUEzkiT.png">
-    <a href="http://imgur.com/a/ub0Jl">(More can be found here)</a></li>
-  <li><h2>Minimal</h2>
-    <img src="http://i.imgur.com/aaosiZ2.png">
-    <a href="http://imgur.com/gallery/bZHDF">(More can be found here)</a></li>
-  <li><h2>Grayscale</h2>
-    <img src="http://i.imgur.com/K0uT5ua.png">
-    <a href="http://imgur.com/gallery/1TYFd">(More can be found here)</a></li>
-  <li><h2>Sea</h2>(Cannot be set via the script yet)
-    <img src="http://i.imgur.com/yapFCCe.png">
-    <a href="http://imgur.com/a/3BsTW">(More can be found here)</a></li>
-</ul>
-
-<ul>
-
-<h3>Note</h3>
-
-If you are the original artist of any of the photos/pictures
-featured in those themes, please feel free to contact me,
-so that you can get credited.
-
-e-mail: unix121@protonmail.com
+This whole project wouldn't be possible without the creators of all those awesome tools:
+i3wm, i3-gaps, polybar and everyone who worked on those projects.
 </ul>
