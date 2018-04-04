@@ -21,7 +21,7 @@ def replace_polybar( configuration, json_file):
             rl.replace_line( configuration['polybar-config'], 'label-unfocused-background', 'label-unfocused-background = '+polybar['label-unfocused-background'])
             rl.replace_line( configuration['polybar-config'], 'label-unfocused-foreground', 'label-unfocused-foreground = '+polybar['label-unfocused-foreground'])
             rl.replace_line( configuration['polybar-config'], 'label-focused-background', 'label-focused-background = '+polybar['label-focused-background'])
-            rl.replace_line( configuration['polybar-config'], 'label-focused-foreground', 'label-focused-foregroun = '+polybar['label-focused-foreground'])
+            rl.replace_line( configuration['polybar-config'], 'label-focused-foreground', 'label-focused-foreground = '+polybar['label-focused-foreground'])
             rl.replace_line( configuration['polybar-config'], 'label-visible-background', 'label-visible-background = '+polybar['label-visible-background'])
             rl.replace_line( configuration['polybar-config'], 'label-visible-foreground', 'label-visible-foreground = '+polybar['label-visible-foreground'])
             rl.replace_line( configuration['polybar-config'], 'label-mode-background', 'label-mode-background = '+polybar['label-mode-background'])
