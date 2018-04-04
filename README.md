@@ -114,9 +114,11 @@ Just take a look at the <a href="src/themes/">Theme collection</a> and pick the 
 
 <h2>Contribute to the project</h2>
 <ul>
-If you want to contribute to the project you can do it with two ways:
+If you want to contribute to the project you can do it in two ways:
+<ul>
 <li>Add new themes by following this <a href="templates/README.md">guide</a></li>
 <li>Help with the script by helping cross out more things from the <a href="src/README.md">TODO</a> list</li>
+</ul>
 </ul>
 
 <h2>Author</h2>
