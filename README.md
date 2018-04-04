@@ -15,7 +15,7 @@ more accurately and the themes are now presented in a <a href="src/themes">JSON<
 This time I decided to add a few <a href="src/defaults">default configuration files</a> for you to use, to avoid the "oh my dots are now 
 messed up" complains. With all that said, I hope you enjoy the fully reworked repo, I put a lot of
 effort to make it meet everyone's needs/likings.
-</ul
+</ul>
 
 <h1>Why?</h1>
 <ul>
