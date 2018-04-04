@@ -6,6 +6,7 @@ Personal collection of themes and scripts for <a href="https://www.i3wm.org">i3w
 </ul>
 
 <h3>Update [April 4, 2018]</h3>
+<ul>
 Due to the high amount of requests to update this repository, I took the time to *completely* rework
 it from the ground up. The old script is gone, the old configs are long gone. There is a <a
 href="src/i3wm-themer.py">new script</a> used to apply/modify the themes for i3wm, polybar and .Xresources, all the old themes have been
@@ -14,6 +15,7 @@ more accurately and the themes are now presented in a <a href="src/themes">JSON<
 This time I decided to add a few <a href="src/defaults">default configuration files</a> for you to use, to avoid the "oh my dots are now 
 messed up" complains. With all that said, I hope you enjoy the fully reworked repo, I put a lot of
 effort to make it meet everyone's needs/likings.
+</ul
 
 <h1>Why?</h1>
 <ul>
@@ -108,6 +110,13 @@ Just take a look at the <a href="src/themes/">Theme collection</a> and pick the 
 
 ![](workflow/themepreview.png?raw=true)
 
+</ul>
+
+<h2>Contribute to the project</h2>
+<ul>
+If you want to contribute to the project you can do it with two ways:
+<li>Add new themes by following this <a href="templates/README.md">guide</a></li>
+<li>Help with the script by helping cross out more things from the <a href="src/README.md">TODO</a> list</li>
 </ul>
 
 <h2>Author</h2>
