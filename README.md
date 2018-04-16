@@ -29,6 +29,7 @@ effort to make it meet everyone's needs/likings.
 
 <h1>What you will need</h1>
 <ul>
+<li>Python 3</li>
 <li><a href="https://github.com/Airblader/i3">i3-gaps</a></li>
 <li><a href="https://github.com/jaagr/polybar">Polybar</a></li>
 <li><a href="https://github.com/DaveDavenport">Rofi</a></li>
