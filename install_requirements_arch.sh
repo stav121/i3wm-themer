@@ -13,4 +13,9 @@ cd yaourt
 makepkg -si --noconfirm
 cd ..
 rm -fr yaourt
-yaourt -S polybar-git nerd-fonts-complete --noconfirm
+yaourt -S polybar-git --noconfirm
+git clone https://aur.archlinux.org/nerd-fonts-complete.git
+cd nerd-fonts-complete
+makepkg -si --noconfirm
+cd ..
+rm -fr nerd-fonts-complete
