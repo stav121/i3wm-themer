@@ -1,11 +1,15 @@
 #!/bin/env sh
 
 ### Script written by Stavros Grigoriou ( github.com/unix121 )
-### Changes fully commented by James Shane ( github.com/jamesshane )
+### 20180505 Changes fully commented by James Shane ( github.com/jamesshane )
 
-sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts 
-#added -B to prevent __pycache__
-sudo pip install -B -r requirements.txt
+
+#added binutils for compilations, removed yaourt
+sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils
+
+#added PYTHONDONTWRITEBYTECODE to prevent __pycache__
+export PYTHONDONTWRITEBYTECODE=1
+sudo pip install -r requirements.txt
 
 #install yaourt by source
 git clone https://aur.archlinux.org/package-query.git
