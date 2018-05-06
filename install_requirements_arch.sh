@@ -4,8 +4,8 @@
 ### 20180505 Changes fully commented by James Shane ( github.com/jamesshane )
 
 
-#added binutils for compilations, removed yaourt
-sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils
+#added binutils,gcc,make for compilations, removed yaourt
+sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils gcc make
 
 #added PYTHONDONTWRITEBYTECODE to prevent __pycache__
 export PYTHONDONTWRITEBYTECODE=1
@@ -24,33 +24,21 @@ cd ..
 rm -fr yaourt
 yaourt -S polybar-git --noconfirm
 
-#directory may not be needed, but it makes a cleaner install
+#directory may not be needed, but it makes a cleaner install, went with nerd-fonts, other is outta date
 sudo mkdir /usr/share/fonts/OTF
-git clone https://aur.archlinux.org/nerd-fonts-complete.git
-cd nerd-fonts-complete
+git clone https://aur.archlinux.org/nerd-fonts.git
+cd nerd-fonts
 makepkg -si --noconfirm
 cd ..
-rm -fr nerd-fonts-complete
+rm -fr nerd-fonts
 
-install -Dm644 /usr/share/doc/polybar/config $HOME/.config/polybar/config
+#install -Dm644 /usr/share/doc/polybar/config $HOME/.config/polybar/config
 
 #file didn't excist for me, so test and touch
 if [ -e $HOME/.Xresources ]
 then
-	echo ".Xresources found."
+	echo "... .Xresources found."
 else
 	touch $HOME/.Xresources
 fi
 
-#rework of user in config.yaml
-cd src
-rm -f config.yaml
-cp defaults/config.yaml .
-sed -i -e "s/USER/$USER/g" config.yaml
-
-#backup, confire and set theme to 000
-#cp -r ../scripts/* /home/$USER/.config/polybar/
-mkdir $HOME/Backup
-python i3wm-themer.py --config config.yaml --backup $HOME/Backup
-python i3wm-themer.py --config config.yaml --install defaults/
-python i3wm-themer.py --config config.yaml --load themes/000.json
