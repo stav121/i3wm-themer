@@ -14,6 +14,7 @@ if [ -e $HOME/.config/polybar/config ]
 then
         echo "... polybar/config found."
 else
+	mkdir $HOME/.config/polybar
         touch $HOME/.config/polybar/config
 fi
 
