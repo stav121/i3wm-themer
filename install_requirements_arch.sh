@@ -26,11 +26,11 @@ yaourt -S polybar-git --noconfirm
 
 #directory may not be needed, but it makes a cleaner install, went with nerd-fonts-git, other is outta date
 sudo mkdir /usr/share/fonts/OTF
-git clone https://aur.archlinux.org/nerd-fonts-git.git
-cd nerd-fonts-git
-makepkg -si --noconfirm
-cd ..
-rm -fr nerd-fonts-git
+#git clone https://aur.archlinux.org/nerd-fonts-git.git
+#cd nerd-fonts-git
+#makepkg -si --noconfirm
+#cd ..
+#rm -fr nerd-fonts-git
 
 #install -Dm644 /usr/share/doc/polybar/config $HOME/.config/polybar/config
 
