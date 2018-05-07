@@ -4,8 +4,8 @@
 ### 20180505 Changes fully commented by James Shane ( github.com/jamesshane )
 
 
-#added binutils,gcc,make for compilations, removed yaourt
-sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils gcc make
+#added binutils,gcc,make,pkg-config,fakeroot for compilations, removed yaourt
+sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils gcc make pkg-config fakeroot
 
 #added PYTHONDONTWRITEBYTECODE to prevent __pycache__
 export PYTHONDONTWRITEBYTECODE=1
@@ -24,17 +24,17 @@ cd ..
 rm -fr yaourt
 yaourt -S polybar-git --noconfirm
 
-#directory may not be needed, but it makes a cleaner install, went with nerd-fonts, other is outta date
+#directory may not be needed, but it makes a cleaner install, went with nerd-fonts-git, other is outta date
 sudo mkdir /usr/share/fonts/OTF
-git clone https://aur.archlinux.org/nerd-fonts.git
-cd nerd-fonts
+git clone https://aur.archlinux.org/nerd-fonts-git.git
+cd nerd-fonts-git
 makepkg -si --noconfirm
 cd ..
-rm -fr nerd-fonts
+rm -fr nerd-fonts-git
 
 #install -Dm644 /usr/share/doc/polybar/config $HOME/.config/polybar/config
 
-#file didn't excist for me, so test and touch
+#file didn't exist for me, so test and touch
 if [ -e $HOME/.Xresources ]
 then
 	echo "... .Xresources found."
