@@ -22,7 +22,8 @@ cd yaourt
 makepkg -si --noconfirm
 cd ..
 rm -fr yaourt
-yaourt -S polybar-git --noconfirm
+mkdir $HOME/tmpyaourt
+yaourt -S polybar-git --noconfirm --tmp $HOME/tmpyaourt
 
 #directory may not be needed, but it makes a cleaner install, went with nerd-fonts-git, other is outta date
 sudo mkdir /usr/share/fonts/OTF
