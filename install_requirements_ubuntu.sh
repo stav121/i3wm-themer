@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 ### 201805 Script written and fully commented by James Shane ( github.com/jamesshane )
 
@@ -34,35 +34,45 @@ sudo fc-cache -f -v
 #yaourt -S polybar-git ttf-nerd-fonts-symbols --noconfirm --tmp $HOME/tmpyaourt
 #rmdir $HOME/tmpyaourt
 
-##file didn't exist for me, so test and touch
-#if [ -e $HOME/.Xresources ]
-#then
-#	echo "... .Xresources found."
-#else
-#	touch $HOME/.Xresources
-#fi
-#
-##rework of user in config.yaml
-#cd src
-#rm -f config.yaml
-#cp defaults/config.yaml .
-#sed -i -e "s/USER/$USER/g" config.yaml
-#
-##file didn't excist for me, so test and touch
-#if [ -e $HOME/.config/polybar/config ]
-#then
-#        echo "... polybar/config found."
-#else
-#	mkdir $HOME/.config/polybar
-#        touch $HOME/.config/polybar/config
-#fi
-#
-##backup, configure and set theme to 000
-#cp -r ../scripts/* /home/$USER/.config/polybar/
-#mkdir $HOME/Backup
-#python i3wm-themer.py --config config.yaml --backup $HOME/Backup
-#python i3wm-themer.py --config config.yaml --install defaults/
-#
-#echo ""
-#echo "Read the README.md"
+#wget http://archive.getdeb.net/ubuntu/pool/apps/p/polybar/polybar_3.0.5-1\~getdeb1_amd64.deb
+#sudo apt install -f ./polybar_3.0.5-1~getdeb1_amd64.deb
+#rm -f polybar_3.0.5-1~getdeb1_amd64.deb
+
+#git clone --branch 3.1.0 --recursive https://github.com/jaagr/polybar
+#mkdir polybar/build
+#cd polybar/build
+#cmake ..
+#sudo make install
+
+#file didn't exist for me, so test and touch
+if [ -e $HOME/.Xresources ]
+then
+	echo "... .Xresources found."
+else
+	touch $HOME/.Xresources
+fi
+
+#rework of user in config.yaml
+cd src
+rm -f config.yaml
+cp defaults/config.yaml .
+sed -i -e "s/USER/$USER/g" config.yaml
+
+#file didn't excist for me, so test and touch
+if [ -e $HOME/.config/polybar/config ]
+then
+        echo "... polybar/config found."
+else
+	mkdir $HOME/.config/polybar
+        touch $HOME/.config/polybar/config
+fi
+
+#backup, configure and set theme to 000
+cp -r ../scripts/* /home/$USER/.config/polybar/
+mkdir $HOME/Backup
+python i3wm-themer.py --config config.yaml --backup $HOME/Backup
+python i3wm-themer.py --config config.yaml --install defaults/
+
+echo ""
+echo "Read the README.md"
 
