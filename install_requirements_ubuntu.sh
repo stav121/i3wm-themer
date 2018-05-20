@@ -7,42 +7,22 @@ sudo apt update
 
 #adobe-source-code-pro-fonts **
 #added binutils,gcc,make,pkg-config,fakeroot for compilations, removed yaourt
-sudo apt install git nitrogen rofi python-pip binutils gcc make pkg-config fakeroot fonts-font-awesome -y
+sudo apt install git nitrogen rofi python-pip binutils gcc make pkg-config fakeroot fonts-font-awesome cmake python-xcbgen xcb-proto libxcb-ewmh-dev -y
+
+#sudo apt-get install libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev -y 
 
 #added PYTHONDONTWRITEBYTECODE to prevent __pycache__
 export PYTHONDONTWRITEBYTECODE=1
-sudo pip install -r requirements.txt
+sudo -H pip install -r requirements.txt
 
 [ -d /usr/share/fonts/opentype ] || sudo mkdir /usr/share/fonts/opentype
 sudo git clone https://github.com/adobe-fonts/source-code-pro.git /usr/share/fonts/opentype/scp
 sudo fc-cache -f -v
 
-##install yaourt by source
-#git clone https://aur.archlinux.org/package-query.git
-#cd package-query
-#makepkg -si --noconfirm
-#cd ..
-#rm -fr package-query
-#git clone https://aur.archlinux.org/yaourt.git
-#cd yaourt
-#makepkg -si --noconfirm
-#cd ..
-#rm -fr yaourt
-##tmp dir for yaourt, /tmp may be too small
-#mkdir $HOME/tmpyaourt
-##went with ttf-nerd-fonts, other is outta date
-#yaourt -S polybar-git ttf-nerd-fonts-symbols --noconfirm --tmp $HOME/tmpyaourt
-#rmdir $HOME/tmpyaourt
-
-#wget http://archive.getdeb.net/ubuntu/pool/apps/p/polybar/polybar_3.0.5-1\~getdeb1_amd64.deb
-#sudo apt install -f ./polybar_3.0.5-1~getdeb1_amd64.deb
-#rm -f polybar_3.0.5-1~getdeb1_amd64.deb
-
-#git clone --branch 3.1.0 --recursive https://github.com/jaagr/polybar
-#mkdir polybar/build
-#cd polybar/build
-#cmake ..
-#sudo make install
+git clone https://github.com/jaagr/polybar
+cd polybar
+./build.sh -f
+cd ..
 
 #file didn't exist for me, so test and touch
 if [ -e $HOME/.Xresources ]
