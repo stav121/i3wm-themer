@@ -7,7 +7,7 @@ sudo apt update
 
 #adobe-source-code-pro-fonts **
 #added binutils,gcc,make,pkg-config,fakeroot for compilations, removed yaourt
-sudo apt install git nitrogen rofi python-pip binutils gcc make pkg-config fakeroot fonts-font-awesome cmake python-xcbgen xcb-proto libxcb-ewmh-dev -y
+sudo apt install git nitrogen rofi python-pip binutils gcc make pkg-config fakeroot cmake python-xcbgen xcb-proto libxcb-ewmh-dev wireless-tools -y
 
 #sudo apt-get install libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev -y 
 
@@ -19,10 +19,16 @@ sudo -H pip install -r requirements.txt
 sudo git clone https://github.com/adobe-fonts/source-code-pro.git /usr/share/fonts/opentype/scp
 sudo fc-cache -f -v
 
+wget http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-font-awesome/fonts-font-awesome_4.7.0~dfsg-3_all.deb
+sudo apt install -f ./fonts-font-awesome_4.7.0~dfsg-3_all.deb
+
 git clone https://github.com/jaagr/polybar
 cd polybar
 ./build.sh -f
-cd ..
+cd build
+sudo make install
+make userconfig
+cd ../..
 
 #file didn't exist for me, so test and touch
 if [ -e $HOME/.Xresources ]
