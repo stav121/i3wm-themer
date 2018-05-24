@@ -17,10 +17,17 @@ sudo -H pip install -r requirements.txt
 
 [ -d /usr/share/fonts/opentype ] || sudo mkdir /usr/share/fonts/opentype
 sudo git clone https://github.com/adobe-fonts/source-code-pro.git /usr/share/fonts/opentype/scp
+mkdir fonts
+cd fonts
+wget https://use.fontawesome.com/releases/v5.0.13/fontawesome-free-5.0.13.zip
+unzip fontawesome-free-5.0.13.zip
+cd fontawesome-free-5.0.13
+sudo cp use-on-desktop/* /usr/share/fonts
 sudo fc-cache -f -v
+cd ../..
 
-wget http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-font-awesome/fonts-font-awesome_4.7.0~dfsg-3_all.deb
-sudo apt install -f ./fonts-font-awesome_4.7.0~dfsg-3_all.deb
+#wget http://mirrors.kernel.org/ubuntu/pool/main/f/fonts-font-awesome/fonts-font-awesome_4.7.0~dfsg-3_all.deb
+#sudo apt install -f ./fonts-font-awesome_4.7.0~dfsg-3_all.deb
 
 git clone https://github.com/jaagr/polybar
 cd polybar
