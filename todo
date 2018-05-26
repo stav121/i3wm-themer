@@ -1,0 +1,14 @@
+bmodule path 'lib/xpp': checked out '00165e1a6d5dd61bc153e1352b21ec07fc81245d'
+** Setting build options
+** Use GCC even if Clang is installed -------------------------------- [y/N]: y
+** Include support for "internal/i3" (requires i3) ------------------- [y/N]: y
+** Include support for "internal/alsa" (requires alsalib) ------------ [y/N]: 
+
+** Include support for "internal/pulseaudio" (requires libpulse) ----- [y/N]: 
+
+** Include support for "internal/network" (requires wireless_tools) -- [y/N]: y
+** Include support for "internal/mpd" (requires libmpdclient) -------- [y/N]: 
+
+** Include support for "internal/github" (requires libcurl) ---------- [y/N]: 
+
+

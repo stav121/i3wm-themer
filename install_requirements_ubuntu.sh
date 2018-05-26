@@ -21,6 +21,7 @@ cd xcb-util-xrm/
 make
 sudo make install
 cd ..
+rm -frv xcb-util-xrm
 
 #cat > /etc/ld.so.conf.d/i3.conf
 #/usr/local/lib/
@@ -40,12 +41,11 @@ cd build/
 # which i3
 # ls -l /usr/bin/i3
 cd ../..
+rm -frv i3-gaps
 
 
 #added binutils,gcc,make,pkg-config,fakeroot for compilations, removed yaourt
 sudo apt install git nitrogen rofi python-pip binutils gcc make pkg-config fakeroot cmake python-xcbgen xcb-proto libxcb-ewmh-dev wireless-tools libiw-dev -y
-
-#sudo apt-get install libxcb-randr0-dev libxcb-xtest0-dev libxcb-xinerama0-dev libxcb-shape0-dev libxcb-xkb-dev -y 
 
 #added PYTHONDONTWRITEBYTECODE to prevent __pycache__
 export PYTHONDONTWRITEBYTECODE=1
@@ -61,6 +61,7 @@ cd fontawesome-free-5.0.13
 sudo cp use-on-desktop/* /usr/share/fonts
 sudo fc-cache -f -v
 cd ../..
+rm -frv fonts
 
 git clone https://github.com/jaagr/polybar
 cd polybar
@@ -69,6 +70,7 @@ cd build
 sudo make install
 make userconfig
 cd ../..
+rm -frv polybar
 
 #file didn't exist for me, so test and touch
 if [ -e $HOME/.Xresources ]
