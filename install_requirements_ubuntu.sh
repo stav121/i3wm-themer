@@ -13,7 +13,7 @@ fi
 #refresh apt
 sudo apt update
 
-sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf
+sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf -y
 
 git clone --recursive https://github.com/Airblader/xcb-util-xrm.git
 cd xcb-util-xrm/
@@ -21,7 +21,7 @@ cd xcb-util-xrm/
 make
 sudo make install
 cd ..
-rm -frv xcb-util-xrm
+rm -fr xcb-util-xrm
 
 #cat > /etc/ld.so.conf.d/i3.conf
 #/usr/local/lib/
@@ -41,11 +41,11 @@ cd build/
 # which i3
 # ls -l /usr/bin/i3
 cd ../..
-rm -frv i3-gaps
+rm -fr i3-gaps
 
 
 #added binutils,gcc,make,pkg-config,fakeroot for compilations, removed yaourt
-sudo apt install git nitrogen rofi python-pip binutils gcc make pkg-config fakeroot cmake python-xcbgen xcb-proto libxcb-ewmh-dev wireless-tools libiw-dev libasound2-dev libcurl4-openssl-dev libmpdclient-dev -y
+sudo apt install git nitrogen rofi python-pip binutils gcc make pkg-config fakeroot cmake python-xcbgen xcb-proto libxcb-ewmh-dev wireless-tools libiw-dev libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev -y
 
 #added PYTHONDONTWRITEBYTECODE to prevent __pycache__
 export PYTHONDONTWRITEBYTECODE=1
@@ -61,7 +61,7 @@ cd fontawesome-free-5.0.13
 sudo cp use-on-desktop/* /usr/share/fonts
 sudo fc-cache -f -v
 cd ../..
-rm -frv fonts
+rm -fr fonts
 
 echo "------------------------------"
 echo "Say Yes to all of the first batch"
@@ -69,7 +69,7 @@ echo "Say No to all of the batch after it compiles"
 echo "------------------------------"
 echo "Press enter to continue"
 echo "------------------------------"
-read
+read tmpread
 git clone https://github.com/jaagr/polybar
 cd polybar
 ./build.sh -f
@@ -77,7 +77,7 @@ cd build
 sudo make install
 make userconfig
 cd ../..
-rm -frv polybar
+rm -fr polybar
 
 #file didn't exist for me, so test and touch
 if [ -e $HOME/.Xresources ]
