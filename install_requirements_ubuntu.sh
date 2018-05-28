@@ -45,7 +45,7 @@ rm -frv i3-gaps
 
 
 #added binutils,gcc,make,pkg-config,fakeroot for compilations, removed yaourt
-sudo apt install git nitrogen rofi python-pip binutils gcc make pkg-config fakeroot cmake python-xcbgen xcb-proto libxcb-ewmh-dev wireless-tools libiw-dev -y
+sudo apt install git nitrogen rofi python-pip binutils gcc make pkg-config fakeroot cmake python-xcbgen xcb-proto libxcb-ewmh-dev wireless-tools libiw-dev libasound2-dev libcurl4-openssl-dev libmpdclient-dev -y
 
 #added PYTHONDONTWRITEBYTECODE to prevent __pycache__
 export PYTHONDONTWRITEBYTECODE=1
@@ -63,6 +63,13 @@ sudo fc-cache -f -v
 cd ../..
 rm -frv fonts
 
+echo "------------------------------"
+echo "Say Yes to all of the first batch"
+echo "Say No to all of the batch after it compiles"
+echo "------------------------------"
+echo "Press enter to continue"
+echo "------------------------------"
+read
 git clone https://github.com/jaagr/polybar
 cd polybar
 ./build.sh -f
