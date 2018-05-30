@@ -71,7 +71,7 @@ Copy the script in the <a href="scripts/">scripts</a> folder to your polybar dir
 
 Backup your files:
 
-    mkdir ~/Backup
+    mkdir ~/Backups
     python i3wm-themer.py --config config.yaml --backup /home/[USER]/Backups
 
 This step will copy the files that you set in the `config.yaml` for safekeeping in case things go
