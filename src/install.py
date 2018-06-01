@@ -43,6 +43,13 @@ def install_defaults( temp_folder, configuration ):
                 prnt.prnt( '-s', 'Success!')
             else:
                 prnt.prnt( '-f', 'Failed!')
+
+        # Install default nitrogen file
+        if 'nitrogen-config' in configuration:
+            if( install_file( configuration, 'nitrogen-config', temp_folder+'bg-saved.template')):
+                prnt.prnt( '-s', 'Success!')
+            else:
+                prnt.prnt( '-f', 'Failed!')
     else:
         prnt.prnt( '-f', 'Failed to locate the folder.')
         exit(9)
