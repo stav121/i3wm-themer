@@ -87,6 +87,14 @@ else
 	touch $HOME/.Xresources
 fi
 
+#file didn't exist for me, so test and touch
+if [ -e $HOME/.config/nitrogen/bg-saved.cfg ]
+then
+        echo "... .bg-saved.cfg found."
+else
+        touch $HOME/.config/nitrogen/bg-saved.cfg
+fi
+
 #rework of user in config.yaml
 cd src
 rm -f config.yaml
