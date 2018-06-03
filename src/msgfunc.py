@@ -4,7 +4,7 @@ def prnt( arg, msg ):
     prefix_fail = '\x1b[0;31;40m [x] \x1b[0m'
     prefix_fatal = '\x1b[0;31;40m [!] '
     prefix_normal = '\x1b[0m'
-
+    #print ("arg=",arg," msg=",msg)
     if arg == '-s':
         print( prefix_success, msg)
     elif arg == '-f':
