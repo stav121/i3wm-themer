@@ -43,6 +43,7 @@ if [ -e $HOME/.config/nitrogen/bg-saved.cfg ]
 then
 	echo "... .bg-saved.cfg found."
 else
+	mkdir $HOME/.config/nitrogen
 	touch $HOME/.config/nitrogen/bg-saved.cfg
 fi
 
@@ -57,7 +58,7 @@ if [ -e $HOME/.config/polybar/config ]
 then
         echo "... polybar/config found."
 else
-	mkdir $HOME/.config/polybar
+				mkdir $HOME/.config/polybar
         touch $HOME/.config/polybar/config
 fi
 

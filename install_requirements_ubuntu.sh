@@ -92,6 +92,7 @@ if [ -e $HOME/.config/nitrogen/bg-saved.cfg ]
 then
         echo "... .bg-saved.cfg found."
 else
+				mkdir $HOME/.config/nitrogen
         touch $HOME/.config/nitrogen/bg-saved.cfg
 fi
 
@@ -118,4 +119,3 @@ python i3wm-themer.py --config config.yaml --install defaults/
 
 echo ""
 echo "Read the README.md"
-
