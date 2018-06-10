@@ -6,11 +6,12 @@ import msgfunc as prnt
 
 def install_file( config, install_file, new_file):
     if(fileu.locate_file(config[install_file])):
-        prnt.prnt( '-s', 'Located '+config[install_file]+'file!')
-        if(copyfile(new_file, config[install_file])):
+        prnt.prnt( '-s', 'Located '+config[install_file]+' file!')
+        try:
+            copyfile(new_file, config[install_file])
             prnt.prnt( '-s', 'Installed the new file successfully!')
             return True
-        else:
+        except:
             prnt.prnt( '-f', 'Failed to install the new file!')
             return False
     else:
@@ -18,7 +19,7 @@ def install_file( config, install_file, new_file):
         return False
 
 def install_defaults( temp_folder, configuration ):
-    prnt.prnt( '-n', 'Intalling the files from '+temp_folder+'file.')
+    prnt.prnt( '-n', 'Intalling the files from '+temp_folder+' file.')
 
     if(fileu.locate_folder(temp_folder)):
         prnt.prnt( '-n', 'Located the folder.')

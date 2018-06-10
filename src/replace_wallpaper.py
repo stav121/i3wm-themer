@@ -18,10 +18,11 @@ def replace_wallpaper( configuration, json_file):
 
             rl.replace_line( configuration['nitrogen-config'], 'file', 'file= '+configuration['wallpaper-path']+wallpaper)
             new_file='wallpapers/'+wallpaper
-            if(copyfile(new_file, configuration['wallpaper-path']+wallpaper)):
+            try:
+                copyfile(new_file, configuration['wallpaper-path']+wallpaper)
                 prnt.prnt( '-s', 'Installed the new file successfully!')
                 return True
-            else:
+            except:
                 prnt.prnt( '-f', 'Failed to install the new file!')
                 return False
     else:
