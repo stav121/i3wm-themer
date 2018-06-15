@@ -101,12 +101,6 @@ else
         touch $HOME/.config/nitrogen/bg-saved.cfg
 fi
 
-#rework of user in config.yaml
-cd src
-rm -f config.yaml
-cp defaults/config.yaml .
-sed -i -e "s/USER/$USER/g" config.yaml
-
 #file didn't excist for me, so test and touch
 if [ -e $HOME/.config/polybar/config ]
 then
@@ -116,10 +110,18 @@ else
         touch $HOME/.config/polybar/config
 fi
 
-#backup, configure and set theme to default
-cp -r ../scripts/* /home/$USER/.config/polybar/
+#rework of user in config.yaml
+cd src
+rm -f config.yaml
+cp defaults/config.yaml .
+sed -i -e "s/USER/$USER/g" config.yaml
+
+#backup
 mkdir $HOME/Backup
 python i3wm-themer.py --config config.yaml --backup $HOME/Backup
+
+#configure and set theme to default
+cp -r ../scripts/* /home/$USER/.config/polybar/
 python i3wm-themer.py --config config.yaml --install defaults/
 
 echo ""
