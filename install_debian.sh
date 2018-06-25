@@ -110,6 +110,15 @@ else
         touch $HOME/.config/polybar/config
 fi
 
+#file didn't excist for me, so test and touch
+if [ -e $HOME/.config/i3/config ]
+then
+        echo "... i3/config found."
+else
+				mkdir $HOME/.config/i3
+        touch $HOME/.config/i3/config
+fi
+
 #rework of user in config.yaml
 cd src
 rm -f config.yaml
