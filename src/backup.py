@@ -7,10 +7,11 @@ import msgfunc as prnt
 def backup_file( config, back_file, destination):
     if(fileu.locate_file(config[back_file])):
         prnt.prnt( '-s', 'Located your '+config[back_file]+' file!')
-        if( copyfile( config[back_file], destination)):
+        try:
+            copyfile( config[back_file], destination)
             prnt.prnt( '-s', 'Backed it up successfully!')
             return True
-        else:
+        except:
             prnt.prnt( '-f', 'Failed to back it up!')
             return False
     else:
@@ -47,4 +48,3 @@ def backup_config( backup_folder, configuration):
     else:
        prnt.prnt( '-f', 'Failed to locate the backup folder.')
        exit(9)
-

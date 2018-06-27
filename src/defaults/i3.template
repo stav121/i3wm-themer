@@ -1,4 +1,4 @@
-set $mod Mod4
+set $mod Mod1
 
 new_window pixel 1
 new_float normal

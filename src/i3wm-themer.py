@@ -18,6 +18,7 @@ import load_json as lj
 import replace_xresources as rx
 import replace_i3 as ri
 import replace_polybar as rp
+import replace_wallpaper as rw
 import command as com
 
 if __name__=="__main__":
@@ -50,5 +51,6 @@ if __name__=="__main__":
         rx.replace_xresources( configuration, jfile)
         ri.replace_i3( configuration, jfile)
         rp.replace_polybar( configuration, jfile)
+        rw.replace_wallpaper( configuration, jfile)
         com.refresh_all( configuration['xresources'], jfile['wallpaper'])
         exit(0)

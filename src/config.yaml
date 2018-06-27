@@ -1,3 +1,5 @@
-i3-config: /home/unix121/.i3/config
-polybar-config: /home/unix121/.config/polybar/config
-xresources: /home/unix121/.Xresources
+i3-config: /home/v/.config/i3/config
+polybar-config: /home/v/.config/polybar/config
+xresources: /home/v/.Xresources
+nitrogen-config: /home/v/.config/nitrogen/bg-saved.cfg
+wallpaper-path: /home/v/.config/nitrogen/
