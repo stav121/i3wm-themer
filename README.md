@@ -24,7 +24,6 @@ effort to make it meet everyone's needs/likings.
 <li>You always wanted to use i3wm but can't figure it out on your own</li>
 <li>You want to change themes on the go</li>
 <li><a href="https://www.i3wm.org">i3wm</a> is awesome</li>
-<li>Satan > Jesus</li>
 </ul>
 
 <h1>What you will need</h1>
