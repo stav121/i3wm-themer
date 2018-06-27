@@ -48,10 +48,20 @@ Clone this repository and install the requirements for the script.
     cd i3wm-themer/
     sudo pip install -r requirements.txt
 
-If you are on Arch Linux, ArchLabs Linux, Manjaro Linux (Those are the ones that I tested so far)
-install everything from the `What you will need` section:
+Install all the requirements from the 'What you will need' section.
+Either manually or use one of the scripts created for some distros:
 
+    # For Arch, ArchLabs or Manjaro Linux
+    # (Should work for other Arch-based distros as well)
     ./install_requirements_arch.sh
+    # or
+    ./install_arch.sh
+
+    # For Debian
+    ./install_debian.sh
+
+    # For Ubuntu
+    ./install_ubuntu.sh
 
 If you are not on one of the above, install them using your Package manager.
 
