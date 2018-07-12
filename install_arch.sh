@@ -2,16 +2,14 @@
 
 ### Script written by Stavros Grigoriou ( github.com/unix121 )
 ### 20180505 Changes fully commented by James Shane ( github.com/jamesshane )
+### 20180727 Python dependencies shifted to pacman by Graham Still ( github.com/adoxography )
 
 #refrsh pacman
 sudo pacman -Syy
 
 #added binutils,gcc,make,pkg-config,fakeroot for compilations, removed yaourt
-sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils gcc make pkg-config fakeroot --noconfirm
-
-#added PYTHONDONTWRITEBYTECODE to prevent __pycache__
-export PYTHONDONTWRITEBYTECODE=1
-sudo pip install -r requirements.txt
+#added python-yaml, removed pip install
+sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils gcc make pkg-config fakeroot python-yaml --noconfirm
 
 #install yaourt by source
 git clone https://aur.archlinux.org/package-query.git
