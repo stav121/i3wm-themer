@@ -63,16 +63,9 @@ sudo fc-cache -f -v
 cd ../..
 rm -fr fonts
 
-echo "------------------------------"
-echo "Say Yes to all of the first batch"
-echo "Say No to all of the batch after it compiles"
-echo "------------------------------"
-echo "Press enter to continue"
-echo "------------------------------"
-read tmpread
 git clone https://github.com/jaagr/polybar
 cd polybar
-./build.sh -f
+USE_GCC=ON ENABLE_I3=ON ENABLE_ALSA=ON ENABLE_PULSEAUDIO=ON ENABLE_NETWORK=ON ENABLE_MPD=ON ENABLE_CURL=ON ENABLE_IPC_MSG=ON INSTALL=OFF INSTALL_CONF=OFF ./build.sh -f
 cd build
 sudo make install
 make userconfig
