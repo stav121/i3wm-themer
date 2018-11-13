@@ -23,6 +23,8 @@ elif [ -x "$(command -v pakku)" ]; then
     pakku -S polybar-git ttf-nerd-fonts-symbols
 elif [ -x "$(command -v aura)" ]; then
     aura -SA polybar-git ttf-nerd-fonts-symbols
+elif [ -x "$(command -v pacaur)" ]; then
+    pacaur -S polybar-git ttf-nerd-fonts-symbols
 else
     echo "No common AUR Helpers found!"
     echo "This script requires an AUR Helper to install the following packages: polybar-git ttf-nerd-fonts-symbols"
@@ -48,7 +50,7 @@ else
 	touch $HOME/.config/nitrogen/bg-saved.cfg
 fi
 
-#file didn't excist for me, so test and touch
+#file didn't exist for me, so test and touch
 if [ -e $HOME/.config/polybar/config ]
 then
         echo "... polybar/config found."
@@ -57,7 +59,7 @@ else
         touch $HOME/.config/polybar/config
 fi
 
-#file didn't excist for me, so test and touch
+#file didn't exist for me, so test and touch
 if [ -e $HOME/.config/i3/config ]
 then
         echo "... i3/config found."
