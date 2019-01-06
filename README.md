@@ -52,9 +52,6 @@ Install all the requirements from the 'What you will need' section.
 Either manually or use one of the scripts created for some distros:
 
     # For Arch, ArchLabs or Manjaro Linux
-    # (Should work for other Arch-based distros as well)
-    ./install_requirements_arch.sh
-    # or
     ./install_arch.sh
 
     # For Debian
