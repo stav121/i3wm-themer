@@ -72,7 +72,7 @@ files. In the end it should look something like this:
 
 Where `[USER]` is your `$USER`.
 
-All futher commands are to be executed from the /src directory.
+All further commands are to be executed from the /src directory.
 
 Copy the script in the <a href="scripts/">scripts</a> folder to your polybar directory:
 
