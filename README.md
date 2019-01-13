@@ -32,7 +32,7 @@ effort to make it meet everyone's needs/likings.
 <li>Python 3</li>
 <li><a href="https://github.com/Airblader/i3">i3-gaps</a></li>
 <li><a href="https://github.com/jaagr/polybar">Polybar</a></li>
-<li><a href="https://github.com/DaveDavenport">Rofi</a></li>
+<li><a href="https://github.com/DaveDavenport/rofi">Rofi</a></li>
 <li><a href="https://fontawesome.com">Font-Awesome-5</a></li>
 <li><a href="https://aur.archlinux.org/packages/nitrogen-git/">Nitrogen</a></li>
 <li><a href="https://aur.archlinux.org/packages/nerd-fonts-complete/">nerd-fonts-complete</a></li>
