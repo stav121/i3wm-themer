@@ -209,7 +209,7 @@ mode "resize" {
 # Autostart applications
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
@@ -267,3 +267,10 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+# set power-manager and volume control
+exec --no-startup-id mate-power-manager
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2db- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
