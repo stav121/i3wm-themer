@@ -39,7 +39,7 @@ effort to make it meet everyone's needs/likings.
 <li><a href="https://github.com/adobe-fonts/source-code-pro">Adobe Source Code Pro font</a></li>
 <li><a href="https://wiki.archlinux.org/index.php/Rxvt-unicode">rxvt-unicode</a></li>
 <li><a href="https://archlinux.org/packages/extra/x86_64/alsa-utils">alsa-utils</a></li>
-<li><a href="https://archlinux.org/packages/community/x86_64/meta-power-manager">meta-power-manager</a></li>
+<li><a href="https://archlinux.org/packages/community/x86_64/mate-power-manager">mate-power-manager</a></li>
 </ul>
 
 <h2>Using the script</h2>
