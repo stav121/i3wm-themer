@@ -29,6 +29,8 @@ modules-right = wlan eth powermenu
 
 tray-position =
 ;tray-padding =
+wm-restack = i3
+override-redirect = true
 
 cursor-click = pointer
 cursor-scroll = ns-resize
