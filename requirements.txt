@@ -1,1 +1,2 @@
+-i https://pypi.org/simple/
 pyyaml==5.1
