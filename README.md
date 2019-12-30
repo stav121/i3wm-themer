@@ -1,20 +1,14 @@
-<h1>i3wm-themer</h1>
+<h1>i3wm-themer</h1> 
+
+![](https://img.shields.io/circleci/build/github/unix121/i3wm-themer/master)
+![](https://img.shields.io/codacy/coverage/79aa404309114b25bdc87f00107a0b94/master)
+![](https://img.shields.io/codacy/grade/79aa404309114b25bdc87f00107a0b94/master)
+![](https://img.shields.io/github/last-commit/unix121/i3wm-themer/master)
+![](https://img.shields.io/github/license/unix121/i3wm-themer)
 <ul>
 Personal collection of themes and scripts for <a href="https://www.i3wm.org">i3wm</a>.
 
 ![](workflow/workflow.gif?raw=true)
-</ul>
-
-<h3>Update [April 4, 2018]</h3>
-<ul>
-Due to the high amount of requests to update this repository, I took the time to *completely* rework
-it from the ground up. The old script is gone, the old configs are long gone. There is a <a
-href="src/i3wm-themer.py">new script</a> used to apply/modify the themes for i3wm, polybar and .Xresources, all the old themes have been
-reworked and a few new added. The script now uses a <a href="src/config.yaml">configuration file</a> used to locate your configs
-more accurately and the themes are now presented in a <a href="src/themes">JSON</a> format to make them easier to read/modify/add your own.
-This time I decided to add a few <a href="src/defaults">default configuration files</a> for you to use, to avoid the "oh my dots are now 
-messed up" complains. With all that said, I hope you enjoy the fully reworked repo, I put a lot of
-effort to make it meet everyone's needs/likings.
 </ul>
 
 <h1>Why?</h1>
@@ -65,7 +59,7 @@ Either manually or use one of the scripts created for some distros:
 If you are not on one of the above, install them using your Package manager.
 
 Make sure you have the requirements mentioned earlier installed.
-Edit the <a href="src/config.yaml">config.yaml</a> file and add your full path of i3wm config, polybar config and .Xresources
+Edit the <a href="defaults/config.yaml">config.yaml</a> file and add your full path of i3wm config, polybar config and .Xresources
 files. In the end it should look something like this:
 
     i3-config: /home/[USER]/.i3/config
@@ -74,11 +68,9 @@ files. In the end it should look something like this:
 
 Where `[USER]` is your `$USER`.
 
-All further commands are to be executed from the /src directory.
-
 Copy the script in the <a href="scripts/">scripts</a> folder to your polybar directory:
 
-    cp -r ../scripts/* /home/$USER/.config/polybar/
+    cp -r scripts/* /home/$USER/.config/polybar/
 
 Backup your files:
 
@@ -88,7 +80,7 @@ Backup your files:
 This step will copy the files that you set in the `config.yaml` for safekeeping in case things go
 wrong.
 
-Install the `config files` located in the <a href="src/defaults">src/defaults/</a> directory (not 100% required but
+Install the `config files` located in the <a href="defaults">defaults/</a> directory (not 100% required but
 I suggest you do so just to be sure).
 
     python i3wm-themer.py --config config.yaml --install defaults/
@@ -118,29 +110,15 @@ caution!
 
 <h2>Available Themes</h2>
 <ul>
-Just take a look at the <a href="src/themes/">Theme collection</a> and pick the ones you like.
+Just take a look at the <a href="themes/">Theme collection</a> and pick the ones you like.
 
 ![](workflow/themepreview.png?raw=true)
 
 </ul>
 
-<h2>Contribute to the project</h2>
-<ul>
-If you want to contribute to the project you can do it in two ways:
-<ul>
-<li>Add new themes by following this <a href="templates/README.md">guide</a></li>
-<li>Help with the script by helping cross out more things from the <a href="src/README.md">TODO</a> list</li>
-</ul>
-</ul>
-
 <h2>Author</h2>
 <ul>
 <a href="https://github.com/unix121">Stavros Grigoriou (unix121)</a>
-</ul>
-
-<h2>Support this project</h2>
-<ul>
-<a href="https://patreon.com/unix121">Patreon</a>
 </ul>
 
 <h2>Credits</h2>
