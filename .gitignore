@@ -1,2 +1,9 @@
-src/__pycache__
-src/*.pyc
+test-reports/
+.pytest_cache/
+*__pycache__
+*.pyc
+.idea/
+*.iml
+./*.png
+./*.jpg
+.coverage

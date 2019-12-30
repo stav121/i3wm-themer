@@ -1,0 +1,33 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/i3wm-themer
+    docker:
+      - image: circleci/python:3.6.4
+    steps:
+      - checkout
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
+      - restore_cache:
+          key: deps10-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+      - run:
+          name: Setup testing environment
+          command: |
+            pip install coverage --user
+            pip install pytest --user
+            pip install -r requirements.txt
+            echo $HOME
+      - save_cache:
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.6/site-packages"
+      - run:
+          name: Running tests
+          command: |
+            $HOME/.local/bin/coverage run -m pytest
+            $HOME/.local/bin/coverage report --include="i3wmthemer/*"
+            $HOME/.local/bin/coverage html
+      - store_artifacts:
+          path: htmlcov
