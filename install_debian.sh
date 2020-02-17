@@ -131,13 +131,11 @@ function create_config_files() {
         mkdir "$HOME"/.config/i3
         touch "$HOME"/.config/i3/config
     fi
-
-    # Compton config file doesn't come installed by default
+    # Compton config file doesn't come by default
     if [ -e "$HOME"/.config/compton.conf ]; then
         echo "... compton.conf found"
     else
         cp "/usr/share/doc/compton/examples/compton.sample.conf" "$HOME/.config/compton.conf"
-        echo 'opacity-rule = [ "70:class_g = 'URxvt'" ];' >> "$HOME/.config/compton.conf"
     fi
 
 }
