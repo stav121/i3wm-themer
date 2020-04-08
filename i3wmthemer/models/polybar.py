@@ -87,7 +87,7 @@ class PolybarTheme(AbstractTheme):
             FileUtils.replace_line(configuration.polybar_config, 'label-separator-foreground',
                                    'label-separator-foreground = ' + self.label_sep_fore)
             FileUtils.replace_line(configuration.polybar_config, 'format-connected-foreground',
-                                   'format-connected-foreground = ' + self.format_con_back)
+                                   'format-connected-foreground = ' + self.format_con_fore)
             FileUtils.replace_line(configuration.polybar_config, 'format-connected-background',
                                    'format-connected-background = ' + self.format_con_back)
             FileUtils.replace_line(configuration.polybar_config, 'format-connected-prefix-foreground',
