@@ -1,4 +1,5 @@
 import json
+import yaml
 import logging
 import os.path
 from os import fdopen, remove
@@ -45,11 +46,14 @@ class FileUtils:
         """
         file = ''
         if FileUtils.locate_file(path):
-            logger.warning('Located the Json file.')
-            with open(path) as json_data:
-                file = json.load(json_data)
+            logger.warning('Located the theme file.')
+            with open(path) as theme_data:
+                if file.endswith("json"):
+                    file = json.load(theme_data)
+                else:
+                    file = yaml.safe_load(theme_data)
         else:
-            logger.error('Failed to locate the Json file.')
+            logger.error('Failed to locate the theme file.')
             exit(9)
 
         return file

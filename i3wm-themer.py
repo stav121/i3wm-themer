@@ -19,7 +19,7 @@ if __name__ == "__main__":
     parser.add_argument('-c', '--config', type=str, required=True, help='Load config file')
     parser.add_argument('-b', '--backup', type=str, help='Backup files')
     parser.add_argument('-i', '--install', type=str, help='Install i3wm-themer\'s default configuration files')
-    parser.add_argument('-l', '--load', type=str, help='Load theme from JSON file')
+    parser.add_argument('-l', '--load', type=str, help='Load theme from JSON or YAML file')
     args = parser.parse_args()
 
     # TODO :: Default
