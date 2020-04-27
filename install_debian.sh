@@ -4,16 +4,16 @@
 ### 20200209 Script refactored into functions by Caesar Campos ( github.com/cizordj )
 
 function preparation() {
+    if [ "$(id -u)" == "0" ]; then
+        echo "Please run this script as a normal user"
+        echo "also make sure to have 'sudo' working..."
+        exit 1
+    fi
     # Look for env command and link if not found to help make scripts uniform
     if [ -e /bin/env ]; then
         echo "... /bin/env found."
     else
         sudo ln -s /usr/bin/env /bin/env
-    fi
-    if [ "$(id -u)" == "0" ]; then
-        echo "Please run this script as a normal user"
-        echo "also make sure to have 'sudo' working..."
-        exit 1
     fi
     sudo ln -s /sbin/reboot /usr/bin/reboot
     sudo ln -s /sbin/poweroff /usr/bin/poweroff
@@ -26,9 +26,8 @@ function preparation() {
 function install_required_packages() {
 
     # Refresh apt
-    sudo apt update
+    sudo apt-get update -qq
     sudo apt-get install libxcb-composite0-dev libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf unzip git x11-xserver-utils compton nitrogen rofi binutils gcc make pkg-config fakeroot cmake python-pip python-xcbgen xcb-proto libxcb-ewmh-dev wireless-tools libiw-dev libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev pavucontrol python3-pip rxvt
-
 }
 
 function install_xcb() {
