@@ -147,7 +147,7 @@ menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
 menu-3-0 = log off
-menu-3-0-exec = pkill -KILL -u $USER
+menu-3-0-exec = i3 exit logout
 menu-3-1 = cancel
 menu-3-1-exec = menu-open-0
 
