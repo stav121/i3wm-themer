@@ -27,10 +27,10 @@ elif [ -x "$(command -v pacaur)" ]; then
   pacaur -S polybar 
 elif [ -x "$(command -v auracle)" ]; then
   auracle download polybar
-  (cd polybar && makepkg -si --noconfirm && cd ../.. && rm -rf polybar)
+  (cd polybar && makepkg -si --noconfirm && cd .. && rm -rf polybar)
 else
   git clone https://aur.archlinux.org/polybar.git 
-  (cd polybar && makepkg -si --noconfirm && cd ../.. && rm -rf polybar)
+  (cd polybar && makepkg -si --noconfirm && cd .. && rm -rf polybar)
   exit 1
 fi
 
