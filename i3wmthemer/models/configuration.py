@@ -83,7 +83,7 @@ class ConfigurationLoader:
         if FileUtils.locate_file(self.filepath):
             logger.warning('Located the config file')
             config_path = open(self.filepath, 'r')
-            config = yaml.load_all(config_path, Loader=yaml.FullLoader)
+            config = yaml.load_all(config_path)
 
             for conf in config:
                 for n, v in conf.items():
