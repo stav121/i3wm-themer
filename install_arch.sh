@@ -27,7 +27,7 @@ elif [ -x "$(command -v pacaur)" ]; then
   pacaur -S polybar-git 
 elif [ -x "$(command -v auracle)" ]; then
   auracle download polybar-git
-  (cd $PWD/polybar-git && makepkg -si --noconfirm)
+  (cd "$PWD"/polybar-git && makepkg -si --noconfirm)
 else
   echo "No common AUR Helpers found!"
   echo "This script requires an AUR Helper to install the following packages: polybar-git"
