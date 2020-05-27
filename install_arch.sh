@@ -10,28 +10,27 @@ sudo pacman -Syy
 
 # Added binutils,gcc,make,pkg-config,fakeroot for compilations, removed yaourt
 # Added python-yaml, removed pip install
-sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils gcc make pkg-config fakeroot python-yaml ttf-nerd-fonts-symbols --noconfirm
+sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils gcc make pkg-config fakeroot python-yaml ttf-nerd-fonts-symbols git --noconfirm
 
 # Look for and use common AUR helpers from https://wiki.archlinux.org/index.php/AUR_helpers#Pacman_wrappers
 if [ -x "$(command -v yay)" ]; then
-  yay -S polybar-git 
+  yay -S polybar 
 elif [ -x "$(command -v trizen)" ]; then
-  trizen -S polybar-git 
+  trizen -S polybar 
 elif [ -x "$(command -v pikaur)" ]; then
-  pikaur -S polybar-git 
+  pikaur -S polybar 
 elif [ -x "$(command -v pakku)" ]; then
-  pakku -S polybar-git 
+  pakku -S polybar 
 elif [ -x "$(command -v aura)" ]; then
-  aura -SA polybar-git 
+  aura -SA polybar 
 elif [ -x "$(command -v pacaur)" ]; then
-  pacaur -S polybar-git 
+  pacaur -S polybar 
 elif [ -x "$(command -v auracle)" ]; then
-  auracle download polybar-git
-  (cd "$PWD"/polybar-git && makepkg -si --noconfirm)
+  auracle download polybar
+  (cd polybar && makepkg -si --noconfirm && cd ../.. && rm -rf polybar)
 else
-  echo "No common AUR Helpers found!"
-  echo "This script requires an AUR Helper to install the following packages: polybar-git"
-  echo "Please install an AUR helper and try again"
+  git clone https://aur.archlinux.org/polybar.git 
+  (cd polybar && makepkg -si --noconfirm && cd ../.. && rm -rf polybar)
   exit 1
 fi
 
