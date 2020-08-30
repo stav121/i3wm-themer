@@ -49,22 +49,22 @@ class InstallationUtils:
 
             # Install default i3 file
             if configuration.i3_config is not None:
-                if not InstallationUtils.install_file(configuration.i3_config, temp_folder + 'i3.template'):
+                if not InstallationUtils.install_file(configuration.i3_config, temp_folder + '/i3.template'):
                     logger.error('Failed!')
 
             # Install default polybar file
             if configuration.polybar_config is not None:
-                if not InstallationUtils.install_file(configuration.polybar_config, temp_folder + 'polybar.template'):
+                if not InstallationUtils.install_file(configuration.polybar_config, temp_folder + '/polybar.template'):
                     logger.error('Failed!')
 
             # Install default Xresources file
             if configuration.xresources is not None:
-                if not InstallationUtils.install_file(configuration.xresources, temp_folder + 'xresources.template'):
+                if not InstallationUtils.install_file(configuration.xresources, temp_folder + '/xresources.template'):
                     logger.error('Failed!')
 
             # Install default nitrogen file
             if configuration.nitrogen_config is not None:
-                if not InstallationUtils.install_file(configuration.nitrogen_config, temp_folder + 'bg-saved.template'):
+                if not InstallationUtils.install_file(configuration.nitrogen_config, temp_folder + '/bg-saved.template'):
                     logger.error('Failed!')
         else:
             logger.error('Failed to locate the folder.')
