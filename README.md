@@ -75,7 +75,7 @@ Copy the script in the <a href="scripts/">scripts</a> folder to your polybar dir
 Backup your files:
 
     mkdir ~/Backups
-    python i3wm-themer.py --config config.yaml --backup /home/[USER]/Backups
+    python3 i3wm-themer.py --config config.yaml --backup /home/[USER]/Backups
 
 This step will copy the files that you set in the `config.yaml` for safekeeping in case things go
 wrong.
@@ -83,14 +83,14 @@ wrong.
 Install the `config files` located in the <a href="defaults">defaults/</a> directory (not 100% required but
 I suggest you do so just to be sure).
 
-    python i3wm-themer.py --config config.yaml --install defaults/
+    python3 i3wm-themer.py --config config.yaml --install defaults/
 
 In case you get lost `$mod+Return` will open a new terminal, `$mode+d` will launch Rofi. (For the
 rest of the shortcuts just take a look on the config file for i3, and change them to your needs.)
 
 Now you are basically ready to go. Pick a theme you like from the collection and load it:
 
-    python i3wm-themer.py --config config.yaml --load themes/[theme_id].json
+    python3 i3wm-themer.py --config config.yaml --load themes/[theme_id].json
 
 (Where [theme_id] is the name of the theme you want to try!)
 

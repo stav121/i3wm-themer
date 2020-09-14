@@ -14,10 +14,56 @@ function preparation() {
 }
 
 function install_required_packages() {
-
     # Refresh apt
     sudo apt update
-    sudo apt install libcanberra-gtk-module libcanberra-gtk3-module libjsoncpp-dev build-essential libxcb-composite0-dev libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf xutils-dev dh-autoreconf unzip git x11-xserver-utils compton nitrogen rofi binutils gcc make cmake pkg-config fakeroot python python3-xcbgen xcb-proto libxcb-ewmh-dev wireless-tools libiw-dev libasound2-dev libpulse-dev libcurl4-openssl-dev libmpdclient-dev pavucontrol python3-pip rxvt compton -y
+    sudo apt install libcanberra-gtk-module \
+      libcanberra-gtk3-module \
+      libjsoncpp-dev build-essential \
+      libxcb-composite0-dev \
+      libxcb1-dev \
+      libxcb-keysyms1-dev \
+      libpango1.0-dev \
+      libxcb-util0-dev \
+      libxcb-icccm4-dev \
+      libyajl-dev \
+      libstartup-notification0-dev \
+      libxcb-randr0-dev \
+      libev-dev \
+      libxcb-cursor-dev \
+      libxcb-xinerama0-dev \
+      libxcb-xkb-dev \
+      libxkbcommon-dev \
+      libxkbcommon-x11-dev \
+      autoconf \
+      xutils-dev \
+      dh-autoreconf \
+      unzip \
+      git \
+      x11-xserver-utils \
+      compton \
+      nitrogen \
+      rofi \
+      binutils \
+      gcc \
+      make \
+      cmake \
+      pkg-config \
+      fakeroot \
+      python \
+      python3-xcbgen \
+      xcb-proto \
+      libxcb-ewmh-dev \
+      wireless-tools \
+      libiw-dev \
+      libasound2-dev \
+      libpulse-dev \
+      libcurl4-openssl-dev \
+      libmpdclient-dev \
+      pavucontrol \
+      python3-pip \
+      rxvt \
+      compton \
+      -y
 
 }
 
