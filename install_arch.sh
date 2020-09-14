@@ -72,11 +72,11 @@ sed -i -e "s/USER/$USER/g" config.yaml
 
 # Backup
 mkdir "$HOME"/Backup
-python i3wm-themer.py --config config.yaml --backup "$HOME"/Backup
+python3 i3wm-themer.py --config config.yaml --backup "$HOME"/Backup
 
 # Configure and set theme to 000
 cp -r scripts/* /home/"$USER"/.config/polybar/
-python i3wm-themer.py --config config.yaml --install defaults/
+python3 i3wm-themer.py --config config.yaml --install defaults/
 
 echo ""
 echo "Read the README.md"
