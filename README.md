@@ -38,7 +38,7 @@ Personal collection of themes and scripts for <a href="https://www.i3wm.org">i3w
 
 <h2>Using the script</h2>
 <ul>
-Clone this repository and install the requirements for the script.
+Clone this repository and install the requirements for the script. For Debian users, check the "Debian" section below.
 
     git clone https://github.com/unix121/i3wm-themer
     cd i3wm-themer/
@@ -126,3 +126,9 @@ Just take a look at the <a href="themes/">Theme collection</a> and pick the ones
 This whole project wouldn't be possible without the creators of all those awesome tools:
 i3wm, i3-gaps, polybar and everyone who worked on those projects.
 </ul>
+
+<h2>Advice for Debian and Fedora users</h2>
+
+Since this project is focused on Arch-based distros it may behave unexpectedly in other distributions. For that matter we have a fork that is exclusively focused on Debian and Fedora with minor changes. Feel free to check it out!
+
+<a href="https://github.com/cizordj/i3-themer">i3 themer for Debian</a>
