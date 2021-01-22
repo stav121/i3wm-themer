@@ -63,6 +63,8 @@ function install_required_packages() {
       python3-pip \
       rxvt \
       compton \
+      ninja \
+      meson \
       -y
 
 }
@@ -93,14 +95,12 @@ function install_i3_gaps() {
     git clone https://www.github.com/Airblader/i3.git i3-gaps
     # shellcheck disable=SC2164
     cd i3-gaps
-    autoreconf --force --install
     rm -Rf build/
     mkdir build
     # shellcheck disable=SC2164
     cd build/
-    ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-    make
-    sudo make install
+    meson ..
+    sudo ninja install
     # which i3
     # ls -l /usr/bin/i3
     cd ../..
