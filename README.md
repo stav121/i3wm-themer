@@ -1,10 +1,9 @@
 <h1>i3wm-themer</h1> 
 
 ![](https://img.shields.io/github/repo-size/unix121/i3wm-themer)
-![](https://img.shields.io/circleci/build/github/unix121/i3wm-themer/master)
-![](https://img.shields.io/codacy/coverage/79aa404309114b25bdc87f00107a0b94/master)
-![](https://img.shields.io/codacy/grade/79aa404309114b25bdc87f00107a0b94/master)
-![](https://img.shields.io/github/last-commit/unix121/i3wm-themer/master)
+![](https://img.shields.io/circleci/build/github/unix121/i3wm-themer/main)
+![](https://img.shields.io/codacy/grade/79aa404309114b25bdc87f00107a0b94/main)
+![](https://img.shields.io/github/last-commit/unix121/i3wm-themer/main)
 ![](https://img.shields.io/github/license/unix121/i3wm-themer)
 <ul>
 Personal collection of themes and scripts for <a href="https://www.i3wm.org">i3wm</a>.
