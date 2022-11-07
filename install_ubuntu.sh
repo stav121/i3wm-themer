@@ -45,7 +45,7 @@ function install_required_packages() {
       rofi \
       binutils \
       gcc \
-      make \
+      build-essential \
       cmake \
       pkg-config \
       fakeroot \
@@ -63,7 +63,7 @@ function install_required_packages() {
       python3-pip \
       rxvt \
       compton \
-      ninja \
+      ninja-build \
       meson \
       -y
 
