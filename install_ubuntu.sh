@@ -49,7 +49,7 @@ function install_required_packages() {
       cmake \
       pkg-config \
       fakeroot \
-      python \
+      python3 \
       python3-xcbgen \
       xcb-proto \
       libxcb-ewmh-dev \
@@ -61,10 +61,13 @@ function install_required_packages() {
       libmpdclient-dev \
       pavucontrol \
       python3-pip \
-      rxvt \
+      rxvt-unicode \
       compton \
       ninja-build \
       meson \
+      python3-sphinx \
+      libxcb-xrm-dev \
+      libuv1-dev \
       -y
 
 }
