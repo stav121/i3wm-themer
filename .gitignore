@@ -8,3 +8,4 @@ test-reports/
 ./*.jpg
 .coverage
 i3-gaps/
+*.swp
