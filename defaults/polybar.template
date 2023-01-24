@@ -1,4 +1,5 @@
 [bar/i3wmthemer_bar]
+monitor = ${env:MONITOR:}
 width = 100%
 height = 27
 radius = 0
@@ -23,7 +24,8 @@ font-0 = "Source Code Pro Semibold:size=10;1"
 font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
 font-2 = "Font Awesome 5 Brands:size=10;1"
 
-modules-left = i3
+;modules-left = i3
+modules-left = xworkspaces
 modules-center = date
 modules-right = wlan eth powermenu
 
@@ -35,9 +37,15 @@ override-redirect = true
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
+[module/xworkspaces]
+type = internal/xworkspaces
+pin-workspaces = true
+enable-scroll = false
+label-active = %name%
+
+;[module/i3]
+;type = internal/i3
+;format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 

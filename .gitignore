@@ -7,3 +7,4 @@ test-reports/
 ./*.png
 ./*.jpg
 .coverage
+i3-gaps/
