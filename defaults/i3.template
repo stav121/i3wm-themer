@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 
 new_window pixel 1
 new_float normal
@@ -22,10 +22,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show run
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -33,10 +33,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -49,12 +49,12 @@ bindsym $mod+b workspace back_and_forth
 bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
-bindsym $mod+h split h;exec notify-send 'tile horizontally'
+bindsym $mod+Ctrl+h split h;exec notify-send 'tile horizontally'
 bindsym $mod+v split v;exec notify-send 'tile vertically'
 bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -190,10 +190,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
-        bindsym semicolon resize grow width 5 px or 5 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt

@@ -1,0 +1,5 @@
+i3-config: /home/alex/.config/i3/config
+polybar-config: /home/alex/.config/polybar/config
+xresources: /home/alex/.Xresources
+nitrogen-config: /home/alex/.config/nitrogen/bg-saved.cfg
+wallpaper-path: /home/alex/.config/nitrogen/

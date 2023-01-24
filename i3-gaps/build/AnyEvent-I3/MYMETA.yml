@@ -1,0 +1,33 @@
+---
+abstract: 'communicate with the i3 window manager'
+author:
+  - 'Michael Stapelberg, C<< <michael at i3wm.org> >>'
+build_requires:
+  ExtUtils::MakeMaker: '6.36'
+  Test::More: '0.8'
+configure_requires:
+  ExtUtils::MakeMaker: '6.36'
+dynamic_config: 0
+generated_by: 'ExtUtils::MakeMaker version 7.62, CPAN::Meta::Converter version 2.150010'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: AnyEvent-I3
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  AnyEvent: '0'
+  AnyEvent::Handle: '0'
+  AnyEvent::Socket: '0'
+  JSON::XS: '0'
+  perl: '5.006'
+resources:
+  bugtracker: https://github.com/i3/i3/issues
+  homepage: https://i3wm.org/
+  license: https://dev.perl.org/licenses
+  repository: git://github.com/i3/i3
+version: '0.18'
+x_serialization_backend: 'CPAN::Meta::YAML version 0.018'

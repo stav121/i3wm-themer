@@ -1,0 +1,13 @@
+Changes
+lib/AnyEvent/I3.pm
+Makefile.PL
+MANIFEST			This list of files
+MANIFEST.SKIP
+README
+t/00-load.t
+t/01-workspaces.t
+t/02-sugar.t
+t/boilerplate.t
+t/manifest.t
+t/pod-coverage.t
+t/pod.t
