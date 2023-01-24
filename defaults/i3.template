@@ -20,6 +20,9 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
+# version from old version of Alex's i3-themes repo
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -dmenu -i -p 'apps'"
+
 
 # change focus
 bindsym $mod+h focus left
@@ -278,3 +281,7 @@ bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 # touchpad on and off controller on laptop with Fn+<touchpad control functional key>
 bindsym XF86TouchpadOn exec --no-startup-id synclient Touchpadoff=0
 bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
+
+# frequent applications
+bindsym $mod+f exec firefox
+bindsym $mod+Ctrl+f exec ~/.config/i3/bin/rofifinder.sh

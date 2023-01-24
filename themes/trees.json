@@ -1,0 +1,21 @@
+{
+
+
+	"wm": {
+		"window_manager": "i3wm",
+		"settings": {
+			"colors": "pywal"
+		}
+	},
+
+	"colorscheme": {
+		"method": "pywal"
+	},
+
+	"statusbar": {
+		"type": "polybar",
+		"colors": "pywal"
+	}
+
+}
+
