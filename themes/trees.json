@@ -1,19 +1,9 @@
 {
-    "i3": {
-        "use_pywal": true
-    },
-
-    "colorscheme": {
-        "method": "pywal"
-    },
-
-    "statusbar": {
-        "type": "polybar",
-        "colors": "pywal"
-    },
-
-    "progs": {
-        "vim": {}
-    }
+	"settings": {
+		"use_pywal": true},
+	"xresources": {},
+    "i3wm": {},
+	"polybar": {},
+    "wallpaper": "trees.png"
 }
 
