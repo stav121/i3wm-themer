@@ -1,7 +1,8 @@
 from i3wmthemer.models.abstract_theme import AbstractTheme
 from i3wmthemer.models.i3 import I3Theme
 from i3wmthemer.models.nitrogen import NitrogenTheme
-from i3wmthemer.models.polybar import PolybarTheme
+#from i3wmthemer.models.polybar import PolybarTheme
+from i3wmthemer.models.status import StatusbarTheme
 from i3wmthemer.models.xresources import XresourcesTheme
 
 
@@ -9,16 +10,19 @@ class Theme(AbstractTheme):
     """
     Class that contains the loaded theme.
     """
-
+    x_resources, i3_theme, polybar_theme, nitrogen_theme = None, None, None, None
     def __init__(self, file):
         """
         Initializer.
 
         :param file: the JSON file to load from.
         """
-        self.x_resources = XresourcesTheme(file)
+
+        if 'xresources' in file:
+            self.x_resources = XresourcesTheme(file)
         self.i3_theme = I3Theme(file)
-        self.polybar_theme = PolybarTheme(file)
+        self.statusbar_theme = StatusbarTheme(file)
+        #self.polybar_theme = PolybarTheme(file)
         self.nitrogen_theme = NitrogenTheme(file)
 
     def load(self, configuration):

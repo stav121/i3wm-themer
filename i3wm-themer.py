@@ -41,6 +41,7 @@ if __name__ == "__main__":
 
     if args.load is not None:
         file = FileUtils.load_theme_from_file(args.load)
+        print(file)
         theme = Theme(file)
         theme.load(configuration)
         exit(0)

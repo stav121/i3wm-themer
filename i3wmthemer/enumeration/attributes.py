@@ -44,7 +44,7 @@ class I3Attr(Enum):
     INACTIVE = 'client.focused_inactive'
     URGENT = 'client.urgent'
     PLACEHOLDER = 'client.placeholder'
-
+    USE_PYWAL = 'use_pywal'
 
 @unique
 class PolybarAttr(Enum):

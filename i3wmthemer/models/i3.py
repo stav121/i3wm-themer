@@ -28,6 +28,9 @@ class I3Theme(AbstractTheme):
         self.placeholder = i3theme[I3Attr.PLACEHOLDER.value]
 
     def load(self, configuration):
+        self.load_hex(configuration)
+
+    def load_hex(self, configuration):
         """
         Function that loads the i3 theme.
 
@@ -50,3 +53,6 @@ class I3Theme(AbstractTheme):
                                    'client.placeholder ' + self.placeholder)
         else:
             logger.warning('Failed to locate your i3 configuration file')
+
+    def load_from_xresources(self, configuration):
+        pass

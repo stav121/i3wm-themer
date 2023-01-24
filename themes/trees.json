@@ -1,21 +1,19 @@
 {
+    "i3": {
+        "use_pywal": true
+    },
 
+    "colorscheme": {
+        "method": "pywal"
+    },
 
-	"wm": {
-		"window_manager": "i3wm",
-		"settings": {
-			"colors": "pywal"
-		}
-	},
+    "statusbar": {
+        "type": "polybar",
+        "colors": "pywal"
+    },
 
-	"colorscheme": {
-		"method": "pywal"
-	},
-
-	"statusbar": {
-		"type": "polybar",
-		"colors": "pywal"
-	}
-
+    "progs": {
+        "vim": {}
+    }
 }
 
