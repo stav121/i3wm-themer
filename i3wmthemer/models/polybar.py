@@ -51,27 +51,33 @@ class PolybarTheme(AbstractTheme):
             self.format_con_fore = polybar_theme[PolybarAttr.FORMAT_CON_FORE.value]
             self.format_con_pre_fore = polybar_theme[PolybarAttr.FORMAT_CON_PRE_FORE.value]
             self.ramp_sign_fore = polybar_theme[PolybarAttr.RAMP_SIG_FOREGROUND.value]
+            if 'label-active-background' in polybar_theme:
+                self.label_active_background = polybar_theme['label-active-background']
+            if 'label-active-underline' in polybar_theme:
+                self.label_active_underline = polybar_theme['label-active-underline']
 
     def init_from_xresources(self):
-        self.background          = self.x_resources['background']
-        self.foreground          = self.x_resources['foreground']
-        self.label_un_back       = self.x_resources['color12']
-        self.label_un_fore       = self.x_resources['background']
-        self.label_mod_back      = self.x_resources['background']
-        self.label_mod_fore      = self.x_resources['color0']
-        self.label_foc_back      = self.x_resources['color4']
-        self.label_foc_fore      = self.x_resources['background']
-        self.label_vis_back      = self.x_resources['color12']
-        self.label_vis_fore      = self.x_resources['background']
-        self.format_back         = self.x_resources['color12']
-        self.format_fore         = self.x_resources['background']
-        self.label_open_fore     = self.x_resources['color12']
-        self.label_close_fore    = self.x_resources['color12']
-        self.label_sep_fore      = self.x_resources['color12']
-        self.format_con_back     = self.x_resources['color12']
-        self.format_con_fore     = self.x_resources['background']
-        self.format_con_pre_fore = self.x_resources['background']
-        self.ramp_sign_fore      = self.x_resources['background']
+        self.background              = self.x_resources['background']
+        self.foreground              = self.x_resources['foreground']
+        self.label_un_back           = self.x_resources['color12']
+        self.label_un_fore           = self.x_resources['background']
+        self.label_mod_back          = self.x_resources['background']
+        self.label_mod_fore          = self.x_resources['color0']
+        self.label_foc_back          = self.x_resources['color4']
+        self.label_foc_fore          = self.x_resources['background']
+        self.label_vis_back          = self.x_resources['color12']
+        self.label_vis_fore          = self.x_resources['background']
+        self.format_back             = self.x_resources['color12']
+        self.format_fore             = self.x_resources['background']
+        self.label_open_fore         = self.x_resources['color12']
+        self.label_close_fore        = self.x_resources['color12']
+        self.label_sep_fore          = self.x_resources['color12']
+        self.format_con_back         = self.x_resources['color12']
+        self.format_con_fore         = self.x_resources['background']
+        self.format_con_pre_fore     = self.x_resources['background']
+        self.ramp_sign_fore          = self.x_resources['background']
+        self.label_active_background = self.x_resources['color0']
+        self.label_active_underline  = self.x_resources['color1']
 
     def load(self, configuration):
         """
@@ -135,6 +141,10 @@ class PolybarTheme(AbstractTheme):
                                    'format-connected-prefix-foreground = ' + self.format_con_pre_fore)
             FileUtils.replace_line(configuration.polybar_config, 'ramp-signal-foreground',
                                    'ramp-signal-foreground = ' + self.ramp_sign_fore)
+            FileUtils.replace_line(configuration.polybar_config, 'label-active-background',
+                                    'label-active-background = ' + self.label_active_background)
+            FileUtils.replace_line(configuration.polybar_config, 'label-active-underline',
+                                    'label-active-underline = ' + self.label_active_underline)
         else:
             logger.error('Failed to locate the Polybar configuration file')
 

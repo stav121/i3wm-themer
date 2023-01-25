@@ -78,9 +78,9 @@ label-active-underline =
 label-active-padding = 1
 
 
-;[module/i3]
-;type = internal/i3
-;format = <label-state> <label-mode>
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
 

@@ -14,9 +14,9 @@
 
     "polybar": {
         "use_xresources": true,
-        "modules-left": "date xresources wlan eth",
-        "modules-center": "i3",
-        "modules-right": "powermenu"
+        "modules-left": "xworkspaces",
+        "modules-center": "date",
+        "modules-right": "wlan eth powermenu"
     },
 
 
