@@ -1,6 +1,6 @@
 # transparency
-exec killall picom
-exec_always picom --config ~/.config/picom.conf
+#exec killall picom
+#exec_always picom --config ~/.config/picom.conf
 
 # kill titles and border
 for window [class="^.*"] border pixel 0

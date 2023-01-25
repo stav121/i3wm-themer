@@ -1,6 +1,7 @@
 from i3wmthemer.models.abstract_theme import AbstractTheme
 from i3wmthemer.models.i3 import I3Theme
-from i3wmthemer.models.nitrogen import NitrogenTheme
+#from i3wmthemer.models.nitrogen import NitrogenTheme
+from i3wmthemer.models.wallpaper import WallpaperTheme
 from i3wmthemer.models.polybar import PolybarTheme
 from i3wmthemer.models.status import StatusbarTheme
 from i3wmthemer.models.xresources import XresourcesTheme
@@ -23,7 +24,8 @@ class Theme(AbstractTheme):
         self.i3_theme = I3Theme(file)
         #self.statusbar_theme = StatusbarTheme(file)
         self.polybar_theme = PolybarTheme(file)
-        self.nitrogen_theme = NitrogenTheme(file)
+        self.wallpaper_theme = WallpaperTheme(file)
+        #self.nitrogen_theme = NitrogenTheme(file)
 
     def load(self, configuration):
         """
@@ -34,8 +36,9 @@ class Theme(AbstractTheme):
         self.x_resources.load(configuration)
         self.i3_theme.load(configuration)
         self.polybar_theme.load(configuration)
-        self.nitrogen_theme.load(configuration)
-        configuration.refresh_all(self.nitrogen_theme.wallpaper)
+        self.wallpaper_theme.load(configuration)
+        #self.nitrogen_theme.load(configuration)
+        configuration.refresh_all(self.wallpaper_theme.wallpaper)
 
     def parse_settings(self, file):
         if 'use_pywal' in file['settings'] and file['settings']['use_pywal']:
@@ -44,7 +47,7 @@ class Theme(AbstractTheme):
 
     def populate_file_from_pywal(self, file: dict) -> dict:
 
-        wallpaper = file['wallpaper']
+        wallpaper = file['wallpaper']['name']
         colors = pywal.colors.get("./wallpapers/" + wallpaper)
 
         ### xresources

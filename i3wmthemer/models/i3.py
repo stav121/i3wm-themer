@@ -18,10 +18,10 @@ class I3Theme(AbstractTheme):
 
         :param json_file: JSON file that contains the theme data.
         """
-        i3theme = json_file[I3Attr.NAME.value]
+        self.i3theme = json_file[I3Attr.NAME.value]
 
         ### use the xresources entry to get the colors
-        if i3theme[I3Attr.USE_XRESOURCES.value]:
+        if self.i3theme[I3Attr.USE_XRESOURCES.value]:
             self.x_resources = json_file[XresourcesAttr.NAME.value]
             self.init_from_xresources()
 
@@ -51,7 +51,15 @@ class I3Theme(AbstractTheme):
         self.placeholder = " ".join([self.x_resources[i] for i in placeholder_list])
 
     def load(self, configuration):
+        # load colors
         self.load_hex(configuration)
+
+        if "font" in self.i3theme:
+            self.init_font(configuration)
+
+    def init_font(self, configuration):
+        with open(configuration.i3_config, "a") as f:
+            f.write(f"font {self.i3theme['font']}")
 
     def load_hex(self, configuration):
         """

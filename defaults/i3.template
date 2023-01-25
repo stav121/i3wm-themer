@@ -283,4 +283,7 @@ bindsym XF86TouchpadOn exec --no-startup-id synclient Touchpadoff=0
 bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 
 
-font xft:URWGothic-Book 11
+# font xft:URWGothic-Book 11
+bindsym $mod+f exec firefox
+focus_follows_mouse no
+bindsym $mod+Ctrl+f exec ~/.config/i3/bin/rofifinder.sh
