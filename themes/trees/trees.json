@@ -1,0 +1,23 @@
+{
+    "settings": {
+        "use_pywal": true,
+    "config": "config.yaml",
+    "install": "./defaults/"
+    },
+
+    "xresources": {},
+
+    "i3wm": {
+        "use_xresources": true
+    },
+
+    "polybar": {
+        "use_xresources": true,
+        "modules-left": "wlan eth",
+        "modules-center": "i3",
+        "modules-right": "date powermenu"
+    },
+
+    "wallpaper": "trees.jpg"
+}
+

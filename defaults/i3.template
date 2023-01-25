@@ -1,3 +1,6 @@
+# requires i3 gaps to work!
+
+# set modifier key
 set $mod Mod4
 
 new_window pixel 1
@@ -9,7 +12,6 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
 
-font xft:URWGothic-Book 11
 
 floating_modifier $mod
 
@@ -20,9 +22,6 @@ bindsym $mod+Shift+q kill
 
 # start program launcher
 bindsym $mod+d exec --no-startup-id rofi -show run
-# version from old version of Alex's i3-themes repo
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -dmenu -i -p 'apps'"
-
 
 # change focus
 bindsym $mod+h focus left
@@ -155,6 +154,7 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+for_window [class="zoom"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -282,6 +282,5 @@ bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
 bindsym XF86TouchpadOn exec --no-startup-id synclient Touchpadoff=0
 bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 
-# frequent applications
-bindsym $mod+f exec firefox
-bindsym $mod+Ctrl+f exec ~/.config/i3/bin/rofifinder.sh
+
+font xft:URWGothic-Book 11

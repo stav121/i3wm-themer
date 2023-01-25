@@ -1,8 +1,9 @@
 import logging
-from shutil import copyfile
-
+#from shutil import copyfile
+import shutil
+import os
 from i3wmthemer.utils.fileutils import FileUtils
-
+import yaml
 logger = logging.getLogger(__name__)
 
 
@@ -23,7 +24,9 @@ class InstallationUtils:
         if FileUtils.locate_file(file):
             logger.warning('Located %s file!', file)
             try:
-                copyfile(new_file, file)
+                print("src: ", new_file)
+                print("destination: ", file)
+                shutil.copy2(new_file, file)
                 logger.warning('Installed the new file successfully!')
                 return True
             except IOError:
@@ -34,8 +37,38 @@ class InstallationUtils:
             return False
 
     @staticmethod
-    def install_defaults(temp_folder, configuration):
+    def install_defaults(file: dict):
+        if 'config' in file['settings']:
+            config_path = file['settings']['config']
+        else:
+            config_path = "config.yaml"
+
+        if "install" in file['settings']:
+            install_path = file['settings']['install']
+        else:
+            install_path = "./defaults/"
+
+        with open(config_path, "r") as f:
+            config = yaml.safe_load(f)
+
+        for template in os.listdir(install_path):
+            key = template.split('.')[0]
+            if key not in config:
+                continue
+            print(f"template={template}, target={config[key]}")
+            if not os.path.exists(config[key]):
+                print('generating path', config[key])
+                dir_to_make = "/" + os.path.join(*config[key].split('/')[:-1])
+                print("dir to make = ", dir_to_make)
+                os.mkdir(dir_to_make)
+                with open(config[key], "w") as f:
+                    pass
+            if not InstallationUtils.install_file(config[key], os.path.join(install_path, f"{key}.template")):
+                logger.error("Failed!")
+
+    def install_defaults_old(temp_folder, configuration):
         """
+        DOCSTRING DEPRECIATED
         Function that installs each configuration template file to the proper
         location in the system.
 

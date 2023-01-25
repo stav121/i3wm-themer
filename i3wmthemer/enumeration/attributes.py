@@ -44,7 +44,7 @@ class I3Attr(Enum):
     INACTIVE = 'client.focused_inactive'
     URGENT = 'client.urgent'
     PLACEHOLDER = 'client.placeholder'
-    USE_PYWAL = 'use_pywal'
+    USE_XRESOURCES = 'use_xresources'
 
 @unique
 class PolybarAttr(Enum):
@@ -74,7 +74,7 @@ class PolybarAttr(Enum):
     FORMAT_CON_BACK = 'format-connected-background'
     FORMAT_CON_PRE_FORE = 'format-connected-prefix-foreground'
     RAMP_SIG_FOREGROUND = 'ramp-signal-foreground'
-
+    USE_XRESOURCES = "use_xresources"
 
 @unique
 class NitrogenAttr(Enum):

@@ -1,8 +1,10 @@
 import logging
 
-from i3wmthemer.enumeration.attributes import PolybarAttr
+from i3wmthemer.enumeration.attributes import PolybarAttr, XresourcesAttr
 from i3wmthemer.models.abstract_theme import AbstractTheme
 from i3wmthemer.utils.fileutils import FileUtils
+import shutil
+import os
 
 logger = logging.getLogger(__name__)
 
@@ -19,28 +21,57 @@ class PolybarTheme(AbstractTheme):
         """
         polybar_theme = json_file[PolybarAttr.NAME.value]
 
-        self.background = polybar_theme[PolybarAttr.BACKGROUND.value]
-        self.foreground = polybar_theme[PolybarAttr.FOREGROUND.value]
-        self.modules_l = polybar_theme[PolybarAttr.MOD_L.value]
-        self.modules_c = polybar_theme[PolybarAttr.MOD_C.value]
-        self.modules_r = polybar_theme[PolybarAttr.MOD_R.value]
-        self.label_un_back = polybar_theme[PolybarAttr.LABEL_UN_BACK.value]
-        self.label_un_fore = polybar_theme[PolybarAttr.LABEL_UN_FORE.value]
-        self.label_mod_back = polybar_theme[PolybarAttr.LABEL_MOD_BACK.value]
-        self.label_mod_fore = polybar_theme[PolybarAttr.LABEL_MOD_FORE.value]
-        self.label_foc_back = polybar_theme[PolybarAttr.LABEL_FOC_BACK.value]
-        self.label_foc_fore = polybar_theme[PolybarAttr.LABEL_FOC_FORE.value]
-        self.label_vis_back = polybar_theme[PolybarAttr.LABEL_VIS_BACK.value]
-        self.label_vis_fore = polybar_theme[PolybarAttr.LABEL_VIS_FORE.value]
-        self.format_back = polybar_theme[PolybarAttr.FORMAT_BACK.value]
-        self.format_fore = polybar_theme[PolybarAttr.FORMAT_FORE.value]
-        self.label_open_fore = polybar_theme[PolybarAttr.LABEL_OPEN_FORE.value]
-        self.label_close_fore = polybar_theme[PolybarAttr.LABEL_CLOSE_FORE.value]
-        self.label_sep_fore = polybar_theme[PolybarAttr.LABEL_SEP_FOREGROUND.value]
-        self.format_con_back = polybar_theme[PolybarAttr.FORMAT_CON_BACK.value]
-        self.format_con_fore = polybar_theme[PolybarAttr.FORMAT_CON_FORE.value]
-        self.format_con_pre_fore = polybar_theme[PolybarAttr.FORMAT_CON_PRE_FORE.value]
-        self.ramp_sign_fore = polybar_theme[PolybarAttr.RAMP_SIG_FOREGROUND.value]
+        if polybar_theme[PolybarAttr.USE_XRESOURCES.value]:
+            self.x_resources = json_file[XresourcesAttr.NAME.value]
+            self.modules_l = polybar_theme[PolybarAttr.MOD_L.value]
+            self.modules_c = polybar_theme[PolybarAttr.MOD_C.value]
+            self.modules_r = polybar_theme[PolybarAttr.MOD_R.value]
+            self.init_from_xresources()
+
+        else:
+            self.background = polybar_theme[PolybarAttr.BACKGROUND.value]
+            self.foreground = polybar_theme[PolybarAttr.FOREGROUND.value]
+            self.modules_l = polybar_theme[PolybarAttr.MOD_L.value]
+            self.modules_c = polybar_theme[PolybarAttr.MOD_C.value]
+            self.modules_r = polybar_theme[PolybarAttr.MOD_R.value]
+            self.label_un_back = polybar_theme[PolybarAttr.LABEL_UN_BACK.value]
+            self.label_un_fore = polybar_theme[PolybarAttr.LABEL_UN_FORE.value]
+            self.label_mod_back = polybar_theme[PolybarAttr.LABEL_MOD_BACK.value]
+            self.label_mod_fore = polybar_theme[PolybarAttr.LABEL_MOD_FORE.value]
+            self.label_foc_back = polybar_theme[PolybarAttr.LABEL_FOC_BACK.value]
+            self.label_foc_fore = polybar_theme[PolybarAttr.LABEL_FOC_FORE.value]
+            self.label_vis_back = polybar_theme[PolybarAttr.LABEL_VIS_BACK.value]
+            self.label_vis_fore = polybar_theme[PolybarAttr.LABEL_VIS_FORE.value]
+            self.format_back = polybar_theme[PolybarAttr.FORMAT_BACK.value]
+            self.format_fore = polybar_theme[PolybarAttr.FORMAT_FORE.value]
+            self.label_open_fore = polybar_theme[PolybarAttr.LABEL_OPEN_FORE.value]
+            self.label_close_fore = polybar_theme[PolybarAttr.LABEL_CLOSE_FORE.value]
+            self.label_sep_fore = polybar_theme[PolybarAttr.LABEL_SEP_FOREGROUND.value]
+            self.format_con_back = polybar_theme[PolybarAttr.FORMAT_CON_BACK.value]
+            self.format_con_fore = polybar_theme[PolybarAttr.FORMAT_CON_FORE.value]
+            self.format_con_pre_fore = polybar_theme[PolybarAttr.FORMAT_CON_PRE_FORE.value]
+            self.ramp_sign_fore = polybar_theme[PolybarAttr.RAMP_SIG_FOREGROUND.value]
+
+    def init_from_xresources(self):
+        self.background          = self.x_resources['background']
+        self.foreground          = self.x_resources['foreground']
+        self.label_un_back       = self.x_resources['color12']
+        self.label_un_fore       = self.x_resources['background']
+        self.label_mod_back      = self.x_resources['background']
+        self.label_mod_fore      = self.x_resources['color0']
+        self.label_foc_back      = self.x_resources['color4']
+        self.label_foc_fore      = self.x_resources['background']
+        self.label_vis_back      = self.x_resources['color12']
+        self.label_vis_fore      = self.x_resources['background']
+        self.format_back         = self.x_resources['color12']
+        self.format_fore         = self.x_resources['background']
+        self.label_open_fore     = self.x_resources['color12']
+        self.label_close_fore    = self.x_resources['color12']
+        self.label_sep_fore      = self.x_resources['color12']
+        self.format_con_back     = self.x_resources['color12']
+        self.format_con_fore     = self.x_resources['background']
+        self.format_con_pre_fore = self.x_resources['background']
+        self.ramp_sign_fore      = self.x_resources['background']
 
     def load(self, configuration):
         """
@@ -49,7 +80,17 @@ class PolybarTheme(AbstractTheme):
         :param configuration: the configuration.
         """
         logger.warning('Applying changes to Polybar configuration file')
+        # copy launch script
+        src_script = "./scripts/i3wmthemer_bar_launch.sh"
+        dest = "/" + os.path.join(*configuration.polybar_config.split('/')[:-1])
+        dest_script = os.path.join(dest, "i3wmthemer_bar_launch.sh")
+        if not os.path.exists(dest):
+            os.makedirs(dest)
+        with open(dest_script, "w") as f:
+            pass
+        shutil.copy2(src_script, dest)
 
+        #shutil.copy2(src="
         if FileUtils.locate_file(configuration.polybar_config):
             logger.warning('Located the Polybar configuration file')
 
@@ -96,3 +137,4 @@ class PolybarTheme(AbstractTheme):
                                    'ramp-signal-foreground = ' + self.ramp_sign_fore)
         else:
             logger.error('Failed to locate the Polybar configuration file')
+
