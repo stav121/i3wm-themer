@@ -1,4 +1,10 @@
 {
+  "settings": {
+	  "use_pywal": false,
+	  "config": "config.yaml",
+	  "install": "./defaults/"
+	},
+
   "xresources": {
     "background": "#1d1f21",
     "foreground": "#c5c8c6",
@@ -30,9 +36,13 @@
     "client.unfocused": "#c5c8c6 #1d1f21 #c5c8c6 #5f819d #5f819d",
     "client.focused_inactive": "#c5c8c6 #1d1f21 #c5c8c6 #5f819d #5f819d",
     "client.urgent": "#c5c8c6 #1d1f21 #c5c8c6 #5f819d #5f819d",
-    "client.placeholder": "#c5c8c6 #1d1f21 #c5c8c6 #5f819d #5f819d"
+    "client.placeholder": "#c5c8c6 #1d1f21 #c5c8c6 #5f819d #5f819d",
+	"terminal": "gnome-terminal",
+	"font": "pango:JetBrainsMono 10"
   },
+ 
   "polybar": {
+	"use_xresources": false,
     "background": "#1d1f21",
     "foreground": "#c5c8c6",
     "modules-left": "wlan eth",

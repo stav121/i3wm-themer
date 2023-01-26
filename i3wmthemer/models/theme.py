@@ -19,6 +19,7 @@ class Theme(AbstractTheme):
 
         :param file: the JSON file to load from.
         """
+        file = self.init_defaults(file)
         file = self.parse_settings(file)
 
         self.themes = {
@@ -27,11 +28,6 @@ class Theme(AbstractTheme):
                 'polybar_theme': PolybarTheme(file),
                 'wallpaper_theme': WallpaperTheme(file)
                 }
-        #self.x_resources = XresourcesTheme(file)
-        #self.i3_theme = I3Theme(file)
-        #self.statusbar_theme = StatusbarTheme(file)
-        #self.polybar_theme = PolybarTheme(file)
-        #self.wallpaper_theme = WallpaperTheme(file)
         if 'bashrc' in file:
             self.themes['bash'] = BashTheme(file)
 
@@ -50,6 +46,29 @@ class Theme(AbstractTheme):
             self.themes[theme].load(configuration)
         configuration.refresh_all(self.themes['wallpaper_theme'].wallpaper)
 
+    def init_defaults(self, file):
+        if 'settings' not in file:
+            file['settings'] = {
+                    'use_pywal': False,
+                    'config': 'config.yaml',
+                    'install': './defaults'
+                    }
+
+        if 'bashrc' not in file:
+            file['bashrc'] = {
+                    'pywal_colors': True,
+                    'git_onefetch': False,
+                    'neofetch': True,
+                    'extra_lines': []
+            }
+
+        if isinstance(file['wallpaper'], str):
+            name = file['wallpaper']
+            file['wallpaper'] = {
+                    'method': 'feh',
+                    'name': name
+                    }
+        return file
     def parse_settings(self, file):
         if 'settings' in file and 'use_pywal' in file['settings'] and file['settings']['use_pywal']:
             file = self.populate_file_from_pywal(file)

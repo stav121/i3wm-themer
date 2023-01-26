@@ -21,15 +21,12 @@ class BashTheme(AbstractTheme):
         """
 
         self.bash_theme = json_file['bashrc']
-        print(self.bash_theme)
-        if 'extra_lines' not in self.bash_theme:
-            self.bash_theme['extra_lines'] = []
 
-        if 'pywal_colors' in self.bash_theme and self.bash_theme['pywal_colors']:
+        if self.bash_theme['pywal_colors']:
             wp_name = json_file['wallpaper']['name']
             wallpaper_path = os.path.expanduser(f"~/Pictures/wallpapers/{wp_name}")
             self.bash_theme['extra_lines'].append(f"""
-            wal -n -e -i {wallpaper_path}
+            wal -n -e -i {wallpaper_path} > /dev/null
             """)
 
         if 'git_onefetch' in self.bash_theme and self.bash_theme['git_onefetch']:
@@ -40,8 +37,10 @@ class BashTheme(AbstractTheme):
                     fi
                 }
                 function cd() { builtin cd "$@" && show_onefetch; }
-
+                \n
             """))
+        if 'neofetch' in self.bash_theme and self.bash_theme['neofetch']:
+            self.bash_theme['extra_lines'].append("neofetch\n")
 
     def load(self, configuration):
 

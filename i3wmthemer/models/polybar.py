@@ -21,7 +21,7 @@ class PolybarTheme(AbstractTheme):
         """
         polybar_theme = json_file[PolybarAttr.NAME.value]
 
-        if 'use_xresources' in polybar_theme and polybar_theme['x_resources']:
+        if 'x_resources' in polybar_theme and polybar_theme['x_resources']:
             self.x_resources = json_file[XresourcesAttr.NAME.value]
             self.modules_l = polybar_theme[PolybarAttr.MOD_L.value]
             self.modules_c = polybar_theme[PolybarAttr.MOD_C.value]

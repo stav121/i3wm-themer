@@ -35,7 +35,7 @@ class I3Theme(AbstractTheme):
             self.placeholder = self.i3theme[I3Attr.PLACEHOLDER.value]
 
         if 'terminal' not in self.i3theme:
-            self.i3theme['terminal'] = 'i3-sensible-terminal'
+            self.i3theme['terminal'] = 'gnome-terminal'
 
     def init_from_xresources(self):
         """Copy the color entries from the xresources part of the config to the colors for i3"""
