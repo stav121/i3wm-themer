@@ -77,7 +77,7 @@ class InstallationUtils:
             install_path = os.path.join(install_dir, install_file)
 
             # update the template to install if it's passed in the config
-            if 'template' in file[key]:
+            if key in file and 'template' in file[key]:
                 if '/' in file[key]['template']:
                     install_path = file[key]['template']
                 else:

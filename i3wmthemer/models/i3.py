@@ -20,41 +20,29 @@ class I3Theme(AbstractTheme):
         """
         self.i3theme = json_file[I3Attr.NAME.value]
 
+        self.x_resources = json_file[XresourcesAttr.NAME.value]
+        self.init_colors()
+
         ### use the xresources entry to get the colors
-        if 'use_xresources' in self.i3theme and self.i3theme['use_xresources']:
-            self.x_resources = json_file[XresourcesAttr.NAME.value]
-            self.init_from_xresources()
+        #if 'use_xresources' in self.i3theme and self.i3theme['use_xresources']:
+        #    self.x_resources = json_file[XresourcesAttr.NAME.value]
+        #    self.init_from_xresources()
 
         ### or get the colors written manually
-        else:
-            self.background = self.i3theme[I3Attr.BACKGROUND.value]
-            self.focused = self.i3theme[I3Attr.FOCUSED.value]
-            self.unfocused = self.i3theme[I3Attr.UNFOCUSED.value]
-            self.inactive = self.i3theme[I3Attr.INACTIVE.value]
-            self.urgent = self.i3theme[I3Attr.URGENT.value]
-            self.placeholder = self.i3theme[I3Attr.PLACEHOLDER.value]
+        #else:
+        #    self.background = self.i3theme[I3Attr.BACKGROUND.value]
+        #    self.focused = self.i3theme[I3Attr.FOCUSED.value]
+        #    self.unfocused = self.i3theme[I3Attr.UNFOCUSED.value]
+        #    self.inactive = self.i3theme[I3Attr.INACTIVE.value]
+        #    self.urgent = self.i3theme[I3Attr.URGENT.value]
+        #    self.placeholder = self.i3theme[I3Attr.PLACEHOLDER.value]
 
         ### default terminal
         if 'terminal' not in self.i3theme:
             self.i3theme['terminal'] = 'gnome-terminal'
 
-    def parse_color_line(self, line):
-        if isinstance(line, str):
-            if line[0] == "#":
-                return line
-            else:
-                return self.x_resources[line]
 
-        elif isinstance(line, list):
-            ret = ""
-            for elem in line:
-                if elem[0] == '#':
-                    ret += f"{elem} "
-                else:
-                    ret += f"{self.x_resources[elem]} "
-            return ret
-
-    def init_from_xresources(self):
+    def init_colors(self):
         """Copy the color entries from the xresources part of the config to the colors for i3"""
 
         focused_list = ['foreground', 'background', 'foreground', 'color12', 'color12']
@@ -72,32 +60,36 @@ class I3Theme(AbstractTheme):
             self.placeholder = " ".join([self.x_resources[i] for i in placeholder_list])
         else:
             if 'background' in self.i3theme['colors']:
-                self.background = self.parse_color_line(self.i3theme['colors']['background'])
+                self.background = self.parse_color_line(self.i3theme['colors']['background'], self.x_resources)
             else:
                 self.background = self.x_resources[XresourcesAttr.BACKGROUND.value]
 
             if 'focused' in self.i3theme['colors']:
-                self.focused = self.parse_color_line(self.i3theme['colors']['focused'])
+                self.focused = self.parse_color_line(self.i3theme['colors']['focused'], self.x_resources)
             else:
                 self.focused = " ".join([self.x_resources[i] for i in focused_list])
 
             if 'unfocused' in self.i3theme['colors']:
-                self.unfocused = self.parse_color_line(self.i3theme['colors']['unfocused'])
+                self.unfocused = self.parse_color_line(
+                                    self.i3theme['colors']['unfocused'],
+                                    self.x_resources)
             else:
                 self.unfocused = " ".join([self.x_resources[i] for i in unfocused_list])
 
             if 'focused_inactive' in self.i3theme['colors']:
-                self.inactive = self.parse_color_line(self.i3theme['colors']['focused_inactive'])
+                self.inactive = self.parse_color_line(
+                                    self.i3theme['colors']['focused_inactive'],
+                                    self.x_resources)
             else:
                 self.inactive = " ".join([self.x_resources[i] for i in focused_inactive_list])
 
             if 'urgent' in self.i3theme['colors']:
-                self.urgent = self.parse_color_line(self.i3theme['colors']['urgent'])
+                self.urgent = self.parse_color_line(self.i3theme['colors']['urgent'], self.x_resources)
             else:
                 self.urgent = " ".join([self.x_resources[i] for i in urgent_list])
 
             if 'placeholder' in self.i3theme['colors']:
-                self.placeholder = self.parse_color_line(self.i3theme['colors']['placeholder'])
+                self.placeholder = self.parse_color_line(self.i3theme['colors']['placeholder'], self.x_resources)
             else:
                 self.placeholder = " ".join([self.x_resources[i] for i in placeholder_list])
 
@@ -119,10 +111,8 @@ class I3Theme(AbstractTheme):
             match_found = FileUtils.replace_line(configuration.i3_config,
                                          f"bindsym {command}",
                                          f"bindsym {command} {self.i3theme['bindsyms'][command]}")
-            print("MATCH FOUND = ", match_found)
             if not match_found:
                 cmd = f"bindsym {command} {self.i3theme['bindsyms'][command]}"
-                print("appending: ", cmd)
                 with open(configuration.i3_config, "a") as f:
                     f.write(cmd)
 

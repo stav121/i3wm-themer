@@ -27,11 +27,20 @@
     },
 
     "polybar": {
-		"template": "./defaults/polybar_blank.template",
+		"template": "polybar_2.template",
         "use_xresources": true,
-        "modules-left": "xworkspaces",
-        "modules-center": "date",
-        "modules-right": "wlan eth powermenu"
+        "modules-left": "xworkspaces xwindow",
+        "modules-center": "",
+        "modules-right": "filesystem pulseaudio memory cpu wlasn eth date",
+		"colors": {
+			"background": "background",
+			"background-alt": "#373B41",
+			"foreground": "foreground",
+			"primary": "color10",
+			"secondary": "color11",
+			"alert": "#A54242",
+			"disabled": "#707880"
+		}
     },
 
 	"bash": {

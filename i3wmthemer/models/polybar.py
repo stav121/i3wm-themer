@@ -5,6 +5,7 @@ from i3wmthemer.models.abstract_theme import AbstractTheme
 from i3wmthemer.utils.fileutils import FileUtils
 import shutil
 import os
+import configparser
 
 logger = logging.getLogger(__name__)
 
@@ -19,52 +20,26 @@ class PolybarTheme(AbstractTheme):
         Initializer.
         :param json_file: file that contains the polybar theme.
         """
-        polybar_theme = json_file[PolybarAttr.NAME.value]
+        self.polybar_theme = json_file[PolybarAttr.NAME.value]
+        if 'colors' not in self.polybar_theme:
+            self.polybar_theme['colors'] = {}
+        self.colors = self.polybar_theme['colors']
+        self.x_resources = json_file[XresourcesAttr.NAME.value]
+        self.init_colors()
 
-        if 'use_xresources' in polybar_theme and polybar_theme['use_xresources']:
-            self.x_resources = json_file[XresourcesAttr.NAME.value]
-            self.modules_l = polybar_theme[PolybarAttr.MOD_L.value]
-            self.modules_c = polybar_theme[PolybarAttr.MOD_C.value]
-            self.modules_r = polybar_theme[PolybarAttr.MOD_R.value]
-            self.init_from_xresources()
+    def init_colors(self):
+        for color in self.colors:
+            self.colors[color] = self.parse_color_line(self.colors[color], self.x_resources)
 
-        else:
-            self.colors = polybar_theme['colors']
-            self.modules_l = polybar_theme[PolybarAttr.MOD_L.value]
-            self.modules_c = polybar_theme[PolybarAttr.MOD_C.value]
-            self.modules_r = polybar_theme[PolybarAttr.MOD_R.value]
-
-    def init_from_xresources(self):
-        self.colors = dict(
-            background              = self.x_resources['background'],
-            foreground              = self.x_resources['foreground'],
-            label_un_back           = self.x_resources['color12'],
-            label_un_fore           = self.x_resources['background'],
-            label_mod_back          = self.x_resources['background'],
-            label_mod_fore          = self.x_resources['color0'],
-            label_foc_back          = self.x_resources['color4'],
-            label_foc_fore          = self.x_resources['background'],
-            label_vis_back          = self.x_resources['color12'],
-            label_vis_fore          = self.x_resources['background'],
-            format_back             = self.x_resources['color12'],
-            format_fore             = self.x_resources['background'],
-            label_open_fore         = self.x_resources['color12'],
-            label_close_fore        = self.x_resources['color12'],
-            label_sep_fore          = self.x_resources['color12'],
-            format_con_back         = self.x_resources['color12'],
-            format_con_fore         = self.x_resources['background'],
-            format_con_pre_fore     = self.x_resources['background'],
-            ramp_sign_fore          = self.x_resources['background'],
-            label_active_background = self.x_resources['color0'],
-            label_active_underline  = self.x_resources['color1'],
-        )
     def load(self, configuration):
         """
         Function that loads the Polybar theme.
 
         :param configuration: the configuration.
         """
+
         logger.warning('Applying changes to Polybar configuration file')
+
         # copy launch script
         src_script = "./scripts/i3wmthemer_bar_launch.sh"
         dest = "/" + os.path.join(*configuration.polybar_config.split('/')[:-1])
@@ -75,16 +50,22 @@ class PolybarTheme(AbstractTheme):
             pass
         shutil.copy2(src_script, dest)
 
+        # now modify the base config file
         if FileUtils.locate_file(configuration.polybar_config):
             logger.warning('Located the Polybar configuration file')
 
             logger.warning('Found the Polybar info in the JSON file')
 
-            FileUtils.replace_line(configuration.polybar_config, 'modules-left', 'modules-left = ' + self.modules_l)
-            FileUtils.replace_line(configuration.polybar_config, 'modules-center', 'modules-center = ' + self.modules_c)
-            for color in self.colors:
-                FileUtils.replace_line(configuration.polybar_config, color, color + " = " +  self.colors[color])
-            FileUtils.replace_line(configuration.polybar_config, 'modules-right', 'modules-right = ' + self.modules_r)
+            config = configparser.ConfigParser()
+            with open(configuration.polybar_config, "r") as f:
+                config.read_file(f)
+
+            config['colors'] = self.colors
+            config['bar/main']['modules-left'] = self.polybar_theme['modules-left']
+            config['bar/main']['modules-center'] = self.polybar_theme['modules-center']
+            config['bar/main']['modules-right'] = self.polybar_theme['modules-right']
+            with open(configuration.polybar_config, "w") as f:
+                config.write(f)
         else:
             logger.error('Failed to locate the Polybar configuration file')
 
