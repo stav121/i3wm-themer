@@ -42,9 +42,6 @@ format-connected-background = #7E807E
 
 ramp-signal-foreground = #272827
 
-format-connected-foreground = #272827
-format-connected-background = #7E807E
-
 format-connected-prefix-foreground = #272827
 
 format-foreground = #272827

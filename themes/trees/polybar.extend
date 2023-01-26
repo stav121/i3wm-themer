@@ -20,4 +20,8 @@ label-volume = %percentage%
 label-muted = muted
 label-muted-foreground = ${colors.disabled}
 
-[module/xwindow
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:60:...%
+
+[module/filesystem
