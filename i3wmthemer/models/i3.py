@@ -34,12 +34,28 @@ class I3Theme(AbstractTheme):
             self.urgent = self.i3theme[I3Attr.URGENT.value]
             self.placeholder = self.i3theme[I3Attr.PLACEHOLDER.value]
 
+        ### default terminal
         if 'terminal' not in self.i3theme:
             self.i3theme['terminal'] = 'gnome-terminal'
 
+    def parse_color_line(self, line):
+        if isinstance(line, str):
+            if line[0] == "#":
+                return line
+            else:
+                return self.x_resources[line]
+
+        elif isinstance(line, list):
+            ret = ""
+            for elem in line:
+                if elem[0] == '#':
+                    ret += f"{elem} "
+                else:
+                    ret += f"{self.x_resources[elem]} "
+            return ret
+
     def init_from_xresources(self):
         """Copy the color entries from the xresources part of the config to the colors for i3"""
-        self.background = self.x_resources[XresourcesAttr.BACKGROUND.value]
 
         focused_list = ['foreground', 'background', 'foreground', 'color12', 'color12']
         unfocused_list = ['foreground', 'background', 'foreground', 'color4', 'color4']
@@ -47,11 +63,43 @@ class I3Theme(AbstractTheme):
         urgent_list =  ['foreground', 'background', 'foreground', 'color4', 'color4']
         placeholder_list =  ['foreground', 'background', 'foreground', 'color4', 'color4']
 
-        self.focused = " ".join([self.x_resources[i] for i in focused_list])
-        self.unfocused = " ".join([self.x_resources[i] for i in unfocused_list])
-        self.inactive = " ".join([self.x_resources[i] for i in focused_inactive_list])
-        self.urgent = " ".join([self.x_resources[i] for i in urgent_list])
-        self.placeholder = " ".join([self.x_resources[i] for i in placeholder_list])
+        if "colors" not in self.i3theme:
+            self.background = self.x_resources[XresourcesAttr.BACKGROUND.value]
+            self.focused = " ".join([self.x_resources[i] for i in focused_list])
+            self.unfocused = " ".join([self.x_resources[i] for i in unfocused_list])
+            self.inactive = " ".join([self.x_resources[i] for i in focused_inactive_list])
+            self.urgent = " ".join([self.x_resources[i] for i in urgent_list])
+            self.placeholder = " ".join([self.x_resources[i] for i in placeholder_list])
+        else:
+            if 'background' in self.i3theme['colors']:
+                self.background = self.parse_color_line(self.i3theme['colors']['background'])
+            else:
+                self.background = self.x_resources[XresourcesAttr.BACKGROUND.value]
+
+            if 'focused' in self.i3theme['colors']:
+                self.focused = self.parse_color_line(self.i3theme['colors']['focused'])
+            else:
+                self.focused = " ".join([self.x_resources[i] for i in focused_list])
+
+            if 'unfocused' in self.i3theme['colors']:
+                self.unfocused = self.parse_color_line(self.i3theme['colors']['unfocused'])
+            else:
+                self.unfocused = " ".join([self.x_resources[i] for i in unfocused_list])
+
+            if 'focused_inactive' in self.i3theme['colors']:
+                self.inactive = self.parse_color_line(self.i3theme['colors']['focused_inactive'])
+            else:
+                self.inactive = " ".join([self.x_resources[i] for i in focused_inactive_list])
+
+            if 'urgent' in self.i3theme['colors']:
+                self.urgent = self.parse_color_line(self.i3theme['colors']['urgent'])
+            else:
+                self.urgent = " ".join([self.x_resources[i] for i in urgent_list])
+
+            if 'placeholder' in self.i3theme['colors']:
+                self.placeholder = self.parse_color_line(self.i3theme['colors']['placeholder'])
+            else:
+                self.placeholder = " ".join([self.x_resources[i] for i in placeholder_list])
 
     def load(self, configuration):
         # load colors

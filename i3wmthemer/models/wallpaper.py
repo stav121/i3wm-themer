@@ -70,9 +70,15 @@ class NitrogenTheme(AbstractTheme):
             try:
                 copyfile(new_file, configuration.wp_path + self.wallpaper)
                 logger.warning('Loaded the wallpaper successfully!!')
+
+                # add statement in i3 config to run nitrogen
+                with open(configuration.i3_config, "a") as f:
+                    f.write("exec --no-startup-id nitrogen --restore")
                 return True
+
             except IOError:
                 logger.error('Failed to install the new wallpaper!')
                 return False
+
         else:
             logger.error('Failed to locate nitrogen configuration file')

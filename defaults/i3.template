@@ -1,28 +1,7 @@
 # requires i3 gaps to work!
-
 # set modifier key
 set $mod Mod4
 
-new_window pixel 1
-new_float normal
-
-hide_edge_borders none
-
-bindsym $mod+u border none
-bindsym $mod+y border pixel 1
-bindsym $mod+n border normal
-
-
-floating_modifier $mod
-
-# bindsym $mod+Return exec i3-sensible-terminal
-
-# Window kill command
-bindsym $mod+Shift+q kill
-
-# start program launcher
-#bindsym $mod+d exec --no-startup-id rofi -show run
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -dmenu -i -p 'apps'"
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -169,8 +148,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
-bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+bindsym $mod+0 mode "$mode_system"
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
@@ -209,31 +188,6 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-###### TODO: go through all these apps and make sure they're killed if not needed
-# Autostart applications
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id nm-applet
-# exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id $HOME/.config/polybar/i3wmthemer_bar_launch.sh
-
-# Theme colors
-client.focused          #272827 #272827 #657b83 #272827 #272827
-client.focused_inactive #272827 #272827 #657b83 #272827 #272827
-client.unfocused        #272827 #272827 #657b83 #272827 #272827
-client.urgent           #272827 #272827 #657b83 #272827 #272827
-client.placeholder      #272827 #272827 #657b83 #272827 #272827
-
-client.background       #272827
-
-# Gaps
-gaps inner 10
-gaps outer -4
-
-smart_gaps on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -271,6 +225,52 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+
+###### TODO: go through all these apps and make sure they're killed if not needed
+# Autostart applications
+exec --no-startup-id nm-applet
+# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id pamac-tray
+# exec --no-startup-id clipit
+# exec_always --no-startup-id ff-theme-util
+# exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id $HOME/.config/polybar/i3wmthemer_bar_launch.sh
+
+# Theme colors
+client.focused          #272827 #272827 #657b83 #272827 #272827
+client.focused_inactive #272827 #272827 #657b83 #272827 #272827
+client.unfocused        #272827 #272827 #657b83 #272827 #272827
+client.urgent           #272827 #272827 #657b83 #272827 #272827
+client.placeholder      #272827 #272827 #657b83 #272827 #272827
+
+client.background       #272827
+
+# Gaps
+gaps inner 10
+gaps outer -4
+
+smart_gaps on
+new_window pixel 1
+new_float normal
+
+hide_edge_borders none
+
+bindsym $mod+u border none
+bindsym $mod+y border pixel 1
+bindsym $mod+n border normal
+
+
+floating_modifier $mod
+
+# bindsym $mod+Return exec i3-sensible-terminal
+
+# Window kill command
+bindsym $mod+Shift+q kill
+
+# start program launcher
+#bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -dmenu -i -p 'apps'"
 
 # set power-manager and volume control
 exec --no-startup-id mate-power-manager
