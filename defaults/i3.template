@@ -15,14 +15,14 @@ bindsym $mod+n border normal
 
 floating_modifier $mod
 
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
 
 # Window kill command
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -show run
-
+#bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -dmenu -i -p 'apps'"
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -209,6 +209,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+###### TODO: go through all these apps and make sure they're killed if not needed
 # Autostart applications
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet

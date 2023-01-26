@@ -21,7 +21,7 @@ class PolybarTheme(AbstractTheme):
         """
         polybar_theme = json_file[PolybarAttr.NAME.value]
 
-        if polybar_theme[PolybarAttr.USE_XRESOURCES.value]:
+        if 'use_xresources' in polybar_theme and polybar_theme['x_resources']:
             self.x_resources = json_file[XresourcesAttr.NAME.value]
             self.modules_l = polybar_theme[PolybarAttr.MOD_L.value]
             self.modules_c = polybar_theme[PolybarAttr.MOD_C.value]
@@ -53,9 +53,12 @@ class PolybarTheme(AbstractTheme):
             self.ramp_sign_fore = polybar_theme[PolybarAttr.RAMP_SIG_FOREGROUND.value]
             if 'label-active-background' in polybar_theme:
                 self.label_active_background = polybar_theme['label-active-background']
+            else:
+                self.label_active_background = ""
             if 'label-active-underline' in polybar_theme:
                 self.label_active_underline = polybar_theme['label-active-underline']
-
+            else:
+                self.label_active_underline = ""
     def init_from_xresources(self):
         self.background              = self.x_resources['background']
         self.foreground              = self.x_resources['foreground']

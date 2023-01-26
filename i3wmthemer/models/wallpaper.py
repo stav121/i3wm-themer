@@ -13,6 +13,12 @@ class WallpaperTheme(AbstractTheme):
 
     def __init__(self, json_file):
          wallpaper_settings = json_file['wallpaper']
+         if isinstance(wallpaper_settings, str):
+             name = wallpaper_settings
+             wallpaper_settings = {
+                     'method': 'nitrogen',
+                     'name': name}
+             json_file['wallpaper'] = wallpaper_settings
          method = wallpaper_settings['method']
          if method == 'feh':
             self.loader= FehTheme(json_file)

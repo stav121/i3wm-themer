@@ -24,8 +24,6 @@ class InstallationUtils:
         if FileUtils.locate_file(file):
             logger.warning('Located %s file!', file)
             try:
-                print("src: ", new_file)
-                print("destination: ", file)
                 shutil.copy2(new_file, file)
                 logger.warning('Installed the new file successfully!')
                 return True
@@ -38,12 +36,12 @@ class InstallationUtils:
 
     @staticmethod
     def install_defaults(file: dict):
-        if 'config' in file['settings']:
+        if 'settings' in file and 'config' in file['settings']:
             config_path = file['settings']['config']
         else:
             config_path = "config.yaml"
 
-        if "install" in file['settings']:
+        if 'settings' in file and "install" in file['settings']:
             install_path = file['settings']['install']
         else:
             install_path = "./defaults/"
@@ -55,11 +53,8 @@ class InstallationUtils:
             key = template.split('.')[0]
             if key not in config:
                 continue
-            print(f"template={template}, target={config[key]}")
             if not os.path.exists(config[key]):
-                print('generating path', config[key])
                 dir_to_make = "/" + os.path.join(*config[key].split('/')[:-1])
-                print("dir to make = ", dir_to_make)
                 os.mkdir(dir_to_make)
                 with open(config[key], "w") as f:
                     pass

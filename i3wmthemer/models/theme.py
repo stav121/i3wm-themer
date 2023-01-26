@@ -1,10 +1,10 @@
 from i3wmthemer.models.abstract_theme import AbstractTheme
 from i3wmthemer.models.i3 import I3Theme
-#from i3wmthemer.models.nitrogen import NitrogenTheme
 from i3wmthemer.models.wallpaper import WallpaperTheme
 from i3wmthemer.models.polybar import PolybarTheme
 from i3wmthemer.models.status import StatusbarTheme
 from i3wmthemer.models.xresources import XresourcesTheme
+from i3wmthemer.models.bashrc import BashTheme
 import pywal
 
 
@@ -20,12 +20,20 @@ class Theme(AbstractTheme):
         :param file: the JSON file to load from.
         """
         file = self.parse_settings(file)
-        self.x_resources = XresourcesTheme(file)
-        self.i3_theme = I3Theme(file)
+
+        self.themes = {
+                'x_resources': XresourcesTheme(file),
+                'i3_theme': I3Theme(file),
+                'polybar_theme': PolybarTheme(file),
+                'wallpaper_theme': WallpaperTheme(file)
+                }
+        #self.x_resources = XresourcesTheme(file)
+        #self.i3_theme = I3Theme(file)
         #self.statusbar_theme = StatusbarTheme(file)
-        self.polybar_theme = PolybarTheme(file)
-        self.wallpaper_theme = WallpaperTheme(file)
-        #self.nitrogen_theme = NitrogenTheme(file)
+        #self.polybar_theme = PolybarTheme(file)
+        #self.wallpaper_theme = WallpaperTheme(file)
+        if 'bashrc' in file:
+            self.themes['bash'] = BashTheme(file)
 
     def load(self, configuration):
         """
@@ -33,15 +41,17 @@ class Theme(AbstractTheme):
 
         :param configuration: the configuration.
         """
-        self.x_resources.load(configuration)
-        self.i3_theme.load(configuration)
-        self.polybar_theme.load(configuration)
-        self.wallpaper_theme.load(configuration)
+       # self.x_resources.load(configuration)
+       # self.i3_theme.load(configuration)
+       # self.polybar_theme.load(configuration)
+       # self.wallpaper_theme.load(configuration)
         #self.nitrogen_theme.load(configuration)
-        configuration.refresh_all(self.wallpaper_theme.wallpaper)
+        for theme in self.themes:
+            self.themes[theme].load(configuration)
+        configuration.refresh_all(self.themes['wallpaper_theme'].wallpaper)
 
     def parse_settings(self, file):
-        if 'use_pywal' in file['settings'] and file['settings']['use_pywal']:
+        if 'settings' in file and 'use_pywal' in file['settings'] and file['settings']['use_pywal']:
             file = self.populate_file_from_pywal(file)
         return file
 
@@ -67,4 +77,5 @@ class Theme(AbstractTheme):
         file['xresources']['rofi.color-normal'] = f"{color0}, {foreground}, {color2}, {foreground}, {color3}"
         file['xresources']['rofi.color-active'] = f"{color0}, {foreground}, {color2}, {foreground}, {color3}"
         file['xresources']['rofi.color-urgent'] = f"{color0}, {foreground}, {color2}, {foreground}, {color3}"
+
         return file

@@ -3,3 +3,4 @@ polybar: /home/alex/.config/polybar/config.ini
 xresources: /home/alex/.Xresources
 nitrogen: /home/alex/.config/nitrogen/bg-saved.cfg
 wallpaper-path: /home/alex/.config/nitrogen/
+bashrc: /home/alex/.bashrc

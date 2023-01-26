@@ -21,18 +21,21 @@ class I3Theme(AbstractTheme):
         self.i3theme = json_file[I3Attr.NAME.value]
 
         ### use the xresources entry to get the colors
-        if self.i3theme[I3Attr.USE_XRESOURCES.value]:
+        if 'use_xresources' in self.i3theme and self.i3theme['use_xresources']:
             self.x_resources = json_file[XresourcesAttr.NAME.value]
             self.init_from_xresources()
 
         ### or get the colors written manually
         else:
-            self.background = i3theme[I3Attr.BACKGROUND.value]
-            self.focused = i3theme[I3Attr.FOCUSED.value]
-            self.unfocused = i3theme[I3Attr.UNFOCUSED.value]
-            self.inactive = i3theme[I3Attr.INACTIVE.value]
-            self.urgent = i3theme[I3Attr.URGENT.value]
-            self.placeholder = i3theme[I3Attr.PLACEHOLDER.value]
+            self.background = self.i3theme[I3Attr.BACKGROUND.value]
+            self.focused = self.i3theme[I3Attr.FOCUSED.value]
+            self.unfocused = self.i3theme[I3Attr.UNFOCUSED.value]
+            self.inactive = self.i3theme[I3Attr.INACTIVE.value]
+            self.urgent = self.i3theme[I3Attr.URGENT.value]
+            self.placeholder = self.i3theme[I3Attr.PLACEHOLDER.value]
+
+        if 'terminal' not in self.i3theme:
+            self.i3theme['terminal'] = 'i3-sensible-terminal'
 
     def init_from_xresources(self):
         """Copy the color entries from the xresources part of the config to the colors for i3"""
@@ -56,10 +59,15 @@ class I3Theme(AbstractTheme):
 
         if "font" in self.i3theme:
             self.init_font(configuration)
+        self.set_terminal(configuration)
 
     def init_font(self, configuration):
         with open(configuration.i3_config, "a") as f:
-            f.write(f"font {self.i3theme['font']}")
+            f.write(f"font {self.i3theme['font']}\n")
+
+    def set_terminal(self, configuration):
+        with open(configuration.i3_config, "a") as f:
+            f.write(f"bindsym $mod+Return exec {self.i3theme['terminal']}\n")
 
     def load_hex(self, configuration):
         """
