@@ -20,7 +20,7 @@ class BashTheme(AbstractTheme):
         :param json_file: JSON file that contains the theme data
         """
 
-        self.bash_theme = json_file['bashrc']
+        self.bash_theme = json_file['bash']
 
         if self.bash_theme['pywal_colors']:
             wp_name = json_file['wallpaper']['name']
@@ -39,12 +39,15 @@ class BashTheme(AbstractTheme):
                 function cd() { builtin cd "$@" && show_onefetch; }
                 \n
             """))
+
         if 'neofetch' in self.bash_theme and self.bash_theme['neofetch']:
             self.bash_theme['extra_lines'].append("neofetch\n")
 
     def load(self, configuration):
-
-        with open(os.path.expanduser("~/.bashrc"), "a") as f:
+        print("-"*80)
+        logger.warning("adding lines to bashrc")
+        bashrc_path = os.path.expanduser("~/.bashrc")
+        with open(bashrc_path, "a") as f:
             for line in self.bash_theme['extra_lines']:
-                #print(line)
+                logger.warning(f"appending {line} to {bashrc_path}")
                 f.write(line)
