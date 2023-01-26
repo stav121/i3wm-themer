@@ -6,7 +6,8 @@ from i3wmthemer.models.status import StatusbarTheme
 from i3wmthemer.models.xresources import XresourcesTheme
 from i3wmthemer.models.bashrc import BashTheme
 import pywal
-
+import os
+import yaml
 
 class Theme(AbstractTheme):
     """
@@ -21,9 +22,11 @@ class Theme(AbstractTheme):
         """
         file = self.init_defaults(file)
         file = self.parse_settings(file)
-
+        config_path = file['settings']['config']
+        with open(config_path, "r") as f:
+            self.config = yaml.safe_load(f)
         self.themes = {
-                'x_resources': XresourcesTheme(file),
+                'xresources': XresourcesTheme(file),
                 'i3_theme': I3Theme(file),
                 'polybar_theme': PolybarTheme(file),
                 'wallpaper_theme': WallpaperTheme(file)
@@ -31,7 +34,7 @@ class Theme(AbstractTheme):
         if 'bashrc' in file:
             self.themes['bash'] = BashTheme(file)
 
-    def load(self, configuration):
+    def load(self, configuration, theme_name):
         """
         Batch apply all the themes.
 
@@ -44,7 +47,21 @@ class Theme(AbstractTheme):
         #self.nitrogen_theme.load(configuration)
         for theme in self.themes:
             self.themes[theme].load(configuration)
+            self.extend(theme, configuration, theme_name)
         configuration.refresh_all(self.themes['wallpaper_theme'].wallpaper)
+
+    def extend(self, theme: str, configuration, theme_name: str):
+        theme_module = theme.split('_')[0]
+        extend_path = f"./themes/{theme_name}/{theme_module}.extend"
+        if theme_module == 'wallpaper':
+            return
+        config_path = self.config[theme_module]
+
+        if extend_path in os.listdir(f"./themes/{theme_name}"):
+            with open(extend_path, "r") as f_ext, open(config_path, "a") as f_config:
+                extend_content = f_ext.read()
+                f_config.write(extend_content)
+
 
     def init_defaults(self, file):
         if 'settings' not in file:
@@ -69,6 +86,7 @@ class Theme(AbstractTheme):
                     'name': name
                     }
         return file
+
     def parse_settings(self, file):
         if 'settings' in file and 'use_pywal' in file['settings'] and file['settings']['use_pywal']:
             file = self.populate_file_from_pywal(file)

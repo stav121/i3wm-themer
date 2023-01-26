@@ -22,6 +22,7 @@
     },
 
     "polybar": {
+		"template": "./defaults/polybar_blank.template",
         "use_xresources": true,
         "modules-left": "xworkspaces",
         "modules-center": "date",

@@ -50,5 +50,5 @@ if __name__ == "__main__":
                     "install": "./defaults",}
         configLoader = ConfigurationLoader(file['settings']['config'])
         configuration = configLoader.load()
-        theme.load(configuration)
+        theme.load(configuration, theme_name)
         exit(0)

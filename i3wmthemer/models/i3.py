@@ -123,6 +123,7 @@ class I3Theme(AbstractTheme):
 
         :param configuration: the configuration.
         """
+
         logger.warning('Applying changes to i3 configuration')
 
         if FileUtils.locate_file(configuration.i3_config):
