@@ -1,4 +1,4 @@
-i3: /home/alex/.config/i3/config
+i3wm: /home/alex/.config/i3/config
 polybar: /home/alex/.config/polybar/config.ini
 xresources: /home/alex/.Xresources
 nitrogen: /home/alex/.config/nitrogen/bg-saved.cfg

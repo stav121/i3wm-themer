@@ -109,7 +109,7 @@ class ConfigurationLoader:
             exit(9)
 
         # Set each property.
-        return Configuration(configuration['i3'],
+        return Configuration(configuration['i3wm'],
                              configuration['polybar'],
                              configuration['xresources'],
                              configuration['nitrogen'],

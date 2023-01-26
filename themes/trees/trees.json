@@ -18,6 +18,11 @@
 			"focused_inactive": ["foreground", "background", "foreground", "color4", "color4"],
 			"urgent": ["foreground", "background", "foreground", "color4", "color4"],
 			"placeholder": ["foreground", "background", "foreground", "color4", "color4"]
+		},
+
+		"bindsyms": {
+			"$mod+Shift+space": "floating enable, border normal 10",
+			"$mod+Control+space": " floating disable, border none"
 		}
     },
 
@@ -29,7 +34,7 @@
         "modules-right": "wlan eth powermenu"
     },
 
-	"bashrc": {
+	"bash": {
 		"pywal_colors": true,
 		"git_onefetch": true,
 		"extra_lines": ["cbonsai -p"]

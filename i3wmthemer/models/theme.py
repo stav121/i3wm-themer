@@ -27,7 +27,7 @@ class Theme(AbstractTheme):
             self.config = yaml.safe_load(f)
         self.themes = {
                 'xresources': XresourcesTheme(file),
-                'i3_theme': I3Theme(file),
+                'i3wm_theme': I3Theme(file),
                 'polybar_theme': PolybarTheme(file),
                 'wallpaper_theme': WallpaperTheme(file)
                 }
@@ -56,10 +56,18 @@ class Theme(AbstractTheme):
         if theme_module == 'wallpaper':
             return
         config_path = self.config[theme_module]
-
-        if extend_path in os.listdir(f"./themes/{theme_name}"):
+        # print('+'*80)
+        # print("extend path is: ", extend_path)
+        # print("dir: ", os.listdir(f"./themes/{theme_name}"))
+        # print("+"*80)
+        if f"{theme_module}.extend" in os.listdir(f"./themes/{theme_name}"):
             with open(extend_path, "r") as f_ext, open(config_path, "a") as f_config:
                 extend_content = f_ext.read()
+                print('='*80)
+                print("appending this content: \n")
+                print(extend_content)
+                print("to ", config_path)
+                print('='*80)
                 f_config.write(extend_content)
 
 

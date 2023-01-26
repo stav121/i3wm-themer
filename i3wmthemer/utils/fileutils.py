@@ -48,13 +48,7 @@ class FileUtils:
         path = f"themes/{theme_name}/{theme_name}.json"
         if FileUtils.locate_file(path):
             logger.warning('Located the theme file.')
-            # with open(path) as theme_data:
-               # if file.endswith("json"):
-               #     file = json.load(theme_data)
-               # else:
-               #     file = yaml.safe_load(theme_data)
             with open(path) as theme_data:
-                print(path)
                 file = json.load(theme_data)
         else:
             logger.error('Failed to locate the theme file.')
@@ -71,6 +65,7 @@ class FileUtils:
         :param pattern: pattern to filter.
         :param new_line: line to replace with.
         """
+        pattern_found = False
         fh, abs_path = mkstemp()
         with fdopen(fh, 'w') as new_file:
             with open(file) as old_file:
@@ -81,6 +76,7 @@ class FileUtils:
                         pl2 = new_line
                         pl2 = pl2.rstrip()
                         logger.warning('Replacing line: \'%s\' with \'%s\'', pl1, pl2)
+                        pattern_found = True
                         try:
                             new_file.write(new_line + '\n')
                         except IOError:
@@ -92,3 +88,4 @@ class FileUtils:
                             logger.error('Failed!')
         remove(file)
         move(abs_path, file)
+        return pattern_found

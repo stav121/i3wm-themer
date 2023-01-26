@@ -108,6 +108,23 @@ class I3Theme(AbstractTheme):
         if "font" in self.i3theme:
             self.init_font(configuration)
         self.set_terminal(configuration)
+        self.init_bindsyms(configuration)
+
+
+    def init_bindsyms(self, configuration):
+        if 'bindsyms' not in self.i3theme:
+            return
+
+        for command in self.i3theme['bindsyms']:
+            match_found = FileUtils.replace_line(configuration.i3_config,
+                                         f"bindsym {command}",
+                                         f"bindsym {command} {self.i3theme['bindsyms'][command]}")
+            print("MATCH FOUND = ", match_found)
+            if not match_found:
+                cmd = f"bindsym {command} {self.i3theme['bindsyms'][command]}"
+                print("appending: ", cmd)
+                with open(configuration.i3_config, "a") as f:
+                    f.write(cmd)
 
     def init_font(self, configuration):
         with open(configuration.i3_config, "a") as f:

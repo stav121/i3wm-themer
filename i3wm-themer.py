@@ -3,7 +3,7 @@
 """
 i3-wm theme changing utility.
 
-Author  :   Stavros Grigoriou (@unix121)
+Author  :   Stavros Grigoriou (@unix121), modified by Alex Palermo (@apalermo01)
 """
 
 import argparse
@@ -42,12 +42,12 @@ if __name__ == "__main__":
     if args.load is not None:
         theme_name = args.load
         file = FileUtils.load_theme_from_file(theme_name)
-        InstallationUtils.install_defaults(file)
-        theme = Theme(file)
         if 'settings' not in file:
             file['settings'] = {
                     'config': "config.yaml",
                     "install": "./defaults",}
+        InstallationUtils.install_defaults(file)
+        theme = Theme(file)
         configLoader = ConfigurationLoader(file['settings']['config'])
         configuration = configLoader.load()
         theme.load(configuration, theme_name)
