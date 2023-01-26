@@ -1,4 +1,4 @@
-<h1>i3wm-themer</h1> 
+<h1>i3wm-themer [DEV BRANCH - ALL INSTRUCTIONS HERE ARE DEPRECIATED]</h1> 
 
 ![](https://img.shields.io/github/repo-size/unix121/i3wm-themer)
 ![](https://img.shields.io/circleci/build/github/unix121/i3wm-themer/main)
