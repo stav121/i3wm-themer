@@ -4,3 +4,4 @@ xresources: /home/alex/.Xresources
 nitrogen: /home/alex/.config/nitrogen/bg-saved.cfg
 wallpaper-path: /home/alex/.config/nitrogen/
 bash: /home/alex/.bashrc
+picom: /home/alex/.config

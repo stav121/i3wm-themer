@@ -47,6 +47,7 @@ if __name__ == "__main__":
                     'config': "config.yaml",
                     "install": "./defaults",}
         InstallationUtils.install_defaults(file)
+        InstallationUtils.copy_files(theme_name, file['settings']['config'])
         theme = Theme(file)
         configLoader = ConfigurationLoader(file['settings']['config'])
         configuration = configLoader.load()

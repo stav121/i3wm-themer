@@ -22,6 +22,7 @@ class BashTheme(AbstractTheme):
 
         self.bash_theme = json_file['bash']
 
+        ### defaults
         if self.bash_theme['pywal_colors']:
             wp_name = json_file['wallpaper']['name']
             wallpaper_path = os.path.expanduser(f"~/Pictures/wallpapers/{wp_name}")
@@ -44,7 +45,6 @@ class BashTheme(AbstractTheme):
             self.bash_theme['extra_lines'].append("neofetch\n")
 
     def load(self, configuration):
-        print("-"*80)
         logger.warning("adding lines to bashrc")
         bashrc_path = os.path.expanduser("~/.bashrc")
         with open(bashrc_path, "a") as f:

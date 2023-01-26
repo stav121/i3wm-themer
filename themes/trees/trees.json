@@ -1,8 +1,8 @@
 {
     "settings": {
         "use_pywal": true,
-    "config": "config.yaml",
-    "install": "./defaults/"
+    	"config": "config.yaml",
+    	"install": "./defaults/"
     },
 
     "xresources": {},
@@ -27,11 +27,10 @@
     },
 
     "polybar": {
-		"template": "polybar_2.template",
         "use_xresources": true,
         "modules-left": "xworkspaces xwindow",
         "modules-center": "",
-        "modules-right": "filesystem pulseaudio memory cpu wlasn eth date",
+        "modules-right": "filesystem pulseaudio memory cpu date",
 		"colors": {
 			"background": "background",
 			"background-alt": "#373B41",
@@ -39,7 +38,8 @@
 			"primary": "color10",
 			"secondary": "color11",
 			"alert": "#A54242",
-			"disabled": "#707880"
+			"disabled": "#707880",
+			"border": "#000000"
 		}
     },
 
@@ -47,8 +47,8 @@
 		"pywal_colors": true,
 		"git_onefetch": true,
 		"extra_lines": ["cbonsai -p"]
-
 	},
+
     "wallpaper": {
 		"method": "feh",
 		"name": "trees.jpg"

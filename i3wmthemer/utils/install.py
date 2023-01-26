@@ -87,4 +87,20 @@ class InstallationUtils:
             # copy the default file
             if not InstallationUtils.install_file(config[key], install_path):
                 logger.error("Failed!")
+    @staticmethod
+    def copy_files(theme_name, config_path):
+
+        with open(config_path, "r") as f:
+            config = yaml.safe_load(f)
+        print("%"*80)
+        print("listing files in theme directory")
+        theme_path = f"./themes/{theme_name}/"
+        for file in os.listdir(theme_path):
+            fname = file.split('.')[0]
+            if (file != f"{theme_name}.json") and \
+               ("extend" not in file) and\
+               fname in config:
+                shutil.copy2(src=f"{theme_path}/{file}",
+                             dst=config[fname])
+        print("%"*80)
 
