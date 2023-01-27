@@ -12,7 +12,7 @@ import yaml
 
 theme_registry = {
         'bash': BashTheme,
-        'vim': VimTheme,
+        'vimrc': VimTheme,
         }
 
 class Theme(AbstractTheme):
@@ -42,8 +42,9 @@ class Theme(AbstractTheme):
 
         if 'bash' in file:
             self.themes['bash'] = BashTheme(file)
-        if 'vim' in file:
-            self.themes['vim'] = VimTheme(file)
+
+        if 'vimrc' in file:
+            self.themes['vimrc'] = VimTheme(file)
 
     def load(self, configuration, theme_name):
         """
@@ -62,6 +63,7 @@ class Theme(AbstractTheme):
         configuration.refresh_all(self.themes['wallpaper_theme'].wallpaper)
 
     def extend(self, theme: str, configuration, theme_name: str):
+        print(theme)
         theme_module = theme.split('_')[0]
         extend_path = f"./themes/{theme_name}/{theme_module}.extend"
         if theme_module == 'wallpaper':
@@ -101,8 +103,8 @@ class Theme(AbstractTheme):
                     'name': name
                     }
 
-        if 'vim' not in file:
-            file['vim'] = {}
+        if 'vimrc' not in file:
+            file['vimrc'] = {}
 
         return file
 

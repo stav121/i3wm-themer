@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class VimTheme(AbstractTheme):
 
     def __init__(self, json_file):
-        self.vimtheme = json_file['vim']
+        self.vimtheme = json_file['vimrc']
         self.theme_name = json_file['settings']['theme_name']
         if 'plugs' not in self.vimtheme:
             self.vimtheme['plugs'] = []
@@ -28,9 +28,8 @@ class VimTheme(AbstractTheme):
             colors_file = self.vimtheme['colors']
             colors_path = f"./themes/{self.theme_name}/{colors_file}"
             shutil.copy(src=colors_path, dst=os.path.expanduser("~/.vim/colors/"))
-
         if 'colorscheme' in self.vimtheme:
-            with open(self.config['vim'], 'a') as f:
+            with open(self.config['vimrc'], 'a') as f:
                 f.write(f"colorscheme {self.vimtheme['colorscheme']}")
 
     def init_plug(self):
@@ -42,7 +41,7 @@ class VimTheme(AbstractTheme):
 
         plugs = self.vimtheme['plugs']
         newlines = []
-        with open(self.config['vim'], 'r') as f:
+        with open(self.config['vimrc'], 'r') as f:
             vimfile = f.readlines()
 
         # loop through original file, find when call plug#begin( gets called
@@ -51,5 +50,5 @@ class VimTheme(AbstractTheme):
             if "call plug#begin(" in line:
                 newlines = _add_plug_statements(newlines, plugs)
 
-        with open(self.config['vim'], 'w') as f:
+        with open(self.config['vimrc'], 'w') as f:
             f.writelines(newlines)

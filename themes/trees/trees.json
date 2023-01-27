@@ -54,7 +54,7 @@
 		"name": "trees.jpg"
 	},
 
-	"vim": {
+	"vimrc": {
 		"colors": "blue_in_green.vim",
 		"colorscheme": "blue_in_green"
 	}
