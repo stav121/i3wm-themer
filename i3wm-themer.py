@@ -46,6 +46,7 @@ if __name__ == "__main__":
             file['settings'] = {
                     'config': "config.yaml",
                     "install": "./defaults",}
+        file['settings']['theme_name'] =theme_name
         InstallationUtils.install_defaults(file)
         InstallationUtils.copy_files(theme_name, file['settings']['config'])
         theme = Theme(file)

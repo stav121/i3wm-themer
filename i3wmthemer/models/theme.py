@@ -5,15 +5,22 @@ from i3wmthemer.models.polybar import PolybarTheme
 from i3wmthemer.models.status import StatusbarTheme
 from i3wmthemer.models.xresources import XresourcesTheme
 from i3wmthemer.models.bashrc import BashTheme
+from i3wmthemer.models.vim import VimTheme
 import pywal
 import os
 import yaml
+
+theme_registry = {
+        'bash': BashTheme,
+        'vim': VimTheme,
+        }
 
 class Theme(AbstractTheme):
     """
     Class that contains the loaded theme.
     """
     x_resources, i3_theme, polybar_theme, nitrogen_theme = None, None, None, None
+
     def __init__(self, file):
         """
         Initializer.
@@ -31,10 +38,12 @@ class Theme(AbstractTheme):
                 'i3wm_theme': I3Theme(file),
                 'polybar_theme': PolybarTheme(file),
                 'wallpaper_theme': WallpaperTheme(file)
-                }
+        }
 
         if 'bash' in file:
             self.themes['bash'] = BashTheme(file)
+        if 'vim' in file:
+            self.themes['vim'] = VimTheme(file)
 
     def load(self, configuration, theme_name):
         """
@@ -91,6 +100,10 @@ class Theme(AbstractTheme):
                     'method': 'feh',
                     'name': name
                     }
+
+        if 'vim' not in file:
+            file['vim'] = {}
+
         return file
 
     def parse_settings(self, file):

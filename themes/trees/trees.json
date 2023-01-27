@@ -52,6 +52,12 @@
     "wallpaper": {
 		"method": "feh",
 		"name": "trees.jpg"
+	},
+
+	"vim": {
+		"colors": "blue_in_green.vim",
+		"colorscheme": "blue_in_green"
 	}
 }
+
 

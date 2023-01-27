@@ -41,6 +41,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 Plug 'morhetz/gruvbox'
 call plug#end()
 let mapleader = "," 
@@ -57,6 +58,7 @@ filetype plugin on
 filetype indent on
 syntax on
 set number
+set nowrap
 set shiftwidth=4
 set tabstop=4
 set incsearch

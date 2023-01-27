@@ -23,20 +23,6 @@ class I3Theme(AbstractTheme):
         self.x_resources = json_file[XresourcesAttr.NAME.value]
         self.init_colors()
 
-        ### use the xresources entry to get the colors
-        #if 'use_xresources' in self.i3theme and self.i3theme['use_xresources']:
-        #    self.x_resources = json_file[XresourcesAttr.NAME.value]
-        #    self.init_from_xresources()
-
-        ### or get the colors written manually
-        #else:
-        #    self.background = self.i3theme[I3Attr.BACKGROUND.value]
-        #    self.focused = self.i3theme[I3Attr.FOCUSED.value]
-        #    self.unfocused = self.i3theme[I3Attr.UNFOCUSED.value]
-        #    self.inactive = self.i3theme[I3Attr.INACTIVE.value]
-        #    self.urgent = self.i3theme[I3Attr.URGENT.value]
-        #    self.placeholder = self.i3theme[I3Attr.PLACEHOLDER.value]
-
         ### default terminal
         if 'terminal' not in self.i3theme:
             self.i3theme['terminal'] = 'gnome-terminal'
