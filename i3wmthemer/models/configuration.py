@@ -39,22 +39,6 @@ class Configuration:
         self.nitrogen_config = nitrogen_config
         # Wallpaper
         self.wp_path = wp_path
-#     def __init__(self,
-#                  wm,
-#                  status_bar,
-#                  colorscheme,
-#                  other_progs,
-#                  wp,):
-#         """Initializer method
-# 
-#         :param wm: parameters for window manager
-#         :param status_bar: parameters for statusbar
-#         :param colorscheme: parameters for general color scheme
-#         :param other_progs: parameters for other programs
-#         :param wp: parameters for wallpaper
-#         """
-#         pass
-
     def refresh_all(self, wallpaper):
         """
         Function that refreshes the configuration.

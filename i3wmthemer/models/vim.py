@@ -22,6 +22,12 @@ class VimTheme(AbstractTheme):
     def load(self, configuration):
         self.init_plug()
         self.init_colors()
+        self.init_extra_lines()
+
+    def init_extra_lines(self):
+        with open(self.config['vimrc'], 'a') as f:
+            for line in self.vimtheme['extra_lines']:
+                f.write("\n" + line)
 
     def init_colors(self):
         if 'colors' in self.vimtheme:

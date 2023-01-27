@@ -2,7 +2,7 @@ from i3wmthemer.models.abstract_theme import AbstractTheme
 from i3wmthemer.models.i3 import I3Theme
 from i3wmthemer.models.wallpaper import WallpaperTheme
 from i3wmthemer.models.polybar import PolybarTheme
-from i3wmthemer.models.status import StatusbarTheme
+#from i3wmthemer.models.status import StatusbarTheme
 from i3wmthemer.models.xresources import XresourcesTheme
 from i3wmthemer.models.bashrc import BashTheme
 from i3wmthemer.models.vim import VimTheme
@@ -63,7 +63,15 @@ class Theme(AbstractTheme):
         configuration.refresh_all(self.themes['wallpaper_theme'].wallpaper)
 
     def extend(self, theme: str, configuration, theme_name: str):
-        print(theme)
+        """If a file ending with the extension .extend lives in the theme folder,
+        append the contents of that file to the newly built file.
+
+        :param theme:
+        :type theme: str
+        :param configuration:
+        :param theme_name:
+        :type theme_name: str
+        """
         theme_module = theme.split('_')[0]
         extend_path = f"./themes/{theme_name}/{theme_module}.extend"
         if theme_module == 'wallpaper':
@@ -80,7 +88,13 @@ class Theme(AbstractTheme):
                 f_config.write(extend_content)
 
 
-    def init_defaults(self, file):
+    def init_defaults(self, file: dict):
+        """Initialize default settings that should be present in every theme.
+        initializes default settings for general settings, bash, wallpaper, and vim
+
+        :param file:
+        :type file: dict
+        """
         if 'settings' not in file:
             file['settings'] = {
                     'use_pywal': False,
@@ -104,16 +118,30 @@ class Theme(AbstractTheme):
                     }
 
         if 'vimrc' not in file:
-            file['vimrc'] = {}
+            file['vimrc'] = {
+                    'colorscheme': 'gruvbox'
+            }
 
+        if 'extra_lines' not in file['vimrc']:
+            file['vimrc']['extra_lines'] = ['set bg=dark']
         return file
 
     def parse_settings(self, file):
+        """modify the rest of the config based on what's in the settings section.
+
+        :param file:
+        """
         if 'settings' in file and 'use_pywal' in file['settings'] and file['settings']['use_pywal']:
             file = self.populate_file_from_pywal(file)
         return file
 
     def populate_file_from_pywal(self, file: dict) -> dict:
+        """.
+
+        :param file:
+        :type file: dict
+        :rtype: dict
+        """
 
         wallpaper = file['wallpaper']['name']
         colors = pywal.colors.get("./wallpapers/" + wallpaper)

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+from typing import Union, List, Dict
 
 class AbstractTheme(ABC):
     """
@@ -17,7 +17,15 @@ class AbstractTheme(ABC):
         raise NotImplementedError
 
     @staticmethod
-    def parse_color_line(line, x_resources):
+    def parse_color_line(line: Union[str, List], x_resources: dict) -> str:
+        """Parse a color entry from a config. If it starts wtih #, do nothing, if it's a string, replace with the corresponding hex key in xresources.
+
+        :param line: a string or list of strings representing colors or xresources key
+        :type line: Union[str, List]
+        :param x_resources: dictionary with xresources colors
+        :type x_resources: dict
+        :rtype: str
+        """
         if isinstance(line, str):
             if line[0] == "#":
                 return line

@@ -16,9 +16,7 @@ from i3wmthemer.utils.install import InstallationUtils
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='i3wm-themer by Stavros Grigoriou (@unix121)')
-    #parser.add_argument('-c', '--config', type=str, required=True, help='Load config file')
     parser.add_argument('-b', '--backup', type=str, help='Backup files')
-    #parser.add_argument('-i', '--install', type=str, help='Install i3wm-themer\'s default configuration files')
     parser.add_argument('-l', '--load', type=str, help='Load theme from JSON or YAML file')
     args = parser.parse_args()
 
@@ -26,18 +24,11 @@ if __name__ == "__main__":
     # if args.config is None:
     #     exit(0)
 
-    # Load the configuration
-    #configLoader = ConfigurationLoader(args.config)
-    #configuration = configLoader.load()
 
     #if args.backup is not None:
     #    BackupUtils.backup_config(args.backup, configuration)
     #    exit(0)
 
-    #if args.install is not None:
-    #    InstallationUtils.install_defaults(args.install, configuration)
-    #    configuration.refresh_all('')
-    #    exit(0)
 
     if args.load is not None:
         theme_name = args.load

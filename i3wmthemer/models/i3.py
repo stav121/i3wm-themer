@@ -11,7 +11,6 @@ class I3Theme(AbstractTheme):
     """
     Class that contains the attributes of the i3 theme that should be loaded.
     """
-    x_resources = None
     def __init__(self, json_file):
         """
         Initializer.
@@ -80,6 +79,10 @@ class I3Theme(AbstractTheme):
                 self.placeholder = " ".join([self.x_resources[i] for i in placeholder_list])
 
     def load(self, configuration):
+        """Load settings into i3 config file.
+
+        :param configuration:
+        """
         # load colors
         self.load_hex(configuration)
 
@@ -90,6 +93,11 @@ class I3Theme(AbstractTheme):
 
 
     def init_bindsyms(self, configuration):
+        """Add theme-specific bindsyms to i3 config.
+
+        :param configuration:
+        """
+
         if 'bindsyms' not in self.i3theme:
             return
 
@@ -103,10 +111,19 @@ class I3Theme(AbstractTheme):
                     f.write(cmd)
 
     def init_font(self, configuration):
+        """Add font info to i3 config.
+
+        :param configuration:
+        """
         with open(configuration.i3_config, "a") as f:
             f.write(f"font {self.i3theme['font']}\n")
 
     def set_terminal(self, configuration):
+        """Set the terminal to run with $mod+Return.
+
+        :param configuration:
+        """
+
         with open(configuration.i3_config, "a") as f:
             f.write(f"bindsym $mod+Return exec {self.i3theme['terminal']}\n")
 

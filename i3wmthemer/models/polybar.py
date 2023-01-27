@@ -28,6 +28,7 @@ class PolybarTheme(AbstractTheme):
         self.init_colors()
 
     def init_colors(self):
+        """Parse colors for every entry"""
         for color in self.colors:
             self.colors[color] = self.parse_color_line(self.colors[color], self.x_resources)
 
