@@ -55,7 +55,10 @@
         "format-connected-foreground": "#1f1f1f",
         "format-connected-background": "#8abeb7",
         "format-connected-prefix-foreground": "#1f1f1f",
-        "ramp-signal-foreground": "#1f1f1f"
+        "ramp-signal-foreground": "#1f1f1f",
+		"label-active-background": "#1f1f1f",
+		"label-active-foreground": "#828282",
+		"label-active-underline": "#8abeb7"
 	}
   },
   "wallpaper": "007.png",

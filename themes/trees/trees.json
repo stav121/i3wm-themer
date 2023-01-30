@@ -28,7 +28,7 @@
 
     "polybar": {
         "use_xresources": true,
-        "modules-left": "xworkspaces xwindow",
+        "modules-left": "xworkspaces",
         "modules-center": "",
         "modules-right": "filesystem pulseaudio memory cpu date",
 		"colors": {

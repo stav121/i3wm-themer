@@ -95,11 +95,19 @@ type = internal/xworkspaces
 pin-workspaces = true
 enable-scroll = false
 label-active = %name%
-label-active-background = ${colors.level-active-background}
-label-active-underline = ${colors.level-active-underline}
+label-active-background = ${colors.label-active-background}
+label-active-underline = ${colors.label-active-underline}
 label-active-padding = 1
 
+label-occupied = %name%
+label-occupied-padding = 1
 
+label-urgent = %name%
+label-urgent-background = ${colors.label-active-background}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-padding = 1
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
