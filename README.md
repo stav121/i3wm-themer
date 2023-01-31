@@ -1,12 +1,8 @@
-<h1>i3wm-themer [DEV BRANCH - ALL INSTRUCTIONS HERE ARE DEPRECIATED]</h1> 
+<h1>i3wm-themer</h1> 
 
-![](https://img.shields.io/github/repo-size/unix121/i3wm-themer)
-![](https://img.shields.io/circleci/build/github/unix121/i3wm-themer/main)
-![](https://img.shields.io/codacy/grade/79aa404309114b25bdc87f00107a0b94/main)
-![](https://img.shields.io/github/last-commit/unix121/i3wm-themer/main)
-![](https://img.shields.io/github/license/unix121/i3wm-themer)
 <ul>
-Personal collection of themes and scripts for <a href="https://www.i3wm.org">i3wm</a>.
+Personal collection of themes and scripts for <a href="https://www.i3wm.org">i3wm</a>, forked from https://github.com/stav121/i3wm-themer.
+
 
 ![](workflow/workflow.gif?raw=true)
 </ul>
@@ -68,11 +64,13 @@ files. In the end it should look something like this:
 
 Where `[USER]` is your `$USER`.
 
+
+**NOTE: the steps  below are from the original repo. In my version the following steps should be done automatically**
 Copy the script in the <a href="scripts/">scripts</a> folder to your polybar directory:
 
     cp -r scripts/* /home/$USER/.config/polybar/
 
-Backup your files:
+Backup your files [**depreciated**]:
 
     mkdir ~/Backups
     python3 i3wm-themer.py --config config.yaml --backup /home/[USER]/Backups
@@ -132,3 +130,9 @@ i3wm, i3-gaps, polybar and everyone who worked on those projects.
 Since this project is focused on Arch-based distros it may behave unexpectedly in other distributions. For that matter we have a fork that is exclusively focused on Debian and Fedora with minor changes. Feel free to check it out!
 
 <a href="https://github.com/cizordj/i3-themer">i3 themer for Debian</a>
+
+# TODOs
+
+[ ] add support for multiple kinds of modules (e.g. multiple statusbars, wallpaper managers, etc.)
+[ ] continue refactoring python modules for extensibility
+
