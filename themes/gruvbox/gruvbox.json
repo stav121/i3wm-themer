@@ -1,0 +1,45 @@
+{
+	"settings": {
+		"use_pywal": true,
+		"config": "config.yaml",
+		"install": "./defaults/"
+	},
+
+	"xresources": {},
+
+	"i3wm": {
+		"use_xresources": true,
+		"font": "pango:JetBrainsMono 10",
+		"terminal": "gnome-terminal",
+		"colors": {
+			"background": ["background"],
+			"focused": ["foreground", "background", "foreground", "color12", "color12"],
+			"unfocused": ["foreground", "background", "foreground", "color4", "color4"],
+			"focused_inactive": ["foreground", "background", "foreground", "color4", "color4"],
+			"urgent": ["foreground", "background", "foreground", "color4", "color4"],
+			"placeholder": ["foreground", "background", "foreground", "color4", "color4"]
+		},
+
+		"bindsyms": {
+			"$mod+Shift+space": "floating enable, border normal 10",
+			"$mod+Control+space": " floating disable, border none"
+		}
+	},
+
+	"polybar": {
+		"use_xresources": true,
+		"modules-left": "xworkspaces",
+		"modules-center": "",
+		"modules-right": "pulseaudio memory cpu date",
+		"colors": {}
+	},
+	
+	"wallpaper": {
+		"name": "gruvbox-tux.png",
+		"method": "feh"
+	},
+
+	"vimrc": {
+		"colorscheme": "gruvbox"
+	}
+}

@@ -33,7 +33,7 @@ class FehTheme(AbstractTheme):
             os.makedirs(os.path.expanduser("~/Picutres/wallpapers/"))
         logger.warning("Loading wallpaper")
         with open(configuration.i3_config, "a") as f:
-            f.write(f"exec_always feh --bg-fill $HOME/Pictures/wallpapers/{self.wallpaper}")
+            f.write(f"\n exec_always feh --bg-fill $HOME/Pictures/wallpapers/{self.wallpaper}")
 
         shutil.copy2(src=f"wallpapers/{self.wallpaper}",
                      dst=os.path.expanduser(f"~/Pictures/wallpapers/{self.wallpaper}"))
