@@ -4,35 +4,15 @@
 ### 20180505 Changes fully commented by James Shane ( github.com/jamesshane )
 ### 20180727 Python dependencies shifted to pacman by Graham Still ( github.com/adoxography )
 ### 20181009 Detection and Use of system AUR helpers by c0de ( github.com/alopexc0de )
+### 20230707 Remove detection and use of AUR for poly, as it has moved into extra repo for Arch by Elijah Hopp
 
 #refrsh pacman
 sudo pacman -Syy
 
 # Added binutils,gcc,make,pkg-config,fakeroot for compilations, removed yaourt
 # Added python-yaml, removed pip install
-sudo pacman -S git nitrogen rofi python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils gcc make pkg-config fakeroot python-yaml ttf-nerd-fonts-symbols git --noconfirm
-
-# Look for and use common AUR helpers from https://wiki.archlinux.org/index.php/AUR_helpers#Pacman_wrappers
-if [ -x "$(command -v yay)" ]; then
-  yay -S polybar 
-elif [ -x "$(command -v trizen)" ]; then
-  trizen -S polybar 
-elif [ -x "$(command -v pikaur)" ]; then
-  pikaur -S polybar 
-elif [ -x "$(command -v pakku)" ]; then
-  pakku -S polybar 
-elif [ -x "$(command -v aura)" ]; then
-  aura -SA polybar 
-elif [ -x "$(command -v pacaur)" ]; then
-  pacaur -S polybar 
-elif [ -x "$(command -v auracle)" ]; then
-  auracle download polybar
-  (cd polybar && makepkg -si --noconfirm && cd .. && rm -rf polybar)
-else
-  git clone https://aur.archlinux.org/polybar.git 
-  (cd polybar && makepkg -si --noconfirm && cd .. && rm -rf polybar)
-  exit 1
-fi
+# Added polybar, removed repeated "git" in package list.
+sudo pacman -S git nitrogen rofi polybar python-pip ttf-font-awesome adobe-source-code-pro-fonts binutils gcc make pkg-config fakeroot python-yaml ttf-nerd-fonts-symbols --noconfirm
 
 # File didn't exist for me, so test and touch
 if [ -e "$HOME"/.Xresources ]; then
