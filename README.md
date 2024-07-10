@@ -41,7 +41,9 @@ Clone this repository and install the requirements for the script. For Debian us
 
     git clone https://github.com/unix121/i3wm-themer
     cd i3wm-themer/
-    sudo pip install -r requirements.txt
+    python3 -m venv myenv
+    source myenv/bin/activate
+    python3 -m pip install -r requirements.txt
 
 Install all the requirements from the 'What you will need' section.
 Either manually or use one of the scripts created for some distros:
