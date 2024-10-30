@@ -39,23 +39,27 @@ Personal collection of themes and scripts for <a href="https://www.i3wm.org">i3w
 <ul>
 Clone this repository and install the requirements for the script. For Debian users, check the "Debian" section below.
 
-    git clone https://github.com/unix121/i3wm-themer
-    cd i3wm-themer/
-    python3 -m venv myenv
-    source myenv/bin/activate
-    python3 -m pip install -r requirements.txt
+```bash
+git clone --depth=1 https://github.com/unix121/i3wm-themer
+cd i3wm-themer/
+python3 -m venv myenv
+source myenv/bin/activate
+python3 -m pip install -r requirements.txt
+```
 
 Install all the requirements from the 'What you will need' section.
 Either manually or use one of the scripts created for some distros:
 
-    # For Arch, ArchLabs or Manjaro Linux
-    ./install_arch.sh
+```bash
+# For Arch, ArchLabs or Manjaro Linux
+./install_arch.sh
 
-    # For Debian
-    ./install_debian.sh
+# For Debian
+./install_debian.sh
 
-    # For Ubuntu
-    ./install_ubuntu.sh
+# For Ubuntu
+./install_ubuntu.sh
+```
 
 If you are not on one of the above, install them using your Package manager.
 
@@ -63,20 +67,26 @@ Make sure you have the requirements mentioned earlier installed.
 Edit the <a href="defaults/config.yaml">config.yaml</a> file and add your full path of i3wm config, polybar config and .Xresources
 files. In the end it should look something like this:
 
-    i3-config: /home/[USER]/.i3/config
-    polybar-config: /home/[USER]/.config/polybar/config
-    xresources: /home/[USER]/.Xresources
+```dotfile
+i3-config: /home/[USER]/.i3/config
+polybar-config: /home/[USER]/.config/polybar/config
+xresources: /home/[USER]/.Xresources
+```
 
 Where `[USER]` is your `$USER`.
 
 Copy the script in the <a href="scripts/">scripts</a> folder to your polybar directory:
 
-    cp -r scripts/* /home/$USER/.config/polybar/
+```bash
+cp -r scripts/* /home/$USER/.config/polybar/
+```
 
 Backup your files:
 
-    mkdir ~/Backups
-    python3 i3wm-themer.py --config config.yaml --backup /home/[USER]/Backups
+```bash
+mkdir ~/Backups
+python3 i3wm-themer.py --config config.yaml --backup /home/[USER]/Backups
+```
 
 This step will copy the files that you set in the `config.yaml` for safekeeping in case things go
 wrong.
@@ -84,14 +94,18 @@ wrong.
 Install the `config files` located in the <a href="defaults">defaults/</a> directory (not 100% required but
 I suggest you do so just to be sure).
 
-    python3 i3wm-themer.py --config config.yaml --install defaults/
+```bash
+python3 i3wm-themer.py --config config.yaml --install defaults/
+```
 
 In case you get lost `$mod+Return` will open a new terminal, `$mode+d` will launch Rofi. (For the
 rest of the shortcuts just take a look on the config file for i3, and change them to your needs.)
 
 Now you are basically ready to go. Pick a theme you like from the collection and load it:
 
-    python3 i3wm-themer.py --config config.yaml --load themes/[theme_id].json
+```bash
+python3 i3wm-themer.py --config config.yaml --load themes/[theme_id].json
+```
 
 (Where [theme_id] is the name of the theme you want to try!)
 
